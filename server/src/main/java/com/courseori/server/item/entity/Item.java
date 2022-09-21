@@ -6,10 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Map;
 
@@ -37,6 +34,7 @@ public class Item {
 
     private LocalDateTime deadline;
 
+    @ElementCollection(targetClass = String.class)
     private Map<String, Double> latiAndLongi;
 
     private String restaurantName;

@@ -1,7 +1,7 @@
 package com.courseori.server.item.dto;
 
 import com.courseori.server.category.Category;
-import com.courseori.server.member.Member;
+import com.courseori.server.member.entity.Member;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -48,7 +48,7 @@ public class ItemDto {
         private String imageUrl;
 
         public void setMember(Member member) {
-            this.memberId = member.getMemberId();
+            this.memberId = member.getId();
         }
 
     }
