@@ -1,4 +1,4 @@
-package com.courseori.server.category;
+package com.courseori.server.category.entity;
 
 public enum Category {
 

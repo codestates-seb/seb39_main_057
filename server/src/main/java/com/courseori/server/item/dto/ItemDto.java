@@ -1,6 +1,6 @@
 package com.courseori.server.item.dto;
 
-import com.courseori.server.category.Category;
+import com.courseori.server.category.entity.Category;
 import com.courseori.server.member.entity.Member;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

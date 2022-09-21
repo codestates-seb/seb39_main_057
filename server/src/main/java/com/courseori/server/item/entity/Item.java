@@ -1,6 +1,6 @@
 package com.courseori.server.item.entity;
 
-import com.courseori.server.category.Category;
+import com.courseori.server.category.entity.Category;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

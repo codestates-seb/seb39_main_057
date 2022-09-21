@@ -1,6 +1,6 @@
 package com.courseori.server.helper;
 
-import com.courseori.server.category.Category;
+import com.courseori.server.category.entity.Category;
 import com.courseori.server.item.dto.ItemDto;
 import com.courseori.server.item.entity.Item;
 

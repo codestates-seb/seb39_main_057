@@ -53,14 +53,11 @@ public class Member {
 
     private LocalDateTime joinedAt = LocalDateTime.now();
 
-
-//    private List<Orders> ordersList;
-
-
-//    private Map<Double,Double> latiAndLongi;
+    private LocalDateTime modifiedAt = LocalDateTime.now();
 
 
-//    private String paymentMethod; <- 차후 추가 예정
+
+//   private String paymentMethod; <- 차후 추가 예정
 
     //권한 부여에 대한 엔티티 입니다.
 
