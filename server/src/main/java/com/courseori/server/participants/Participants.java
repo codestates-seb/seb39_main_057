@@ -16,15 +16,18 @@ import java.time.LocalDateTime;
 public class Participants {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long participantsId;
 
     private int type;
+
     @ManyToOne
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
+
     @ManyToOne
     @JoinColumn(name = "ITEM_ID")
     private Item item;
+
     private LocalDateTime createdAt = LocalDateTime.now();
     private LocalDateTime modifiedAt = LocalDateTime.now();
 
