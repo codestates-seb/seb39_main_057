@@ -9,7 +9,8 @@ import java.util.List;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface ItemMapper {
-
+    Item itemPostToItem(ItemDto.Post requestBody);
+    Item itemPatchToItem(ItemDto.Patch requestBody);
     ItemDto.Response itemToItemResponse(Item item);
     List<ItemDto.Response> itemsToItemResponses(List<Item> itemList);
 

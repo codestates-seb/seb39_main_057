@@ -1,12 +1,16 @@
 package com.courseori.server.item.service;
 
+import com.courseori.server.foodcategory.entity.FoodCategory;
 import com.courseori.server.item.entity.Item;
 import com.courseori.server.item.repository.ItemRepository;
+import com.courseori.server.location.entity.Location;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -18,6 +22,41 @@ public class ItemService {
     public ItemService(ItemRepository itemRepository) {
         this.itemRepository = itemRepository;
     }
+
+    public Item createItem(Item item){
+        item.setCreatedAt(LocalDateTime.now());
+        item.setModifiedAt(LocalDateTime.now());
+        Item savedItem = itemRepository.save(item);
+
+        return savedItem;
+    }
+
+    public Item updateItem(Item item){
+        Item foundItem = findVerifiedItem(item.getItemId());
+        Optional.ofNullable(item.getTitle())
+                .ifPresent(title -> foundItem.setTitle(title));
+        Optional.ofNullable(item.getCategory())
+                .ifPresent(category -> foundItem.setCategory(category));
+        Optional.ofNullable(item.getBody())
+                .ifPresent(body -> foundItem.setBody(body));
+        Optional.ofNullable(item.getDeadline())
+                .ifPresent(deadline -> foundItem.setDeadline(deadline));
+        Optional.ofNullable(item.getRestaurantLocation())
+                .ifPresent(restaurantLocation -> foundItem.setRestaurantLocation(restaurantLocation));
+        Optional.ofNullable(item.getPickupLocation())
+                .ifPresent(pickupLocation -> foundItem.setPickupLocation(pickupLocation));
+        Optional.ofNullable(item.getRestaurantName())
+                .ifPresent(restaurantName -> foundItem.setRestaurantName(restaurantName));
+        Optional.ofNullable(item.getRestaurantUrl())
+                .ifPresent(restaurantUrl -> foundItem.setRestaurantUrl(restaurantUrl));
+        Optional.ofNullable(item.getImageUrl())
+                .ifPresent(imageUrl -> foundItem.setImageUrl(imageUrl));
+//        Optional.ofNullable(item.getParticipantsList())
+//                .ifPresent(participantsList -> foundItem.setParticipantsList(participantsList));
+        foundItem.setModifiedAt(LocalDateTime.now());
+        return itemRepository.save(foundItem);
+    }
+
 
     public void deleteItem(long itemId) {
         Item foundItem = findVerifiedItem(itemId);

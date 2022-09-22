@@ -27,6 +27,26 @@ public class ItemController {
         this.itemMapper = itemMapper;
     }
 
+    @PostMapping
+    public ResponseEntity postItem(@RequestBody ItemDto.Post requestBody){
+        Item item = itemMapper.itemPostToItem(requestBody);
+
+
+
+        Item createdItem = itemService.createItem(item);
+        ItemDto.Response response = itemMapper.itemToItemResponse(createdItem);
+        return new ResponseEntity<>(response,HttpStatus.CREATED);
+    }
+
+    @PatchMapping("/{item-id}")
+    public ResponseEntity patchItem(@PathVariable("item-id") @Positive long itemId,
+                                    @RequestBody ItemDto.Patch requestBody){
+        requestBody.setItemId(itemId);
+        Item item = itemService.updateItem(itemMapper.itemPatchToItem(requestBody));
+        ItemDto.Response response = itemMapper.itemToItemResponse(item);
+        return new ResponseEntity<>(response,HttpStatus.OK);
+    }
+
     @GetMapping("/{item-id}")
     public ResponseEntity getItem(@PathVariable("item-id") @Positive long itemId) {
 
