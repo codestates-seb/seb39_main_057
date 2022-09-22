@@ -35,9 +35,9 @@ public class Item {
     @OneToOne
     private FoodCategory category;
 
-    private LocalDateTime createdAt = LocalDateTime.now();
+    private LocalDateTime createdAt;
 
-    private LocalDateTime modifiedAt = LocalDateTime.now();
+    private LocalDateTime modifiedAt;
 
     private LocalDateTime deadline;
 
