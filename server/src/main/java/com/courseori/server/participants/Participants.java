@@ -1,13 +1,12 @@
 package com.courseori.server.participants;
 
+import com.courseori.server.item.entity.Item;
+import com.courseori.server.member.entity.Member;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -20,8 +19,12 @@ public class Participants {
     private long id;
 
     private int type;
-    private long memberId;
-    private long itemId;
+    @ManyToOne
+    @JoinColumn(name = "MEMBER_ID")
+    private Member member;
+    @ManyToOne
+    @JoinColumn(name = "ITEM_ID")
+    private Item item;
     private LocalDateTime createdAt = LocalDateTime.now();
     private LocalDateTime modifiedAt = LocalDateTime.now();
 

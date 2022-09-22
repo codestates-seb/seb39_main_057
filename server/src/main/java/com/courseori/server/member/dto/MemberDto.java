@@ -1,10 +1,11 @@
 package com.courseori.server.member.dto;
 
+import com.courseori.server.image.entity.ImageUrl;
+import com.courseori.server.member.role.Roles;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -41,7 +42,7 @@ public class MemberDto {
         @Pattern(regexp = "^\\d{3}-\\d{3,4}-\\d{4}$", message = "올바른 전화번호를 입력해주세요.")
         private String phoneNumber;
 
-        private String roles;
+        private Roles roles;
     }
 
     @Getter
@@ -63,7 +64,7 @@ public class MemberDto {
         @Pattern(regexp = "^\\d{3}-\\d{3,4}-\\d{4}$", message = "올바른 전화번호를 입력해주세요.")
         private String phoneNumber;
 
-        private String profileImageUrl;
+        private ImageUrl profileImageUrl;
 
     }
 
@@ -79,34 +80,18 @@ public class MemberDto {
 
         private String email;
 
-
         private String password;
-
 
         private String phoneNumber;
 
+        private ImageUrl profileImageUrl;
 
-        private Integer totalOrders;
+        private LocalDateTime joinedAt;
 
-
-        private String profileImageUrl;
-
-
-        private LocalDateTime joinedAt = LocalDateTime.now();
-
-
-//    private List<Orders> ordersList;
-
-
-//    private Map<Double,Double> latiAndLongi;
-
-
-//    private String paymentMethod; <- 차후 추가 예정
-
+        private String paymentMethod;
 
         //권한 부여에 대한 엔티티 입니다.
-        private String roles; // User, MANAGER, ADMIN
-
+        private Roles roles; // User, MANAGER, ADMIN
 
     }
 }

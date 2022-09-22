@@ -1,6 +1,8 @@
 package com.courseori.server.member.entity;
 
 
+import com.courseori.server.image.entity.ImageUrl;
+import com.courseori.server.location.entity.Location;
 import com.courseori.server.member.role.Roles;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,8 +26,7 @@ public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
+    private long memberId;
 
     @NotBlank(message = "이름을 입력해주세요.")
     @Size(min = 2, max = 8, message = "이름을 2자 ~ 8자 사이로 입력해주세요.")
@@ -37,30 +38,27 @@ public class Member {
     @Email(message = "올바른 이메일 형식을 입력해주세요.")
     private String email;
 
-    @Column(length = 200)
+    @Column
     private String password;
 
-    @Column(length = 200, unique = true)
+    @Column(unique = true)
     @Pattern(regexp = "^\\d{3}-\\d{3,4}-\\d{4}$", message = "올바른 전화번호를 입력해주세요.")
     private String phoneNumber;
 
+    @OneToOne
+    private Location location;
 
-    private Integer totalOrders;
-
-
-    private String profileImageUrl;
-
+    @OneToOne
+    private ImageUrl profileImageUrl;
 
     private LocalDateTime joinedAt = LocalDateTime.now();
 
     private LocalDateTime modifiedAt = LocalDateTime.now();
 
-
-
-//   private String paymentMethod; <- 차후 추가 예정
+    //차후 추가 예정
+    private String paymentMethod;
 
     //권한 부여에 대한 엔티티 입니다.
-
     @OneToOne
     private Roles roles;
 
@@ -69,5 +67,16 @@ public class Member {
             return Arrays.asList(this.roles.getRole());
         }
         return new ArrayList<>();
+    }
+
+    public Member(String username, String email, String password, String phoneNumber, Location location, ImageUrl profileImageUrl, String paymentMethod, Roles roles) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+        this.location = location;
+        this.profileImageUrl = profileImageUrl;
+        this.paymentMethod = paymentMethod;
+        this.roles = roles;
     }
 }

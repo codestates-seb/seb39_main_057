@@ -20,10 +20,10 @@ public class Location {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long locationId;
 
     @NotBlank
-    private String nameOfPrice;
+    private String nameOfPlace;
 
     @NotBlank
     @Size(min = 1)
@@ -36,4 +36,11 @@ public class Location {
     private LocalDateTime createAt = LocalDateTime.now();
 
     private LocalDateTime modifiedAt = LocalDateTime.now();
+
+    public Location(String nameOfPlace, int type, float latitude, float longitude) {
+        this.nameOfPlace = nameOfPlace;
+        this.type = type;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
 }

@@ -1,6 +1,6 @@
 package com.courseori.server.item.dto;
 
-import com.courseori.server.category.entity.Category;
+import com.courseori.server.foodcategory.entity.FoodCategory;
 import com.courseori.server.member.entity.Member;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -34,7 +34,7 @@ public class ItemDto {
         private long memberId;
 
         private String title;
-        private Category category;
+        private FoodCategory category;
         private LocalDateTime createdAt;
         private LocalDateTime modifiedAt;
         private LocalDateTime deadline;
@@ -48,7 +48,7 @@ public class ItemDto {
         private String imageUrl;
 
         public void setMember(Member member) {
-            this.memberId = member.getId();
+            this.memberId = member.getMemberId();
         }
 
     }

@@ -3,7 +3,6 @@ package com.courseori.server.image.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.lang.Nullable;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,13 +20,16 @@ public class ImageUrl {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Nullable
     private String url;
 
     @Size(min = 1)
     private int type;
 
     private LocalDateTime createAt = LocalDateTime.now();
-
     private LocalDateTime modifiedAt = LocalDateTime.now();
+
+    public ImageUrl(String url, int type) {
+        this.url = url;
+        this.type = type;
+    }
 }
