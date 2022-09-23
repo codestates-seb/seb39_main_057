@@ -55,7 +55,7 @@
  ■ Front-End : 서태원, 이은주 <br>
     ■ GITHUB :  <br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 서태원 :  <br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 이은주 :  <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 이은주 :  https://github.com/ejmoni<br>
     ■ 기술블로그   <br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 서태원 :  <br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 이은주 :  <br>
