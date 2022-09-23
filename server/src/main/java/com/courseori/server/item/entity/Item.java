@@ -41,10 +41,12 @@ public class Item {
 
     private LocalDateTime deadline;
 
-    @OneToOne
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "R_LOCATION_ID")
     private Location restaurantLocation;
 
-    @OneToOne
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "P_LOCATION_ID")
     private Location pickupLocation;
 
     private String restaurantName;
