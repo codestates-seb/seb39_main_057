@@ -28,11 +28,11 @@
     - 프로젝트 명칭: 호박공구마
     - 개발 인원: Back-End[3명], Front-End[2명]
     - 주요기능: 배달을 위한 가게정보와 개인위치정보 공유, 배달 공구를 진행하여 개인부담 배달비의 절감
-    - 개발 언어: Java, javaScript, html, css
+    - 개발 언어: Java, javaScript, html, css, aws
     - 개발 환경: Spring FreameWork, React
     - 데이터베이스: mysql
-    - 형상관리 툴: ?
-    - 간단 소개: ?
+    - 형상관리 툴: github
+   
     
 ## 
 
@@ -54,11 +54,11 @@
  ■ Back-End  : 신가경 [팀장], 강지효, 김건휘 <br> 
    ■ GITHUB :  <br> 
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 신가경 :  <br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 강지효 :  <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 강지효 : https://github.com/jihoy-kang <br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 김건휘 :  <br>
    ■ 기술블로그 : <br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 신가경 :   <br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 강지효 :   <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 강지효 : https://luxuryruki.tistory.com/  <br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 김건휘 :   <br>
  
  ■ Front-End : 서태원, 이은주 <br>
@@ -68,7 +68,44 @@
     ■ 기술블로그   <br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 서태원 :  <br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 이은주 :  <br>
-        
+              
+
+##
+##  ■ 사용자 요구사향 정의서
+
+|요구사항ID|요구사항명|구분|요구사항에 대한 설명|필수 데이터|선택 데이터|중요도|비고|
+|------|---|---|------|---|------|------|---|
+|REQ_001|메인 화면 지도|기능|이용자의 위치에 맞추어 주변 배달음식 공구 진행 현황이 표시된 지도를 보여주어 원하는 장소를 선택할 수 있도록 해줌|카카오톡 Map API||중||
+|REQ_002|음식 카테고리 버튼|기능|카테고리를 선택하면 선택된 카테고리에 맞는 배달 공구 현황을 화면에 보여줌|Enumeration으로 카테고리 설정||상||
+|REQ_003|거리순/최신순/마감임박 버튼|기능|조회된 배달 현황 정렬 기능(업체와의 거리, 게시글 업로드 시점 및 마감 시점 기준으로 필터링 가능)|- 사용자와 업체 간 거리 <br> - 게시글 업로드 시점(시간) <br> - 게시글 마감 시점(시간)||상||
+|REQ_004|전체 게시글 조회 |기능|현재까지 등록되어 있는 공구 현황을 페이지네이션 적용하여 화면에 보여줌(6개씩) <br> -default로 마감임박 순으로 정렬 <br> -마감된 공구는 제외 |- 사용자와 업체 간 거리 <br> - 게시글 업로드 시점(시간) <br> - 게시글 마감 시점(시간) ||상||
+|REQ_005|검색바|기능| 줌|||상||
+|REQ_006|로그인/회원가입 버튼|기능| 줌|||상||
+|REQ_007|진행중 상태 아이콘|기능| 줌|||상||
+|REQ_008|주문메뉴/위치 (-> '픽업위치' 로 변경)|기능| 줌|||상||
+|REQ_009|우측 정보란|기능| 줌|||상||
+|REQ_010|문의하기 버튼 (우측에 배정)|기능| 줌|||상||
+|REQ_011|참여자 현황|기능| 줌|||상||
+|REQ_012|주문참여하기 버튼|기능| 줌|||상||
+|REQ_013|게시글 수정 버튼|기능| 줌|||상||
+|REQ_014|제목|기능| 줌|||상||
+|REQ_015|카테고리|기능| 줌|||상||
+|REQ_016|일시(-> '신청 마감 시간' 으로 변경)|기능| 줌|||상||
+|REQ_017|위치정보/픽업장소|기능| 줌|||상||
+|REQ_018|주문 업체|기능| 줌|||상||
+|REQ_019|메뉴공유링크|기능| 줌|||상||
+|REQ_020|참여 가능 인원|기능| 줌|||상||
+|REQ_021|글쓰기|기능| 줌|||상||
+|REQ_022|글쓰기|부기능| 줌|||상||
+|REQ_023|검색바|기능| 줌|||상||
+|REQ_024|검색바|기능| 줌|||상||
+|REQ_025|검색바|기능| 줌|||상||
+|REQ_025|검색바|기능| 줌|||상||
+
+
+
+
+
 ##
 ##  ■ Flow Chart
 
@@ -77,8 +114,11 @@
 </p>
 
 ##
-##  ■ ERD Diagram
+##  ■ Entity Diagram
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/80661467/191894263-4d6c35e0-b6f9-408f-b410-4a25b6a80773.png"  width="1200" height="550"/>
 </p>
+
+##  ■ Class Diagram
+
