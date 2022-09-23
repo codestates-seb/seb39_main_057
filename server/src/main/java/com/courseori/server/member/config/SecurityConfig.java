@@ -1,5 +1,6 @@
 package com.courseori.server.member.config;
 
+import com.courseori.server.member.aouth.PrincipalOauth2UserService;
 import com.courseori.server.member.filter.FirstFilter;
 import com.courseori.server.member.filter.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +25,9 @@ public class SecurityConfig {
     @Autowired
     private final CorsFilter corsFilter;
 
+    @Autowired
+    private final PrincipalOauth2UserService principalOauth2UserService;
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
 //        http.addFilterBefore(new FirstFilter(), BasicAuthenticationFilter.class);
@@ -42,7 +46,13 @@ public class SecurityConfig {
                 .access("HasRole('ROLE_ADMIN')")
                 .anyRequest().permitAll()
                 .and()
-                .addFilter(corsFilter);
+                .addFilter(corsFilter)
+                .oauth2Login()
+                .loginPage("/loginForm")
+                .defaultSuccessUrl("/")
+                .failureUrl("/loginForm")
+                .userInfoEndpoint()
+                .userService(principalOauth2UserService);
         return http.build();
     }
 

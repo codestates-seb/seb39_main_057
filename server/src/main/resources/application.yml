@@ -9,3 +9,24 @@ spring:
     hibernate:
       ddl-auto: create
     show-sql: true
+
+  security:
+    oauth2:
+      client:
+        registration:
+          kakao:
+            client-id: 5e233018103409a275aad30214d4daba
+            client-secret: hzkliB8UlgxSfGQ4rwGxJqvl0DnF93tS
+            redirect-uri: http://localhost:8080/login/oauth2/code/kakao
+            authorization-grant-type: authorization_code
+            client-authentication-method: POST
+            client-name: Kakao
+            scope:
+              - profile_nickname
+              - account_email
+        provider:
+          kakao:
+            authorization-uri: https://kauth.kakao.com/oauth/authorize
+            token-uri: https://kauth.kakao.com/oauth/token
+            user-info-uri: https://kapi.kakao.com/v2/user/me
+            user-name-attribute: id

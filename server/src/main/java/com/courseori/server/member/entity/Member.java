@@ -3,8 +3,10 @@ package com.courseori.server.member.entity;
 
 import com.courseori.server.member.role.Roles;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -38,6 +40,7 @@ public class Member {
     private String email;
 
     @Column(length = 200)
+    @JsonIgnore
     private String password;
 
     @Column(length = 200, unique = true)
@@ -62,12 +65,33 @@ public class Member {
     //권한 부여에 대한 엔티티 입니다.
 
     @OneToOne
-    private Roles roles;
+    private Roles role;
 
-    public List<String> getRoleList() {
-        if(this.roles.getRole().length()> 0) {
-            return Arrays.asList(this.roles.getRole());
-        }
-        return new ArrayList<>();
+    private String provider;
+    private String providerId;
+
+    //jwt
+    @Builder(builderClassName = "UserDetailRegister", builderMethodName = "userDetailRegister")
+    public Member(String username, String email, String password, String phoneNumber, String profileImageUrl,Roles role) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+        this.profileImageUrl = profileImageUrl;
+        this.role = role;
+    }
+
+
+    //oauth2
+    @Builder(builderClassName = "OAuth2Register", builderMethodName = "oauth2Register")
+    public Member(String username, String email, String password, String phoneNumber, String profileImageUrl, Roles role, String provider, String providerId) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+        this.profileImageUrl = profileImageUrl;
+        this.role = role;
+        this.provider = provider;
+        this.providerId = providerId;
     }
 }

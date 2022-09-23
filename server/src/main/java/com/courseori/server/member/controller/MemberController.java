@@ -1,19 +1,25 @@
 package com.courseori.server.member.controller;
 
+import com.courseori.server.member.aouth.PrincipalDetails;
 import com.courseori.server.member.dto.MemberDto;
 import com.courseori.server.member.entity.Member;
 import com.courseori.server.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 
-@RestController
+
+//@RestController
+@Controller
 @RequestMapping("/v1/members")
 @Slf4j
 @RequiredArgsConstructor
@@ -78,5 +84,29 @@ public class MemberController {
 
         return new ResponseEntity<>( "OK",HttpStatus.NO_CONTENT);
     }
+
+    @GetMapping("/login")
+    public String loginForm(){
+        return "login";
+    }
+
+   @GetMapping("/user")
+    @ResponseBody
+    public String user(){
+        return "user";
+    }
+
+    @GetMapping("/manager")
+    @ResponseBody
+    public String manager(){
+        return "manager";
+    }
+
+    @GetMapping("/admin")
+    @ResponseBody
+    public String admin(){
+        return "admin";
+    }
+
 
 }
