@@ -62,11 +62,11 @@
 
  ■ Back-End  : 신가경 [팀장], 강지효, 김건휘 <br> 
    ■ GITHUB :  <br> 
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 신가경 :  <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 신가경 : https://github.com/happyduck-git<br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 강지효 : https://github.com/jihoy-kang <br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 김건휘 : https://github.com/KimJeju <br>
    ■ 기술블로그 : <br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 신가경 :   <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 신가경 : https://ittingz.tistory.com/  <br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 강지효 : https://luxuryruki.tistory.com/  <br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 김건휘 : https://176cm-developer.tistory.com/  <br>
  
