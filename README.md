@@ -1,4 +1,4 @@
-# 호박공구마
+# Project : 호박공구마 🍠
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/80661467/191881819-6ef4e211-1c4e-40aa-ac77-6a5c8183eb5b.png"  width="350" height="400"/>
