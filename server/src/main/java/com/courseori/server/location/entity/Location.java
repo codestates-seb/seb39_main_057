@@ -22,11 +22,9 @@ public class Location {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long locationId;
 
-    @NotBlank
+
     private String nameOfPlace;
 
-    @NotBlank
-    @Size(min = 1)
     private int type;
 
     private float latitude;
@@ -37,10 +35,10 @@ public class Location {
 
     private LocalDateTime modifiedAt = LocalDateTime.now();
 
-    public Location(String nameOfPlace, int type, float latitude, float longitude) {
-        this.nameOfPlace = nameOfPlace;
-        this.type = type;
-        this.latitude = latitude;
-        this.longitude = longitude;
-    }
+//    public Location(String nameOfPlace, int type, float latitude, float longitude) {
+//        this.nameOfPlace = nameOfPlace;
+//        this.type = type;
+//        this.latitude = latitude;
+//        this.longitude = longitude;
+//    }
 }
