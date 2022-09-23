@@ -6,12 +6,12 @@
 
 ## 개발기간
 
-<span style="font-size:32px">2022.09.23 ~ ing</span>  
+### 2022.09.13 ~ ing
 ##
 
 ## 1.소개
 
-■ 슬기로운 배달생활, 호박 공구마!
+### ■ 슬기로운 배달생활, 호박 공구마!
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/80661467/191881953-e15e989d-974e-4510-b2b7-c9ca66727353.png"  width="500" height="300"/>
@@ -36,11 +36,11 @@
     
 ## 
 
-## ■ 기술명세
+## ■ 사용 기술
 
 |기술|설명|채택이유|
 |------|---|---|
-|java|자바는 특정 OS에 따라 문법이나 언어를 다르게 사용해야하는 C,C++과 다르게 JRE 와 JVM 또 표준 클래스 라이브러리로 인해 모든 운영체체에서  안정적으로 동작 가능합니다.|저희는 이러한 자바를 이용해 모든 웹세이트 OS에서 동작 시 문제가 되지않는 웹사이트 서버를 개발합니다.|
+|java|자바는 특정 OS에 따라 문법이나 언어를 다르게 사용해야하는 C,C++과 다르게 JRE 와 JVM 또 표준 클래스 라이브러리로 인해 모든 운영체체에서 안정적으로 동작 가능합니다.|저희는 이러한 자바를 이용해 모든 OS에서 동작 시 문제가 되지않는 웹사이트 서버를 개발합니다.|
 |Spring|Spring Freamwork는 POJO의 구성을 가지고 있으며 DI 와 AOP를 지원합니다. 이외에도 함수형 프로그래밍 등 다양한 라이브러리를 지원하고 있으며 이를 통하여 다양한 기술을 사용하고 객체지향적 프로그래밍을 하여 유연한 개발이 가능하게 해줍니다.|저희는 Spring을 통하여 한 라이브러리, 기술에 국한되지 않는 유연한 기술을 사용한 서버를 구성합니다. 
 |javascprit|javaScript는 개발자가 대화식 웹 페이지를 만들기 위해 사용하는 프로그래밍 언어입니다. JavaScript를 사용하면 브라우저는 사용자 상호 작용에 응답해서 웹 페이지의 콘텐츠 레이아웃을 변경할 수 있습니다. 저희는 이 javaScript를 사용해 다양한 페이지를 구성, 동작 시킬 수 있습니다. |테스트3|
 |react|React는 자바스크립트 라이브러리의 하나로서 사용자 인터페이스를 만들기 위해 사용됩니다. react를 사용하면 Vitual DOM, React Native의 앱 개발 기능 등을 사용하여 동적인 웹페이지를 구성할 수 있습니다.|테스트3|
@@ -51,16 +51,6 @@
 
 
 ## ■ 개발 인원
- ■ Back-End  : 신가경 [팀장], 강지효, 김건휘 <br> 
-   ■ GITHUB :  <br> 
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 신가경 :  <br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 강지효 : https://github.com/jihoy-kang <br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 김건휘 :  <br>
-   ■ 기술블로그 : <br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 신가경 :   <br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 강지효 : https://luxuryruki.tistory.com/  <br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 김건휘 :   <br>
- 
  ■ Front-End : 서태원, 이은주 <br>
     ■ GITHUB :  <br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 서태원 :  <br>
@@ -68,6 +58,18 @@
     ■ 기술블로그   <br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 서태원 :  <br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 이은주 :  <br>
+
+ ■ Back-End  : 신가경 [팀장], 강지효, 김건휘 <br> 
+   ■ GITHUB :  <br> 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 신가경 :  <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 강지효 : https://github.com/jihoy-kang <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 김건휘 : https://github.com/KimJeju <br>
+   ■ 기술블로그 : <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 신가경 :   <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 강지효 : https://luxuryruki.tistory.com/  <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 김건휘 : https://176cm-developer.tistory.com/  <br>
+ 
+
               
 
 ##
@@ -123,4 +125,11 @@
 </p>
 
 ##  ■ Class Diagram
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/80661467/191903206-95c5c607-6ec8-419b-bd93-fd558f669098.png"  width="1200" height="550"/>
+</p>
+
+
+
 
