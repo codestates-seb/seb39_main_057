@@ -1,8 +1,9 @@
 # Project : 호박공구마 🍠
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/80661467/191881819-6ef4e211-1c4e-40aa-ac77-6a5c8183eb5b.png"  width="350" height="400"/>
+<img src="https://user-images.githubusercontent.com/80661467/191905237-f386b015-be67-4712-aa65-7774119506a2.png"  width="700" height="450"/>
 </p>
+
 
 ## 개발기간
 
@@ -104,7 +105,7 @@
 |REQ_026|일반 회원가입|기능|이메일로 본인 인증을 하고 이름 및 비밀번호 설정하여 회원가입 진행|- 이메일<br>- 실명<br>- 비밀번호||중||
 |REQ_027|일반 회원가입 (Location)|기능|위치인증을 통해서 배달 픽업 장소 지정 (최근 게시글에서 지정한 장소가 항상 적용되도록 기능 수정 검토)|초기 설정할 위치정보||중||
 |REQ_026|OAuth2 Kakao Login|부기능|카카오톡과 네이버 인증 API 활용하여 구현|초기 설정할 위치정보||중||
-|REQ_027|이메일 로그인|부기능|Spring security 적용하여 로그인 구현||중||
+|REQ_027|이메일 로그인|부기능|Spring security 적용하여 로그인 구현|||중||
 
 
 
