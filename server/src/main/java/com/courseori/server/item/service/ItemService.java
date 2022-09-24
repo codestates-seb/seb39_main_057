@@ -51,8 +51,8 @@ public class ItemService {
                 .ifPresent(restaurantUrl -> foundItem.setRestaurantUrl(restaurantUrl));
         Optional.ofNullable(item.getImageUrl())
                 .ifPresent(imageUrl -> foundItem.setImageUrl(imageUrl));
-//        Optional.ofNullable(item.getParticipantsList())
-//                .ifPresent(participantsList -> foundItem.setParticipantsList(participantsList));
+        Optional.ofNullable(item.getParticipantsList())
+                .ifPresent(participantsList -> foundItem.setParticipantsList(participantsList));
         foundItem.setModifiedAt(LocalDateTime.now());
         return itemRepository.save(foundItem);
     }

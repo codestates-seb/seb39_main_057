@@ -9,6 +9,7 @@ import lombok.Setter;
 
 import javax.persistence.OneToOne;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Map;
 
 public class ItemDto {
@@ -53,7 +54,7 @@ public class ItemDto {
         private String restaurantName;
         private String restaurantUrl;
 
-//    private List<Member> participantsList;
+        private List<Member> participantsList;
 
         private String body;
         private String imageUrl;
@@ -77,7 +78,7 @@ public class ItemDto {
         private String restaurantName;
         private String restaurantUrl;
 
-//    private List<Member> participantsList;
+        private List<Member> participantsList;
 
         private String body;
         private String imageUrl;
