@@ -27,11 +27,15 @@ public class ItemDto {
         private String restaurantName;
         private String restaurantUrl;
 
-//    private List<Member> participantsList;
 
         private String body;
         private ImageUrl imageUrl;
 
+        public Member getMember() {
+            Member member = new Member();
+            member.setMemberId(memberId);
+            return member;
+        }
 
     }
 
