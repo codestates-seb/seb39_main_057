@@ -1,16 +1,15 @@
 package com.courseori.server.item.dto;
 
 import com.courseori.server.foodcategory.entity.FoodCategory;
+import com.courseori.server.image.entity.ImageUrl;
 import com.courseori.server.location.entity.Location;
 import com.courseori.server.member.entity.Member;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.OneToOne;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Map;
 
 public class ItemDto {
 
@@ -31,7 +30,7 @@ public class ItemDto {
 //    private List<Member> participantsList;
 
         private String body;
-        private String imageUrl;
+        private ImageUrl imageUrl;
 
 
     }
@@ -55,7 +54,7 @@ public class ItemDto {
         private List<Member> participantsList;
 
         private String body;
-        private String imageUrl;
+        private ImageUrl imageUrl;
     }
 
     @AllArgsConstructor
@@ -78,11 +77,11 @@ public class ItemDto {
         private List<Member> participantsList;
 
         private String body;
-        private String imageUrl;
+        private ImageUrl imageUrl;
 
-//        public void setMember(Member member) {
-//            this.memberId = member.getMemberId();
-//        }
+        public void setMember(Member member) {
+            this.memberId = member.getMemberId();
+        }
 
     }
 }

@@ -60,7 +60,7 @@ public class Member {
 
     //권한 부여에 대한 엔티티 입니다.
     @Transient
-    private Roles roles;
+    private Roles roles = new Roles(1, "ROLE_USER");
 
     public List<String> getRoleList() {
         if(this.roles.getRole().length()> 0) {

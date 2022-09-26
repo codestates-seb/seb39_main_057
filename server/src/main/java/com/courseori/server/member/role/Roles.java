@@ -28,4 +28,9 @@ public class Roles {
     public Roles(String role) {
         this.role = role;
     }
+
+    public Roles(int roleId, String role) {
+        this.roleId = roleId;
+        this.role = role;
+    }
 }

@@ -1,6 +1,7 @@
 package com.courseori.server.item.entity;
 
 import com.courseori.server.foodcategory.entity.FoodCategory;
+import com.courseori.server.image.entity.ImageUrl;
 import com.courseori.server.location.entity.Location;
 import com.courseori.server.member.entity.Member;
 import com.courseori.server.participants.Participants;
@@ -55,9 +56,10 @@ public class Item {
 
     private String body;
 
-    private String imageUrl;
+    @OneToOne
+    private ImageUrl imageUrl;
 
-    public Item(Member member, String title, FoodCategory category, Date deadline, Location restaurantLocation, String restaurantName, String restaurantUrl, String body, String imageUrl) {
+    public Item(Member member, String title, FoodCategory category, Date deadline, Location restaurantLocation, String restaurantName, String restaurantUrl, String body, ImageUrl imageUrl) {
         this.member = member;
         this.title = title;
         this.category = category;
