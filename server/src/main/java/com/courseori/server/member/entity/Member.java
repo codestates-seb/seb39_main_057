@@ -59,7 +59,7 @@ public class Member {
     private String paymentMethod;
 
     //권한 부여에 대한 엔티티 입니다.
-    @OneToOne
+    @Transient
     private Roles roles;
 
     public List<String> getRoleList() {
