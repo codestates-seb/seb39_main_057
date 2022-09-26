@@ -43,16 +43,14 @@ public class ItemService {
                 .ifPresent(deadline -> foundItem.setDeadline(deadline));
         Optional.ofNullable(item.getRestaurantLocation())
                 .ifPresent(restaurantLocation -> foundItem.setRestaurantLocation(restaurantLocation));
-        Optional.ofNullable(item.getPickupLocation())
-                .ifPresent(pickupLocation -> foundItem.setPickupLocation(pickupLocation));
         Optional.ofNullable(item.getRestaurantName())
                 .ifPresent(restaurantName -> foundItem.setRestaurantName(restaurantName));
         Optional.ofNullable(item.getRestaurantUrl())
                 .ifPresent(restaurantUrl -> foundItem.setRestaurantUrl(restaurantUrl));
         Optional.ofNullable(item.getImageUrl())
                 .ifPresent(imageUrl -> foundItem.setImageUrl(imageUrl));
-//        Optional.ofNullable(item.getParticipantsList())
-//                .ifPresent(participantsList -> foundItem.setParticipantsList(participantsList));
+        Optional.ofNullable(item.getParticipantsList())
+                .ifPresent(participantsList -> foundItem.setParticipantsList(participantsList));
         foundItem.setModifiedAt(LocalDateTime.now());
         return itemRepository.save(foundItem);
     }

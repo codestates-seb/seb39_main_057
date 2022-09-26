@@ -25,6 +25,10 @@ public class Location {
 
     private String nameOfPlace;
 
+    private String korAddress;
+
+    private String addressDetail;
+
     private int type;
 
     private float latitude;
