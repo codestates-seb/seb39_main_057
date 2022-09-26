@@ -43,6 +43,6 @@ public class Participants {
                 "participantsId= " + participantsId +
                 ", type= " + type +
                 ", member= " + member.getMemberId() +
-                '}';
+                " }";
     }
 }

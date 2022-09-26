@@ -4,6 +4,7 @@ import com.courseori.server.foodcategory.entity.FoodCategory;
 import com.courseori.server.image.entity.ImageUrl;
 import com.courseori.server.location.entity.Location;
 import com.courseori.server.member.entity.Member;
+import com.courseori.server.participants.Participants;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -78,7 +79,7 @@ public class ItemDto {
         private String restaurantName;
         private String restaurantUrl;
 
-        private List<Member> participantsList;
+        private List<Participants> participantsList;
 
         private String body;
         private ImageUrl imageUrl;

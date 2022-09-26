@@ -110,5 +110,24 @@ public class ItemController {
     }
 
     /* post participants and map item and member */
+    @PostMapping("/{item-id}")
+    public ResponseEntity postParticipants(@PathVariable("item-id") @Positive long itemId,
+                                           @RequestParam long memberId) {
+
+        // Member foundMember =  -> memberService에서 findMember로 조회하여 가져오기
+        Member foundMember = memberRepository.findById(memberId).orElseThrow();
+
+        //Item foundItem = -> itemService에서 findItem으로 조회하여 가져오기
+        Item foundItem = itemService.findItem(itemId);
+
+        Participants participants1 = new Participants(2, foundMember, foundItem);
+
+        participantsService.createParticipants(participants1);
+
+        //item의 participant list에 추가
+        foundItem.addParticipants(participants1);
+
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
 
 }

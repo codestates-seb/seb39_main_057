@@ -5,6 +5,7 @@ import com.courseori.server.image.entity.ImageUrl;
 import com.courseori.server.location.entity.Location;
 import com.courseori.server.member.entity.Member;
 import com.courseori.server.participants.Participants;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -51,6 +52,7 @@ public class Item {
     private String restaurantUrl;
 
     @OneToMany(mappedBy = "item", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @JsonBackReference
     private List<Participants> participantsList = new ArrayList<>();
 
     private String body;
@@ -72,5 +74,7 @@ public class Item {
 
     public void addParticipants(Participants participants) {
         participantsList.add(participants);
+        System.out.println("Participants list from Item entity: ");
+        participantsList.stream().forEach(n -> System.out.println(n.toString()));
     }
 }
