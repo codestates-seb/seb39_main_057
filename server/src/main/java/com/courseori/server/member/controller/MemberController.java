@@ -1,9 +1,9 @@
 package com.courseori.server.member.controller;
 
 import com.courseori.server.member.aouth.PrincipalDetails;
-import com.courseori.server.member.dto.MemberDto;
 import com.courseori.server.member.entity.Member;
 import com.courseori.server.member.repository.MemberRepository;
+import com.courseori.server.member.role.ROLE;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
@@ -33,6 +33,7 @@ public class MemberController {
     public ResponseEntity postMember(@Valid @RequestBody Member member){
 
         member.setPassword(encoder.encode(member.getPassword()));
+        member.setRole(ROLE.ROLE_USER);
 
         memberRepository.save(member);
 
@@ -42,14 +43,14 @@ public class MemberController {
     @PatchMapping("/{member-id}")
     public ResponseEntity patchMember(
             @PathVariable("member-id") @Positive long memberId,
-            @Valid @RequestBody MemberDto.Patch requestBody){
+            @Valid @RequestBody Member member){
 
         Member foundMember = memberRepository.findById(memberId).orElseThrow();
 
-        foundMember.setUsername(requestBody.getUsername());
-        foundMember.setPassword(encoder.encode(requestBody.getPassword()));
-        foundMember.setPhoneNumber(requestBody.getPhoneNumber());
-        foundMember.setProfileImageUrl(requestBody.getProfileImageUrl());
+        foundMember.setUsername(member.getUsername());
+        foundMember.setPassword(encoder.encode(member.getPassword()));
+        foundMember.setPhoneNumber(member.getPhoneNumber());
+        foundMember.setProfileImageUrl(member.getProfileImageUrl());
 
         memberRepository.save(foundMember);
 

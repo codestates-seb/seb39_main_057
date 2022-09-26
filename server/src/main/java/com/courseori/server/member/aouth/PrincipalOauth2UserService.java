@@ -4,7 +4,7 @@ import com.courseori.server.member.aouth.userinfo.OAuth2UserInfo;
 import com.courseori.server.member.aouth.userinfo.kakaoUserInfo;
 import com.courseori.server.member.entity.Member;
 import com.courseori.server.member.repository.MemberRepository;
-import com.courseori.server.member.role.Roles;
+import com.courseori.server.member.role.ROLE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
@@ -42,7 +42,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
         String password = bCryptPasswordEncoder.encode("패스워드"+uuid);
 
         String email = oAuth2UserInfo.getEmail();
-        Roles role = new Roles();
+        ROLE role = ROLE.ROLE_USER;
 
         Member byUsername = memberRepository.findByUsername(username);
 

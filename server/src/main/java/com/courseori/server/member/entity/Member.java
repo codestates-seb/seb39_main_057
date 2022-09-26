@@ -1,7 +1,7 @@
 package com.courseori.server.member.entity;
 
 
-import com.courseori.server.member.role.Roles;
+import com.courseori.server.member.role.ROLE;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,9 +14,6 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -64,15 +61,16 @@ public class Member {
 
     //권한 부여에 대한 엔티티 입니다.
 
-    @OneToOne
-    private Roles role;
+    @OneToOne(mappedBy = "member", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @Enumerated(EnumType.STRING)
+    private ROLE role;
 
     private String provider;
     private String providerId;
 
     //jwt
     @Builder(builderClassName = "UserDetailRegister", builderMethodName = "userDetailRegister")
-    public Member(String username, String email, String password, String phoneNumber, String profileImageUrl,Roles role) {
+    public Member(String username, String email, String password, String phoneNumber, String profileImageUrl,ROLE role) {
         this.username = username;
         this.email = email;
         this.password = password;
@@ -84,7 +82,7 @@ public class Member {
 
     //oauth2
     @Builder(builderClassName = "OAuth2Register", builderMethodName = "oauth2Register")
-    public Member(String username, String email, String password, String phoneNumber, String profileImageUrl, Roles role, String provider, String providerId) {
+    public Member(String username, String email, String password, String phoneNumber, String profileImageUrl, ROLE role, String provider, String providerId) {
         this.username = username;
         this.email = email;
         this.password = password;
