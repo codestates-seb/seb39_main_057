@@ -31,4 +31,18 @@ public class Participants {
     private Date createdAt = new Date();
     private Date modifiedAt = new Date();
 
+    public Participants(int type, Member member, Item item) {
+        this.type = type;
+        this.member = member;
+        this.item = item;
+    }
+
+    @Override
+    public String toString() {
+        return "Participants{ " +
+                "participantsId= " + participantsId +
+                ", type= " + type +
+                ", member= " + member.getMemberId() +
+                '}';
+    }
 }

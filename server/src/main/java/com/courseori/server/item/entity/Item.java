@@ -33,7 +33,7 @@ public class Item {
 
     private String title;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     private FoodCategory category;
 
     private Date createdAt;
@@ -46,7 +46,6 @@ public class Item {
     @JoinColumn(name = "R_LOCATION_ID")
     private Location restaurantLocation;
 
-
     private String restaurantName;
 
     private String restaurantUrl;
@@ -56,7 +55,7 @@ public class Item {
 
     private String body;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     private ImageUrl imageUrl;
 
     public Item(Member member, String title, FoodCategory category, Date deadline, Location restaurantLocation, String restaurantName, String restaurantUrl, String body, ImageUrl imageUrl) {
@@ -69,5 +68,9 @@ public class Item {
         this.restaurantUrl = restaurantUrl;
         this.body = body;
         this.imageUrl = imageUrl;
+    }
+
+    public void addParticipants(Participants participants) {
+        participantsList.add(participants);
     }
 }

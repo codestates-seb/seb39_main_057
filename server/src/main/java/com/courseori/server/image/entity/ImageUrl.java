@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Data
@@ -22,7 +21,6 @@ public class ImageUrl {
 
     private String url;
 
-    @Size(min = 1)
     private int type;
 
     private Date createAt = new Date();
