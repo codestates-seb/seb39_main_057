@@ -13,9 +13,9 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -51,9 +51,9 @@ public class Member {
     @OneToOne
     private ImageUrl profileImageUrl;
 
-    private LocalDateTime joinedAt = LocalDateTime.now();
+    private Date joinedAt = new Date();
 
-    private LocalDateTime modifiedAt = LocalDateTime.now();
+    private Date modifiedAt = new Date();
 
     //차후 추가 예정
     private String paymentMethod;

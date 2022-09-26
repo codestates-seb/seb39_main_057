@@ -31,8 +31,6 @@ public class ItemController {
     public ResponseEntity postItem(@RequestBody ItemDto.Post requestBody){
         Item item = itemMapper.itemPostToItem(requestBody);
 
-
-
         Item createdItem = itemService.createItem(item);
         ItemDto.Response response = itemMapper.itemToItemResponse(createdItem);
         return new ResponseEntity<>(response,HttpStatus.CREATED);

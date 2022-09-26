@@ -9,7 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Size;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 @Entity
@@ -25,8 +25,8 @@ public class ImageUrl {
     @Size(min = 1)
     private int type;
 
-    private LocalDateTime createAt = LocalDateTime.now();
-    private LocalDateTime modifiedAt = LocalDateTime.now();
+    private Date createAt = new Date();
+    private Date modifiedAt = new Date();
 
     public ImageUrl(String url, int type) {
         this.url = url;

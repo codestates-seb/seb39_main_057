@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -35,11 +35,11 @@ public class Item {
     @OneToOne
     private FoodCategory category;
 
-    private LocalDateTime createdAt;
+    private Date createdAt;
 
-    private LocalDateTime modifiedAt;
+    private Date modifiedAt;
 
-    private LocalDateTime deadline;
+    private Date deadline;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "R_LOCATION_ID")
@@ -57,7 +57,7 @@ public class Item {
 
     private String imageUrl;
 
-    public Item(Member member, String title, FoodCategory category, LocalDateTime deadline, Location restaurantLocation, String restaurantName, String restaurantUrl, String body, String imageUrl) {
+    public Item(Member member, String title, FoodCategory category, Date deadline, Location restaurantLocation, String restaurantName, String restaurantUrl, String body, String imageUrl) {
         this.member = member;
         this.title = title;
         this.category = category;

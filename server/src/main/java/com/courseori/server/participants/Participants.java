@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Getter
@@ -28,7 +28,7 @@ public class Participants {
     @JoinColumn(name = "ITEM_ID")
     private Item item;
 
-    private LocalDateTime createdAt = LocalDateTime.now();
-    private LocalDateTime modifiedAt = LocalDateTime.now();
+    private Date createdAt = new Date();
+    private Date modifiedAt = new Date();
 
 }
