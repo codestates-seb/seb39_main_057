@@ -25,7 +25,6 @@ public class ItemDto {
         private LocalDateTime modifiedAt;
         private LocalDateTime deadline;
         private Location restaurantLocation;
-        private Location pickupLocation;
         private String restaurantName;
         private String restaurantUrl;
 
@@ -50,7 +49,6 @@ public class ItemDto {
         private LocalDateTime modifiedAt;
         private LocalDateTime deadline;
         private Location restaurantLocation;
-        private Location pickupLocation;
         private String restaurantName;
         private String restaurantUrl;
 
@@ -74,7 +72,6 @@ public class ItemDto {
         private LocalDateTime modifiedAt;
         private LocalDateTime deadline;
         private Location restaurantLocation;
-        private Location pickupLocation;
         private String restaurantName;
         private String restaurantUrl;
 

@@ -45,9 +45,6 @@ public class Item {
     @JoinColumn(name = "R_LOCATION_ID")
     private Location restaurantLocation;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "P_LOCATION_ID")
-    private Location pickupLocation;
 
     private String restaurantName;
 
@@ -60,13 +57,12 @@ public class Item {
 
     private String imageUrl;
 
-    public Item(Member member, String title, FoodCategory category, LocalDateTime deadline, Location restaurantLocation, Location pickupLocation, String restaurantName, String restaurantUrl, String body, String imageUrl) {
+    public Item(Member member, String title, FoodCategory category, LocalDateTime deadline, Location restaurantLocation, String restaurantName, String restaurantUrl, String body, String imageUrl) {
         this.member = member;
         this.title = title;
         this.category = category;
         this.deadline = deadline;
         this.restaurantLocation = restaurantLocation;
-        this.pickupLocation = pickupLocation;
         this.restaurantName = restaurantName;
         this.restaurantUrl = restaurantUrl;
         this.body = body;
