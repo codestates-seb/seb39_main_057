@@ -1,14 +1,18 @@
 package com.courseori.server.item.entity;
 
-import com.courseori.server.category.entity.Category;
+import com.courseori.server.foodcategory.entity.FoodCategory;
+import com.courseori.server.location.entity.Location;
+import com.courseori.server.member.entity.Member;
+import com.courseori.server.participants.Participants;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 
 @Getter
@@ -22,37 +26,43 @@ public class Item {
     @Id
     private long itemId;
 
-    private long memberId = 1L; //나중에 Member로 변경
+    @ManyToOne
+    @JoinColumn(name = "memberId")
+    private Member member;
 
     private String title;
 
-    private Category category;
+    @OneToOne
+    private FoodCategory category;
 
-    private LocalDateTime createdAt = LocalDateTime.now();
+    private Date createdAt;
 
-    private LocalDateTime modifiedAt = LocalDateTime.now();
+    private Date modifiedAt;
 
-    private LocalDateTime deadline;
+    private Date deadline;
 
-    @ElementCollection(targetClass = String.class)
-    private Map<String, Double> latiAndLongi;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "R_LOCATION_ID")
+    private Location restaurantLocation;
+
 
     private String restaurantName;
 
     private String restaurantUrl;
 
-//    private List<Member> participantsList;
+    @OneToMany(mappedBy = "item", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    private List<Participants> participantsList = new ArrayList<>();
 
     private String body;
 
     private String imageUrl;
 
-    public Item(long memberId, String title, Category category, LocalDateTime deadline, Map<String, Double> latiAndLongi, String restaurantName, String restaurantUrl, String body, String imageUrl) {
-        this.memberId = memberId;
+    public Item(Member member, String title, FoodCategory category, Date deadline, Location restaurantLocation, String restaurantName, String restaurantUrl, String body, String imageUrl) {
+        this.member = member;
         this.title = title;
         this.category = category;
         this.deadline = deadline;
-        this.latiAndLongi = latiAndLongi;
+        this.restaurantLocation = restaurantLocation;
         this.restaurantName = restaurantName;
         this.restaurantUrl = restaurantUrl;
         this.body = body;

@@ -7,6 +7,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -18,6 +19,39 @@ public class ItemService {
     public ItemService(ItemRepository itemRepository) {
         this.itemRepository = itemRepository;
     }
+
+    public Item createItem(Item item){
+        item.setCreatedAt(new Date());
+        item.setModifiedAt(new Date());
+        Item savedItem = itemRepository.save(item);
+
+        return savedItem;
+    }
+
+    public Item updateItem(Item item){
+        Item foundItem = findVerifiedItem(item.getItemId());
+        Optional.ofNullable(item.getTitle())
+                .ifPresent(title -> foundItem.setTitle(title));
+        Optional.ofNullable(item.getCategory())
+                .ifPresent(category -> foundItem.setCategory(category));
+        Optional.ofNullable(item.getBody())
+                .ifPresent(body -> foundItem.setBody(body));
+        Optional.ofNullable(item.getDeadline())
+                .ifPresent(deadline -> foundItem.setDeadline(deadline));
+        Optional.ofNullable(item.getRestaurantLocation())
+                .ifPresent(restaurantLocation -> foundItem.setRestaurantLocation(restaurantLocation));
+        Optional.ofNullable(item.getRestaurantName())
+                .ifPresent(restaurantName -> foundItem.setRestaurantName(restaurantName));
+        Optional.ofNullable(item.getRestaurantUrl())
+                .ifPresent(restaurantUrl -> foundItem.setRestaurantUrl(restaurantUrl));
+        Optional.ofNullable(item.getImageUrl())
+                .ifPresent(imageUrl -> foundItem.setImageUrl(imageUrl));
+        Optional.ofNullable(item.getParticipantsList())
+                .ifPresent(participantsList -> foundItem.setParticipantsList(participantsList));
+        foundItem.setModifiedAt(new Date());
+        return itemRepository.save(foundItem);
+    }
+
 
     public void deleteItem(long itemId) {
         Item foundItem = findVerifiedItem(itemId);
