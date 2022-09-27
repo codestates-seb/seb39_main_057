@@ -38,8 +38,8 @@ public class ItemService {
                 .ifPresent(body -> foundItem.setBody(body));
         Optional.ofNullable(item.getDeadline())
                 .ifPresent(deadline -> foundItem.setDeadline(deadline));
-        Optional.ofNullable(item.getRestaurantLocation())
-                .ifPresent(restaurantLocation -> foundItem.setRestaurantLocation(restaurantLocation));
+        Optional.ofNullable(item.getPickupLocation())
+                .ifPresent(restaurantLocation -> foundItem.setPickupLocation(restaurantLocation));
         Optional.ofNullable(item.getRestaurantName())
                 .ifPresent(restaurantName -> foundItem.setRestaurantName(restaurantName));
         Optional.ofNullable(item.getRestaurantUrl())

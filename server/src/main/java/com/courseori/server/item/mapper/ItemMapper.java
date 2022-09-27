@@ -22,7 +22,7 @@ public interface ItemMapper {
         item.setCategory(foodCategory);
 
         item.setDeadline(requestBody.getDeadline());
-        item.setRestaurantLocation(requestBody.getRestaurantLocation());
+        item.setPickupLocation(requestBody.getPickupLocation());
         item.setRestaurantName(requestBody.getRestaurantName());
         item.setRestaurantUrl(requestBody.getRestaurantUrl());
         item.setBody(requestBody.getBody());
