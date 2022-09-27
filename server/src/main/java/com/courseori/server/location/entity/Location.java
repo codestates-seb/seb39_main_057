@@ -37,10 +37,4 @@ public class Location {
 
     private Date modifiedAt = new Date();
 
-//    public Location(String nameOfPlace, int type, float latitude, float longitude) {
-//        this.nameOfPlace = nameOfPlace;
-//        this.type = type;
-//        this.latitude = latitude;
-//        this.longitude = longitude;
-//    }
 }

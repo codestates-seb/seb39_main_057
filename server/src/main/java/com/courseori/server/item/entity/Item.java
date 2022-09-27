@@ -72,6 +72,7 @@ public class Item {
         this.imageUrl = imageUrl;
     }
 
+    /* 필요여부 확인 후 삭제 */
     public void addParticipants(Participants participants) {
         participantsList.add(participants);
         System.out.println("Participants list from Item entity: ");
