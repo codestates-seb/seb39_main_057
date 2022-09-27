@@ -102,7 +102,7 @@ public class ItemController {
 
         Participants participants1 = new Participants(2, foundMember, foundItem);
         participantsService.createParticipants(participants1);
-        
+
 
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

@@ -37,9 +37,9 @@ public class Item {
     @OneToOne(cascade = CascadeType.PERSIST)
     private FoodCategory category;
 
-    private Date createdAt;
+    private Date createdAt = new Date();
 
-    private Date modifiedAt;
+    private Date modifiedAt  = new Date();
 
     private Date deadline;
 
