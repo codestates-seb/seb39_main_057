@@ -26,7 +26,7 @@ public class Item {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private long itemId;
+    private Long itemId;
 
     @ManyToOne
     @JoinColumn(name = "memberId")

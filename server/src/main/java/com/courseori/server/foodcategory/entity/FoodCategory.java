@@ -27,4 +27,8 @@ public class FoodCategory {
         this.category = category;
         return category;
     }
+
+    public FoodCategory(String category) {
+        this.category = category;
+    }
 }

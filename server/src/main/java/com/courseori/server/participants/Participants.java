@@ -17,7 +17,7 @@ import java.util.Date;
 public class Participants {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long participantsId;
+    private Long participantsId;
 
     private int type;
 

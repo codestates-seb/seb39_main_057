@@ -20,7 +20,6 @@ public class Location {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long locationId;
 
-
     private String nameOfPlace;
 
     private String korAddress;
@@ -37,4 +36,12 @@ public class Location {
 
     private Date modifiedAt = new Date();
 
+    public Location(String nameOfPlace, String korAddress, String addressDetail, int type, float latitude, float longitude) {
+        this.nameOfPlace = nameOfPlace;
+        this.korAddress = korAddress;
+        this.addressDetail = addressDetail;
+        this.type = type;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
 }

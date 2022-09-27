@@ -4,9 +4,9 @@ package com.courseori.server.member.entity;
 import com.courseori.server.image.entity.ImageUrl;
 import com.courseori.server.location.entity.Location;
 import com.courseori.server.member.role.Roles;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -19,14 +19,15 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@AllArgsConstructor
+//@AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long memberId;
+    private Long memberId;
 
     @NotBlank(message = "이름을 입력해주세요.")
     @Size(min = 2, max = 8, message = "이름을 2자 ~ 8자 사이로 입력해주세요.")

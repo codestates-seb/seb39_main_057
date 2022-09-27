@@ -3,8 +3,8 @@ package com.courseori.server.member.controller;
 import com.courseori.server.member.dto.MemberDto;
 import com.courseori.server.member.entity.Member;
 import com.courseori.server.member.repository.MemberRepository;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -16,12 +16,17 @@ import javax.validation.constraints.Positive;
 @RestController
 @RequestMapping("/v1/members")
 @Slf4j
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class MemberController {
 
     private final MemberRepository memberRepository;
     private final BCryptPasswordEncoder encoder;
 
+    @Autowired
+    public MemberController(MemberRepository memberRepository, BCryptPasswordEncoder encoder) {
+        this.memberRepository = memberRepository;
+        this.encoder = encoder;
+    }
 
     @PostMapping
     public ResponseEntity postMember(@Valid @RequestBody Member member){

@@ -23,7 +23,7 @@ public class ImageUrl {
 
     private int type;
 
-    private Date createAt = new Date();
+    private Date createdAt = new Date();
     private Date modifiedAt = new Date();
 
     public ImageUrl(String url, int type) {

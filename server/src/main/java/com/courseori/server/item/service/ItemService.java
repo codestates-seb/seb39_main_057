@@ -2,6 +2,7 @@ package com.courseori.server.item.service;
 
 import com.courseori.server.item.entity.Item;
 import com.courseori.server.item.repository.ItemRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -16,6 +17,7 @@ public class ItemService {
 
     private ItemRepository itemRepository;
 
+    @Autowired
     public ItemService(ItemRepository itemRepository) {
         this.itemRepository = itemRepository;
     }

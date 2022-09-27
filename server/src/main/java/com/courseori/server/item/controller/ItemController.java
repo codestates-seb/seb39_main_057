@@ -25,10 +25,8 @@ public class ItemController {
     //item
     private ItemService itemService;
     private ItemMapper itemMapper;
-
     //member
     private MemberRepository memberRepository;
-
     //participants
     private ParticipantsService participantsService;
 
@@ -124,5 +122,7 @@ public class ItemController {
 
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
+
+
 
 }
