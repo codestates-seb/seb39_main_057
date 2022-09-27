@@ -1,5 +1,6 @@
 package com.courseori.server.member.service;
 
+import com.courseori.server.member.dto.MemberDto;
 import com.courseori.server.member.entity.Member;
 import com.courseori.server.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -9,6 +10,7 @@ import java.util.Optional;
 
 
 @RequiredArgsConstructor
+@Service
 public class MemberService {
 
     private final MemberRepository memberRepository;
@@ -19,17 +21,14 @@ public class MemberService {
         return saveMember;
     }
 
-    public Member updateMember(Member member){
+    public Member updateMember(MemberDto.Patch member){
         Member findMember = findVerifiedMember(member.getMemberId());
 
-        Optional.ofNullable(member.getUsername())
-                .ifPresent(name -> findMember.setUsername(name));
-        Optional.ofNullable(member.getPassword())
-                .ifPresent(password -> findMember.setPassword(password));
-        Optional.ofNullable(member.getPhoneNumber())
-                .ifPresent(phoneNumber -> findMember.setPhoneNumber(phoneNumber));
-        Optional.ofNullable(member.getProfileImageUrl())
-                .ifPresent(profileImageUrl -> findMember.setProfileImageUrl(profileImageUrl));
+        findMember.setUsername(member.getUsername());
+        findMember.setPassword(member.getPassword());
+        findMember.setPhoneNumber(member.getProfileImageUrl());
+        findMember.setProfileImageUrl(member.getProfileImageUrl());
+
         return findMember;
     }
 

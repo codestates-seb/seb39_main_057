@@ -1,9 +1,11 @@
 package com.courseori.server.member.controller;
 
 import com.courseori.server.member.aouth.PrincipalDetails;
+import com.courseori.server.member.dto.MemberDto;
 import com.courseori.server.member.entity.Member;
 import com.courseori.server.member.repository.MemberRepository;
 import com.courseori.server.member.role.ROLE;
+import com.courseori.server.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
@@ -26,6 +28,7 @@ import javax.validation.constraints.Positive;
 public class MemberController {
 
     private final MemberRepository memberRepository;
+    private final MemberService memberService;
     private final BCryptPasswordEncoder encoder;
 
     @PostMapping
@@ -34,7 +37,7 @@ public class MemberController {
         member.setPassword(encoder.encode(member.getPassword()));
         member.setRole(ROLE.ROLE_USER);
 
-        memberRepository.save(member);
+        memberService.createMember(member);
 
         return new ResponseEntity(member, HttpStatus.CREATED);
     }
@@ -42,21 +45,13 @@ public class MemberController {
     @PatchMapping("/{member-id}")
     public ResponseEntity patchMember(
             @PathVariable("member-id") @Positive long memberId,
-            @Valid @RequestBody Member member){
+            @Valid @RequestBody MemberDto.Patch patch){
 
-        Member foundMember = memberRepository.findById(memberId).orElseThrow();
-
-        foundMember.setUsername(member.getUsername());
-        foundMember.setPassword(encoder.encode(member.getPassword()));
-        foundMember.setPhoneNumber(member.getPhoneNumber());
-        foundMember.setProfileImageUrl(member.getProfileImageUrl());
-
+        Member foundMember = memberService.updateMember(patch);
 
         memberRepository.save(foundMember);
 
-
         System.out.println("Todo 패치 완료");
-
 
         return new ResponseEntity(foundMember,HttpStatus.OK);
     }
@@ -66,7 +61,7 @@ public class MemberController {
             @PathVariable("member-id") @Positive long memberId){
 
                 //멤버 찾기용
-                Member findMember = memberRepository.findById(memberId).orElseThrow();
+                Member findMember = memberService.getMember(memberId);
 
         System.out.println("멤버 가져오기");
 
@@ -78,7 +73,7 @@ public class MemberController {
     public ResponseEntity deleteMember(
             @PathVariable("member-id") @Positive long memberId){
 
-        memberRepository.deleteById(memberId);
+        memberService.deleteMember(memberId);
 
         System.out.println("멤버 삭제 : " + memberId + "번 멤버");
 
