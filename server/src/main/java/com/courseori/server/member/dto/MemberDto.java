@@ -51,7 +51,6 @@ public class MemberDto {
 
     @Getter
     @AllArgsConstructor
-    @NoArgsConstructor
     public static class Response{
 
         private long memberId;

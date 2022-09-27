@@ -2,12 +2,14 @@ package com.courseori.server.member.mapper;
 
 import com.courseori.server.member.dto.MemberDto;
 import com.courseori.server.member.entity.Member;
+import com.courseori.server.member.role.ROLE;
+import java.time.LocalDateTime;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-09-27T15:14:15+0900",
+    date = "2022-09-27T17:26:33+0900",
     comments = "version: 1.5.2.Final, compiler: javac, environment: Java 11.0.15 (Azul Systems, Inc.)"
 )
 @Component
@@ -52,7 +54,25 @@ public class MemberMapperImpl implements MemberMapper {
             return null;
         }
 
-        MemberDto.Response response = new MemberDto.Response();
+        long memberId = 0L;
+        String username = null;
+        String email = null;
+        String phoneNumber = null;
+        String profileImageUrl = null;
+        LocalDateTime modifiedAt = null;
+        LocalDateTime joinedAt = null;
+        ROLE role = null;
+
+        memberId = member.getMemberId();
+        username = member.getUsername();
+        email = member.getEmail();
+        phoneNumber = member.getPhoneNumber();
+        profileImageUrl = member.getProfileImageUrl();
+        modifiedAt = member.getModifiedAt();
+        joinedAt = member.getJoinedAt();
+        role = member.getRole();
+
+        MemberDto.Response response = new MemberDto.Response( memberId, username, email, phoneNumber, profileImageUrl, modifiedAt, joinedAt, role );
 
         return response;
     }
