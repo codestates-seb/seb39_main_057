@@ -2,6 +2,7 @@ package com.courseori.server.participants;
 
 import com.courseori.server.item.entity.Item;
 import com.courseori.server.member.entity.Member;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -26,6 +27,7 @@ public class Participants {
 
     @ManyToOne
     @JoinColumn(name = "ITEM_ID")
+    @JsonBackReference
     private Item item;
 
     private Date createdAt = new Date();

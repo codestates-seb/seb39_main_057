@@ -102,9 +102,7 @@ public class ItemController {
 
         Participants participants1 = new Participants(2, foundMember, foundItem);
         participantsService.createParticipants(participants1);
-
-        //item의 participant list에 추가
-        foundItem.addParticipants(participants1);
+        
 
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -123,9 +121,6 @@ public class ItemController {
         Participants participants1 = new Participants(2, foundMember, foundItem);
 
         participantsService.createParticipants(participants1);
-
-        //item의 participant list에 추가
-        foundItem.addParticipants(participants1);
 
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
