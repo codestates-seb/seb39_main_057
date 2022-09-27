@@ -10,6 +10,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 public class ItemDto {
@@ -21,10 +22,8 @@ public class ItemDto {
 
         private String title;
         private FoodCategory category;
-        private LocalDateTime createdAt;
-        private LocalDateTime modifiedAt;
-        private LocalDateTime deadline;
-        private Location restaurantLocation;
+        private Date deadline;
+        private Location pickupLocation;
         private String restaurantName;
         private String restaurantUrl;
 
@@ -49,10 +48,8 @@ public class ItemDto {
 
         private String title;
         private FoodCategory category;
-        private LocalDateTime createdAt;
-        private LocalDateTime modifiedAt;
-        private LocalDateTime deadline;
-        private Location restaurantLocation;
+        private Date deadline;
+        private Location pickupLocation;
         private String restaurantName;
         private String restaurantUrl;
 
@@ -72,10 +69,10 @@ public class ItemDto {
 
         private String title;
         private FoodCategory category;
-        private LocalDateTime createdAt;
-        private LocalDateTime modifiedAt;
-        private LocalDateTime deadline;
-        private Location restaurantLocation;
+        private Date createdAt;
+        private Date modifiedAt;
+        private Date deadline;
+        private Location pickupLocation;
         private String restaurantName;
         private String restaurantUrl;
 

@@ -44,8 +44,8 @@ public class Item {
     private Date deadline;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "R_LOCATION_ID")
-    private Location restaurantLocation;
+    @JoinColumn(name = "P_LOCATION_ID")
+    private Location pickupLocation;
 
     private String restaurantName;
 
@@ -65,7 +65,7 @@ public class Item {
         this.title = title;
         this.category = category;
         this.deadline = deadline;
-        this.restaurantLocation = restaurantLocation;
+        this.pickupLocation = restaurantLocation;
         this.restaurantName = restaurantName;
         this.restaurantUrl = restaurantUrl;
         this.body = body;
