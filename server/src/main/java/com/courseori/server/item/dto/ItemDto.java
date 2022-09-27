@@ -5,6 +5,7 @@ import com.courseori.server.location.entity.Location;
 import com.courseori.server.member.entity.Member;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.OneToOne;
@@ -15,10 +16,11 @@ import java.util.Map;
 public class ItemDto {
 
     @AllArgsConstructor
+    @NoArgsConstructor
     @Getter
     public static class Post {
-        private long memberId;
 
+        private long memberId;
         private String title;
         private FoodCategory category;
         private LocalDateTime createdAt;

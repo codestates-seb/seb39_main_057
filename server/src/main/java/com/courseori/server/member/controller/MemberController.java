@@ -28,7 +28,6 @@ public class MemberController {
     private final MemberRepository memberRepository;
     private final BCryptPasswordEncoder encoder;
 
-
     @PostMapping
     public ResponseEntity postMember(@Valid @RequestBody Member member){
 
@@ -51,6 +50,7 @@ public class MemberController {
         foundMember.setPassword(encoder.encode(member.getPassword()));
         foundMember.setPhoneNumber(member.getPhoneNumber());
         foundMember.setProfileImageUrl(member.getProfileImageUrl());
+
 
         memberRepository.save(foundMember);
 

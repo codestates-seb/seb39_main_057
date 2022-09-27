@@ -1,23 +1,85 @@
 package com.courseori.server.item.mapper;
 
-import com.courseori.server.category.entity.Category;
+import com.courseori.server.foodcategory.entity.FoodCategory;
 import com.courseori.server.item.dto.ItemDto;
 import com.courseori.server.item.entity.Item;
+import com.courseori.server.location.entity.Location;
+import com.courseori.server.member.entity.Member;
+import com.courseori.server.participants.Participants;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
+import java.util.Date;
 import java.util.List;
-import java.util.Map;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-09-26T13:26:54+0900",
+    date = "2022-09-26T15:09:20+0900",
     comments = "version: 1.5.2.Final, compiler: javac, environment: Java 11.0.15 (Azul Systems, Inc.)"
 )
 @Component
 public class ItemMapperImpl implements ItemMapper {
+
+    @Override
+    public Item itemPostToItem(ItemDto.Post requestBody) {
+        if ( requestBody == null ) {
+            return null;
+        }
+
+        Item item = new Item();
+
+        item.setTitle( requestBody.getTitle() );
+        item.setCategory( requestBody.getCategory() );
+        if ( requestBody.getCreatedAt() != null ) {
+            item.setCreatedAt( Date.from( requestBody.getCreatedAt().toInstant( ZoneOffset.UTC ) ) );
+        }
+        if ( requestBody.getModifiedAt() != null ) {
+            item.setModifiedAt( Date.from( requestBody.getModifiedAt().toInstant( ZoneOffset.UTC ) ) );
+        }
+        if ( requestBody.getDeadline() != null ) {
+            item.setDeadline( Date.from( requestBody.getDeadline().toInstant( ZoneOffset.UTC ) ) );
+        }
+        item.setRestaurantLocation( requestBody.getRestaurantLocation() );
+        item.setRestaurantName( requestBody.getRestaurantName() );
+        item.setRestaurantUrl( requestBody.getRestaurantUrl() );
+        item.setBody( requestBody.getBody() );
+        item.setImageUrl( requestBody.getImageUrl() );
+
+        return item;
+    }
+
+    @Override
+    public Item itemPatchToItem(ItemDto.Patch requestBody) {
+        if ( requestBody == null ) {
+            return null;
+        }
+
+        Item item = new Item();
+
+        item.setItemId( requestBody.getItemId() );
+        item.setTitle( requestBody.getTitle() );
+        item.setCategory( requestBody.getCategory() );
+        if ( requestBody.getCreatedAt() != null ) {
+            item.setCreatedAt( Date.from( requestBody.getCreatedAt().toInstant( ZoneOffset.UTC ) ) );
+        }
+        if ( requestBody.getModifiedAt() != null ) {
+            item.setModifiedAt( Date.from( requestBody.getModifiedAt().toInstant( ZoneOffset.UTC ) ) );
+        }
+        if ( requestBody.getDeadline() != null ) {
+            item.setDeadline( Date.from( requestBody.getDeadline().toInstant( ZoneOffset.UTC ) ) );
+        }
+        item.setRestaurantLocation( requestBody.getRestaurantLocation() );
+        item.setRestaurantName( requestBody.getRestaurantName() );
+        item.setRestaurantUrl( requestBody.getRestaurantUrl() );
+        item.setParticipantsList( memberListToParticipantsList( requestBody.getParticipantsList() ) );
+        item.setBody( requestBody.getBody() );
+        item.setImageUrl( requestBody.getImageUrl() );
+
+        return item;
+    }
 
     @Override
     public ItemDto.Response itemToItemResponse(Item item) {
@@ -26,35 +88,40 @@ public class ItemMapperImpl implements ItemMapper {
         }
 
         long itemId = 0L;
-        long memberId = 0L;
         String title = null;
-        Category category = null;
+        FoodCategory category = null;
         LocalDateTime createdAt = null;
         LocalDateTime modifiedAt = null;
         LocalDateTime deadline = null;
-        Map<String, Double> latiAndLongi = null;
+        Location restaurantLocation = null;
         String restaurantName = null;
         String restaurantUrl = null;
+        List<Member> participantsList = null;
         String body = null;
         String imageUrl = null;
 
         itemId = item.getItemId();
-        memberId = item.getMemberId();
         title = item.getTitle();
         category = item.getCategory();
-        createdAt = item.getCreatedAt();
-        modifiedAt = item.getModifiedAt();
-        deadline = item.getDeadline();
-        Map<String, Double> map = item.getLatiAndLongi();
-        if ( map != null ) {
-            latiAndLongi = new LinkedHashMap<String, Double>( map );
+        if ( item.getCreatedAt() != null ) {
+            createdAt = LocalDateTime.ofInstant( item.getCreatedAt().toInstant(), ZoneId.of( "UTC" ) );
         }
+        if ( item.getModifiedAt() != null ) {
+            modifiedAt = LocalDateTime.ofInstant( item.getModifiedAt().toInstant(), ZoneId.of( "UTC" ) );
+        }
+        if ( item.getDeadline() != null ) {
+            deadline = LocalDateTime.ofInstant( item.getDeadline().toInstant(), ZoneId.of( "UTC" ) );
+        }
+        restaurantLocation = item.getRestaurantLocation();
         restaurantName = item.getRestaurantName();
         restaurantUrl = item.getRestaurantUrl();
+        participantsList = participantsListToMemberList( item.getParticipantsList() );
         body = item.getBody();
         imageUrl = item.getImageUrl();
 
-        ItemDto.Response response = new ItemDto.Response( itemId, memberId, title, category, createdAt, modifiedAt, deadline, latiAndLongi, restaurantName, restaurantUrl, body, imageUrl );
+        long memberId = 0L;
+
+        ItemDto.Response response = new ItemDto.Response( itemId, memberId, title, category, createdAt, modifiedAt, deadline, restaurantLocation, restaurantName, restaurantUrl, participantsList, body, imageUrl );
 
         return response;
     }
@@ -71,5 +138,59 @@ public class ItemMapperImpl implements ItemMapper {
         }
 
         return list;
+    }
+
+    protected Participants memberToParticipants(Member member) {
+        if ( member == null ) {
+            return null;
+        }
+
+        Participants participants = new Participants();
+
+        if ( member.getModifiedAt() != null ) {
+            participants.setModifiedAt( Date.from( member.getModifiedAt().toInstant( ZoneOffset.UTC ) ) );
+        }
+
+        return participants;
+    }
+
+    protected List<Participants> memberListToParticipantsList(List<Member> list) {
+        if ( list == null ) {
+            return null;
+        }
+
+        List<Participants> list1 = new ArrayList<Participants>( list.size() );
+        for ( Member member : list ) {
+            list1.add( memberToParticipants( member ) );
+        }
+
+        return list1;
+    }
+
+    protected Member participantsToMember(Participants participants) {
+        if ( participants == null ) {
+            return null;
+        }
+
+        Member member = new Member();
+
+        if ( participants.getModifiedAt() != null ) {
+            member.setModifiedAt( LocalDateTime.ofInstant( participants.getModifiedAt().toInstant(), ZoneId.of( "UTC" ) ) );
+        }
+
+        return member;
+    }
+
+    protected List<Member> participantsListToMemberList(List<Participants> list) {
+        if ( list == null ) {
+            return null;
+        }
+
+        List<Member> list1 = new ArrayList<Member>( list.size() );
+        for ( Participants participants : list ) {
+            list1.add( participantsToMember( participants ) );
+        }
+
+        return list1;
     }
 }

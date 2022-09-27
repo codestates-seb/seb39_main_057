@@ -47,13 +47,13 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
         Member byUsername = memberRepository.findByUsername(username);
 
         //DB에 없는 사용자라면 회원가입처리
-        if(byUsername == null){
-            byUsername = Member.oauth2Register()
-                    .username(username).password(password).email(email).role(role)
-                    .provider(provider).providerId(providerId)
-                    .build();
-            memberRepository.save(byUsername);
-        }
+//        if(byUsername == null){
+//            byUsername = Member.oauth2Register()
+//                    .username(username).password(password).email(email).role(role)
+//                    .provider(provider).providerId(providerId)
+//                    .build();
+//            memberRepository.save(byUsername);
+//        }
 
         return new PrincipalDetails(byUsername, oAuth2UserInfo);
     }

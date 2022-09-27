@@ -2,10 +2,7 @@ package com.courseori.server.member.entity;
 
 
 import com.courseori.server.member.role.ROLE;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.*;
@@ -18,12 +15,14 @@ import java.time.LocalDateTime;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
+@Builder
 public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long memberId;
 
 
     @NotBlank(message = "이름을 입력해주세요.")
@@ -61,8 +60,6 @@ public class Member {
 
     //권한 부여에 대한 엔티티 입니다.
 
-    @OneToOne(mappedBy = "member", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-    @Enumerated(EnumType.STRING)
     private ROLE role;
 
     private String provider;
@@ -91,5 +88,13 @@ public class Member {
         this.role = role;
         this.provider = provider;
         this.providerId = providerId;
+    }
+
+    //롤 set
+    public void setRole(ROLE role) {
+        this.role = role;
+        if (role.getMember() != this) {
+            role.setMember(this);
+        }
     }
 }

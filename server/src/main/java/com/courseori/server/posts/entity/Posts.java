@@ -1,6 +1,5 @@
 package com.courseori.server.posts.entity;
 
-import com.courseori.server.category.entity.Category;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,8 +22,6 @@ public class Posts {
     private long memberId = 1L; //나중에 Member로 변경
 
     private String title;
-
-    private Category category;
 
     private Date createdAt;
 
