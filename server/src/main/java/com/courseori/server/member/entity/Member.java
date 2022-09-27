@@ -45,7 +45,8 @@ public class Member {
     @Pattern(regexp = "^\\d{3}-\\d{3,4}-\\d{4}$", message = "올바른 전화번호를 입력해주세요.")
     private String phoneNumber;
 
-    @OneToOne
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "P_LOCATION_ID")
     private Location location;
 
     @OneToOne
