@@ -1,16 +1,13 @@
 package com.courseori.server.item.service;
 
-import com.courseori.server.foodcategory.entity.FoodCategory;
 import com.courseori.server.item.entity.Item;
 import com.courseori.server.item.repository.ItemRepository;
-import com.courseori.server.location.entity.Location;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-import java.util.Map;
+import java.util.Date;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -24,8 +21,8 @@ public class ItemService {
     }
 
     public Item createItem(Item item){
-        item.setCreatedAt(LocalDateTime.now());
-        item.setModifiedAt(LocalDateTime.now());
+        item.setCreatedAt(new Date());
+        item.setModifiedAt(new Date());
         Item savedItem = itemRepository.save(item);
 
         return savedItem;
@@ -41,19 +38,17 @@ public class ItemService {
                 .ifPresent(body -> foundItem.setBody(body));
         Optional.ofNullable(item.getDeadline())
                 .ifPresent(deadline -> foundItem.setDeadline(deadline));
-        Optional.ofNullable(item.getRestaurantLocation())
-                .ifPresent(restaurantLocation -> foundItem.setRestaurantLocation(restaurantLocation));
         Optional.ofNullable(item.getPickupLocation())
-                .ifPresent(pickupLocation -> foundItem.setPickupLocation(pickupLocation));
+                .ifPresent(restaurantLocation -> foundItem.setPickupLocation(restaurantLocation));
         Optional.ofNullable(item.getRestaurantName())
                 .ifPresent(restaurantName -> foundItem.setRestaurantName(restaurantName));
         Optional.ofNullable(item.getRestaurantUrl())
                 .ifPresent(restaurantUrl -> foundItem.setRestaurantUrl(restaurantUrl));
         Optional.ofNullable(item.getImageUrl())
                 .ifPresent(imageUrl -> foundItem.setImageUrl(imageUrl));
-//        Optional.ofNullable(item.getParticipantsList())
-//                .ifPresent(participantsList -> foundItem.setParticipantsList(participantsList));
-        foundItem.setModifiedAt(LocalDateTime.now());
+        Optional.ofNullable(item.getParticipantsList())
+                .ifPresent(participantsList -> foundItem.setParticipantsList(participantsList));
+        foundItem.setModifiedAt(new Date());
         return itemRepository.save(foundItem);
     }
 

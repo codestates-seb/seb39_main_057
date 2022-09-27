@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 @Entity
@@ -22,10 +22,15 @@ public class Roles {
     @NotBlank
     private String role;
 
-    private LocalDateTime createdAt = LocalDateTime.now();
-    private LocalDateTime modifiedAt = LocalDateTime.now();
+    private Date createdAt = new Date();
+    private Date modifiedAt = new Date();
 
     public Roles(String role) {
+        this.role = role;
+    }
+
+    public Roles(int roleId, String role) {
+        this.roleId = roleId;
         this.role = role;
     }
 }

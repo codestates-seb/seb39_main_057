@@ -4,7 +4,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @NoArgsConstructor
 @Entity
@@ -15,7 +15,7 @@ public class FoodCategory {
 
     String category;
 
-    LocalDateTime createdAt;
-    LocalDateTime modifiedAt;
+    Date createdAt;
+    Date modifiedAt;
 
 }

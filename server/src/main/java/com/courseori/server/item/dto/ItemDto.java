@@ -1,15 +1,17 @@
 package com.courseori.server.item.dto;
 
 import com.courseori.server.foodcategory.entity.FoodCategory;
+import com.courseori.server.image.entity.ImageUrl;
 import com.courseori.server.location.entity.Location;
 import com.courseori.server.member.entity.Member;
+import com.courseori.server.participants.Participants;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.OneToOne;
 import java.time.LocalDateTime;
-import java.util.Map;
+import java.util.Date;
+import java.util.List;
 
 public class ItemDto {
 
@@ -20,19 +22,20 @@ public class ItemDto {
 
         private String title;
         private FoodCategory category;
-        private LocalDateTime createdAt;
-        private LocalDateTime modifiedAt;
-        private LocalDateTime deadline;
-        private Location restaurantLocation;
+        private Date deadline;
         private Location pickupLocation;
         private String restaurantName;
         private String restaurantUrl;
 
-//    private List<Member> participantsList;
 
         private String body;
-        private String imageUrl;
+        private ImageUrl imageUrl;
 
+        public Member getMember() {
+            Member member = new Member();
+            member.setMemberId(memberId);
+            return member;
+        }
 
     }
 
@@ -45,18 +48,15 @@ public class ItemDto {
 
         private String title;
         private FoodCategory category;
-        private LocalDateTime createdAt;
-        private LocalDateTime modifiedAt;
-        private LocalDateTime deadline;
-        private Location restaurantLocation;
+        private Date deadline;
         private Location pickupLocation;
         private String restaurantName;
         private String restaurantUrl;
 
-//    private List<Member> participantsList;
+        private List<Member> participantsList;
 
         private String body;
-        private String imageUrl;
+        private ImageUrl imageUrl;
     }
 
     @AllArgsConstructor
@@ -69,22 +69,21 @@ public class ItemDto {
 
         private String title;
         private FoodCategory category;
-        private LocalDateTime createdAt;
-        private LocalDateTime modifiedAt;
-        private LocalDateTime deadline;
-        private Location restaurantLocation;
+        private Date createdAt;
+        private Date modifiedAt;
+        private Date deadline;
         private Location pickupLocation;
         private String restaurantName;
         private String restaurantUrl;
 
-//    private List<Member> participantsList;
+        private List<Participants> participantsList;
 
         private String body;
-        private String imageUrl;
+        private ImageUrl imageUrl;
 
-//        public void setMember(Member member) {
-//            this.memberId = member.getMemberId();
-//        }
+        public void setMember(Member member) {
+            this.memberId = member.getMemberId();
+        }
 
     }
 }

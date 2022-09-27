@@ -8,9 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 
 @Data
@@ -25,15 +23,19 @@ public class Location {
 
     private String nameOfPlace;
 
+    private String korAddress;
+
+    private String addressDetail;
+
     private int type;
 
     private float latitude;
 
     private float longitude;
 
-    private LocalDateTime createAt = LocalDateTime.now();
+    private Date createAt = new Date();
 
-    private LocalDateTime modifiedAt = LocalDateTime.now();
+    private Date modifiedAt = new Date();
 
 //    public Location(String nameOfPlace, int type, float latitude, float longitude) {
 //        this.nameOfPlace = nameOfPlace;
