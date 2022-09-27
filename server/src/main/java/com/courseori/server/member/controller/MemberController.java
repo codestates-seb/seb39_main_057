@@ -3,6 +3,7 @@ package com.courseori.server.member.controller;
 import com.courseori.server.member.aouth.PrincipalDetails;
 import com.courseori.server.member.dto.MemberDto;
 import com.courseori.server.member.entity.Member;
+import com.courseori.server.member.mapper.MemberMapper;
 import com.courseori.server.member.repository.MemberRepository;
 import com.courseori.server.member.role.ROLE;
 import com.courseori.server.member.service.MemberService;
@@ -27,33 +28,35 @@ import javax.validation.constraints.Positive;
 @RequiredArgsConstructor
 public class MemberController {
 
-    private final MemberRepository memberRepository;
+
+    private final MemberMapper mapper;
     private final MemberService memberService;
     private final BCryptPasswordEncoder encoder;
 
-    @PostMapping
-    public ResponseEntity postMember(@Valid @RequestBody Member member){
 
-        member.setPassword(encoder.encode(member.getPassword()));
+
+    @PostMapping
+    public ResponseEntity postMember(@Valid @RequestBody MemberDto.Post responseBody){
+
+        Member member = mapper.memberPostToMember(responseBody);
+//        encoder.encode(member.getPassword());
         member.setRole(ROLE.ROLE_USER);
 
-        memberService.createMember(member);
+        Member createMember = memberService.createMember(member);
 
-        return new ResponseEntity(member, HttpStatus.CREATED);
+
+        return new ResponseEntity(mapper.memberToMemberResponse(member), HttpStatus.CREATED);
     }
 
     @PatchMapping("/{member-id}")
     public ResponseEntity patchMember(
             @PathVariable("member-id") @Positive long memberId,
-            @Valid @RequestBody MemberDto.Patch patch){
+            @Valid @RequestBody MemberDto.Patch responseBody){
+        responseBody.setMemberId(memberId);
 
-        Member foundMember = memberService.updateMember(patch);
+        Member updateMember = memberService.updateMember(responseBody);
 
-        memberRepository.save(foundMember);
-
-        System.out.println("Todo 패치 완료");
-
-        return new ResponseEntity(foundMember,HttpStatus.OK);
+        return new ResponseEntity(mapper.memberToMemberResponse(updateMember),HttpStatus.OK);
     }
 
     @GetMapping("/{member-id}")
@@ -65,7 +68,7 @@ public class MemberController {
 
         System.out.println("멤버 가져오기");
 
-                return new ResponseEntity(findMember,HttpStatus.OK);
+                return new ResponseEntity(mapper.memberToMemberResponse(findMember),HttpStatus.OK);
     }
 
 

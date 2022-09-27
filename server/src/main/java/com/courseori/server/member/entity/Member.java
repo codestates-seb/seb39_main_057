@@ -44,13 +44,11 @@ public class Member {
     private String phoneNumber;
 
 
-    private Integer totalOrders;
-
-
     private String profileImageUrl;
 
 
     private LocalDateTime joinedAt = LocalDateTime.now();
+
 
     private LocalDateTime modifiedAt = LocalDateTime.now();
 
