@@ -26,6 +26,7 @@ public class StubData {
 
     static FoodCategory foodCategory = new FoodCategory("Category1");
 
+    /* Single post and response */
     public static Item getSinglePost() {
 
         Item item = new Item(member, "Title1", foodCategory, deadline, pickupLocation,  "Restaurant1", "http://test-url.com", "Body1", imageUrl);
@@ -40,6 +41,7 @@ public class StubData {
         return response;
     }
 
+    /* Multiple responses */
     public static List<ItemDto.Response> getMultiResponseBody() {
 
         ItemDto.Response response1 = new ItemDto.Response(1L, 1L, "Title1", foodCategory, createdAt, modifiedAt, deadline, pickupLocation, "Restaurant1", "http://test-url.com", participantsList,"Body1", imageUrl);
