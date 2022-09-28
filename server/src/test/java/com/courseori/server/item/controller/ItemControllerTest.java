@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.mapping.JpaMetamodelMappingContext;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletRequest;
@@ -23,17 +24,20 @@ import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 
 import java.util.Arrays;
 import java.util.List;
 
 import static org.mockito.BDDMockito.given;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
+import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.*;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
-import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
-import static org.springframework.restdocs.request.RequestDocumentation.pathParameters;
+import static org.springframework.restdocs.request.RequestDocumentation.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -73,7 +77,7 @@ public class ItemControllerTest {
 
         //when
         ResultActions actions = mockMvc.perform(
-                RestDocumentationRequestBuilders.get("/items/{item-id}", itemId)
+                get("/items/{item-id}", itemId)
                         .accept(MediaType.APPLICATION_JSON)
         );
 
@@ -137,40 +141,82 @@ public class ItemControllerTest {
 
     }
 
-//
-//    @Test
-//    public void getItemsTest() throws Exception {
-//
-//        //given
-//        String page = "1";
-//        String size = "10";
-//
-//        MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<>();
-//        queryParams.add("page", page);
-//        queryParams.add("size", size);
-//
-//        Page<Item> itemPage = StubData.getMultiItems();
-//        List<ItemDto.Response> responseList = StubData.getMultiResponseBody();
-//
-//        given(itemService.findItems(Mockito.anyInt(), Mockito.anyInt())).willReturn();
-//
-//
-//        /*
-//         @GetMapping
-//    public ResponseEntity getItems(@Positive @RequestParam int page,
-//                                   @Positive @RequestParam int size) {
-//
-//        Page<Item> itemsPage = itemService.findItems(page, size);
-//        List<Item> items = itemsPage.getContent();
-//
-//        List<ItemDto.Response> responses = itemMapper.itemsToItemResponses(items);
-//
-//        return new ResponseEntity<>(responses, HttpStatus.OK);
-//    }
-//         */
-//
-//    }
-//
+
+    @Test
+    public void getItemsTest() throws Exception {
+
+        //given
+        String page = "1";
+        String size = "10";
+
+        MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<>();
+        queryParams.add("page", page);
+        queryParams.add("size", size);
+
+        Page<Item> itemPage = StubData.getMultiItems();
+        List<ItemDto.Response> responseList = StubData.getMultiResponseBody();
+
+        given(itemService.findItems(Mockito.anyInt(), Mockito.anyInt())).willReturn(itemPage);
+        given(itemMapper.itemsToItemResponses(Mockito.anyList())).willReturn(responseList);
+
+        //when
+        ResultActions actions = mockMvc.perform(
+          get("/items")
+                  .params(queryParams)
+                  .accept(MediaType.APPLICATION_JSON)
+        );
+
+        //then
+        MvcResult result =
+                actions
+                        .andExpect(status().isOk())
+                        .andDo(
+                                document(
+                                        "get-items",
+                                        preprocessRequest(prettyPrint()),
+                                        preprocessResponse(prettyPrint()),
+                                        requestParameters(
+                                                List.of(
+                                                        parameterWithName("page").description("Page 번호"),
+                                                        parameterWithName("size").description("Page 사이즈")
+                                                )
+                                        ),
+                                        responseFields(
+                                                List.of(
+                                                    fieldWithPath("[].itemId").type(JsonFieldType.NUMBER).description("게시글 식별자"),
+                                                    fieldWithPath("[].memberId").type(JsonFieldType.NUMBER).description("회원 식별자"),
+                                                        fieldWithPath("[].title").type(JsonFieldType.STRING).description("타이틀"),
+                                                        fieldWithPath("[].category.foodCategoryId").type(JsonFieldType.NUMBER).description("내용"),
+                                                        fieldWithPath("[].category.category").type(JsonFieldType.STRING).description("내용"),
+                                                        fieldWithPath("[].category.createdAt").type(JsonFieldType.NUMBER).description("내용"),
+                                                        fieldWithPath("[].category.modifiedAt").type(JsonFieldType.NUMBER).description("내용"),
+                                                        fieldWithPath("[].createdAt").type(JsonFieldType.NUMBER).description("생성 일자"),
+                                                        fieldWithPath("[].modifiedAt").type(JsonFieldType.NUMBER).description("수정 일자"),
+                                                        fieldWithPath("[].deadline").type(JsonFieldType.NUMBER).description("마감 시간"),
+                                                        fieldWithPath("[].pickupLocation.locationId").type(JsonFieldType.NUMBER).description("픽업 장소"),
+                                                        fieldWithPath("[].pickupLocation.nameOfPlace").type(JsonFieldType.STRING).description("픽업 장소"),
+                                                        fieldWithPath("[].pickupLocation.korAddress").type(JsonFieldType.STRING).description("픽업 장소"),
+                                                        fieldWithPath("[].pickupLocation.addressDetail").type(JsonFieldType.STRING).description("픽업 장소"),
+                                                        fieldWithPath("[].pickupLocation.type").type(JsonFieldType.NUMBER).description("픽업 장소"),
+                                                        fieldWithPath("[].pickupLocation.latitude").type(JsonFieldType.NUMBER).description("픽업 장소"),
+                                                        fieldWithPath("[].pickupLocation.longitude").type(JsonFieldType.NUMBER).description("픽업 장소"),
+                                                        fieldWithPath("[].pickupLocation.createAt").type(JsonFieldType.NUMBER).description("픽업 장소"),
+                                                        fieldWithPath("[].pickupLocation.modifiedAt").type(JsonFieldType.NUMBER).description("픽업 장소"),
+                                                        fieldWithPath("[].restaurantName").type(JsonFieldType.STRING).description("식당 이름"),
+                                                        fieldWithPath("[].restaurantUrl").type(JsonFieldType.STRING).description("식당 URL"),
+                                                        fieldWithPath("[].participantsList").type(JsonFieldType.ARRAY).description("참여자 리스트"),
+                                                        fieldWithPath("[].body").type(JsonFieldType.STRING).description("내용"),
+                                                        fieldWithPath("[].imageUrl.imageUrlId").type(JsonFieldType.NUMBER).description("이미지 URL"),
+                                                        fieldWithPath("[].imageUrl.url").type(JsonFieldType.STRING).description("이미지 URL"),
+                                                        fieldWithPath("[].imageUrl.type").type(JsonFieldType.NUMBER).description("이미지 URL"),
+                                                        fieldWithPath("[].imageUrl.createdAt").type(JsonFieldType.NUMBER).description("이미지 URL"),
+                                                        fieldWithPath("[].imageUrl.modifiedAt").type(JsonFieldType.NUMBER).description("이미지 URL")
+                                                )
+                                        )
+                                )
+                        ).andReturn();
+    }
+
 
     @Test
     public void postItemTest() throws Exception{
