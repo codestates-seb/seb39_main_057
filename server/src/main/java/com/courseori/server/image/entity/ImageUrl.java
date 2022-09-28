@@ -23,8 +23,8 @@ public class ImageUrl {
 
     private int type;
 
-    private Date createdAt = new Date();
-    private Date modifiedAt = new Date();
+    private Long createdAt = new Date().getTime();
+    private Long modifiedAt = new Date().getTime();
 
     public ImageUrl(String url, int type) {
         this.url = url;

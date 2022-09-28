@@ -32,9 +32,9 @@ public class Location {
 
     private float longitude;
 
-    private Date createAt = new Date();
+    private Long createAt = new Date().getTime();
 
-    private Date modifiedAt = new Date();
+    private Long modifiedAt = new Date().getTime();
 
     public Location(String nameOfPlace, String korAddress, String addressDetail, int type, float latitude, float longitude) {
         this.nameOfPlace = nameOfPlace;

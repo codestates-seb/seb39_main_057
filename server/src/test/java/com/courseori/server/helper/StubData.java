@@ -8,6 +8,10 @@ import com.courseori.server.location.entity.Location;
 import com.courseori.server.member.entity.Member;
 import com.courseori.server.member.role.Roles;
 import com.courseori.server.participants.Participants;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -15,9 +19,10 @@ import java.util.List;
 
 public class StubData {
 
-    static Date createdAt = new Date();
-    static Date modifiedAt = new Date();
-    static Date deadline = new Date();
+    static Date date = new Date();
+    static Long createdAt = date.getTime();
+    static Long modifiedAt = date.getTime();
+    static Long deadline = date.getTime();
     static Location pickupLocation = new Location("더큰내일센터", "제주도 연북로", "2층 우도 회의실", 1, (float)123.1234, (float)123.1234);
     static List<Participants> participantsList = new ArrayList<>();
     static ImageUrl imageUrl = new ImageUrl("http://test.com", 1);
@@ -26,6 +31,8 @@ public class StubData {
 
     static FoodCategory foodCategory = new FoodCategory("Category1");
 
+    /* Single post and response */
+    //Post에서 Item으로 메서드명 변경 필요
     public static Item getSinglePost() {
 
         Item item = new Item(member, "Title1", foodCategory, deadline, pickupLocation,  "Restaurant1", "http://test-url.com", "Body1", imageUrl);
@@ -39,6 +46,26 @@ public class StubData {
 
         return response;
     }
+
+    /* Multiple responses */
+    public static Page<Item> getMultiItems() {
+
+        Item item1 = new Item(member, "Title1", foodCategory, deadline, pickupLocation,  "Restaurant1", "http://test-url.com", "Body1", imageUrl);
+        Item item2 = new Item(member, "Title1", foodCategory, deadline, pickupLocation,  "Restaurant1", "http://test-url.com", "Body1", imageUrl);
+        Item item3 = new Item(member, "Title1", foodCategory, deadline, pickupLocation,  "Restaurant1", "http://test-url.com", "Body1", imageUrl);
+        Item item4 = new Item(member, "Title1", foodCategory, deadline, pickupLocation,  "Restaurant1", "http://test-url.com", "Body1", imageUrl);
+        Item item5 = new Item(member, "Title1", foodCategory, deadline, pickupLocation,  "Restaurant1", "http://test-url.com", "Body1", imageUrl);
+        Item item6 = new Item(member, "Title1", foodCategory, deadline, pickupLocation,  "Restaurant1", "http://test-url.com", "Body1", imageUrl);
+        Item item7 = new Item(member, "Title1", foodCategory, deadline, pickupLocation,  "Restaurant1", "http://test-url.com", "Body1", imageUrl);
+        Item item8 = new Item(member, "Title1", foodCategory, deadline, pickupLocation,  "Restaurant1", "http://test-url.com", "Body1", imageUrl);
+        Item item9 = new Item(member, "Title1", foodCategory, deadline, pickupLocation,  "Restaurant1", "http://test-url.com", "Body1", imageUrl);
+        Item item10 = new Item(member, "Title1", foodCategory, deadline, pickupLocation,  "Restaurant1", "http://test-url.com", "Body1", imageUrl);
+
+
+        return new PageImpl<>(List.of(item1, item2, item3, item4, item5, item6, item7, item8, item9, item10),
+                PageRequest.of(0, 10, Sort.by("itemId").descending()), 2);
+    }
+
 
     public static List<ItemDto.Response> getMultiResponseBody() {
 
@@ -57,5 +84,13 @@ public class StubData {
 
         return responseList;
 
+    }
+
+
+    /* post related */
+    public static ItemDto.Post getSinglePostBody(){
+        ItemDto.Post post = new ItemDto.Post(1L,"Title1", "Category1", deadline,
+                pickupLocation,  "Restaurant1", "http://test-url.com/", "Body1", imageUrl );
+        return post;
     }
 }
