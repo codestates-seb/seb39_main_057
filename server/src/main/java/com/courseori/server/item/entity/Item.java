@@ -37,11 +37,12 @@ public class Item {
     @OneToOne(cascade = CascadeType.PERSIST)
     private FoodCategory category;
 
-    private Date createdAt = new Date();
-
-    private Date modifiedAt  = new Date();
-
-    private Date deadline;
+    private Long createdAt = new Date().getTime();
+    private Long modifiedAt  = new Date().getTime();
+//
+//    @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ss.SSS")
+//    private Date deadline;
+    private Long deadline;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "P_LOCATION_ID")
@@ -60,7 +61,7 @@ public class Item {
     @OneToOne(cascade = CascadeType.PERSIST)
     private ImageUrl imageUrl;
 
-    public Item(Member member, String title, FoodCategory category, Date deadline, Location restaurantLocation, String restaurantName, String restaurantUrl, String body, ImageUrl imageUrl) {
+    public Item(Member member, String title, FoodCategory category, Long deadline, Location restaurantLocation, String restaurantName, String restaurantUrl, String body, ImageUrl imageUrl) {
         this.member = member;
         this.title = title;
         this.category = category;

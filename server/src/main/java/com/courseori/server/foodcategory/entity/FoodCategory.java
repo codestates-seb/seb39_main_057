@@ -20,8 +20,8 @@ public class FoodCategory {
 
     String category;
 
-    Date createdAt = new Date();
-    Date modifiedAt = new Date();
+    Long createdAt = new Date().getTime();
+    Long modifiedAt = new Date().getTime();
 
     public String setCategory(String category) {
         this.category = category;

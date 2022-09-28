@@ -23,8 +23,8 @@ public class ItemService {
     }
 
     public Item createItem(Item item){
-        item.setCreatedAt(new Date());
-        item.setModifiedAt(new Date());
+        item.setCreatedAt(new Date().getTime());
+        item.setModifiedAt(new Date().getTime());
         Item savedItem = itemRepository.save(item);
 
         return savedItem;
@@ -50,7 +50,7 @@ public class ItemService {
                 .ifPresent(imageUrl -> foundItem.setImageUrl(imageUrl));
         Optional.ofNullable(item.getParticipantsList())
                 .ifPresent(participantsList -> foundItem.setParticipantsList(participantsList));
-        foundItem.setModifiedAt(new Date());
+        foundItem.setModifiedAt(new Date().getTime());
         return itemRepository.save(foundItem);
     }
 

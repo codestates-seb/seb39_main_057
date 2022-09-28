@@ -9,8 +9,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-
-import java.util.Date;
 import java.util.List;
 
 public class ItemDto {
@@ -21,16 +19,15 @@ public class ItemDto {
         private long memberId;
 
         private String title;
-
         private String category;
 
-
-        private Date deadline;
+//        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM/dd/yyyy")
+//        private Date deadline;
+        private Long deadline;
         private Location pickupLocation;
 
         private String restaurantName;
         private String restaurantUrl;
-
 
         private String body;
         private ImageUrl imageUrl;
@@ -53,7 +50,8 @@ public class ItemDto {
         private String title;
         private FoodCategory category;
 
-        private Date deadline;
+//        private Date deadline;
+        private Long deadline;
         private Location pickupLocation;
 
         private String restaurantName;
@@ -75,9 +73,15 @@ public class ItemDto {
 
         private String title;
         private FoodCategory category;
-        private Date createdAt;
-        private Date modifiedAt;
-        private Date deadline;
+//        private Date createdAt;
+//        private Date modifiedAt;
+
+//        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd" , timezone = "GMT+8")
+//        private Date deadline;
+
+        private Long createdAt;
+        private Long modifiedAt;
+        private Long deadline;
 
         private Location pickupLocation;
 
