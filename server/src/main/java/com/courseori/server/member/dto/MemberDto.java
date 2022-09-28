@@ -38,13 +38,14 @@ public class MemberDto {
     //patch 만을 위한 DTO입니다.
     //참고할 게 있다면 Service에 Update와
     //Controller에 Update 로직을 참고하세요
+    @AllArgsConstructor
     @NoArgsConstructor
     @Getter
     @Setter
     public static class Patch{
         private long memberId;
         private String username;
-        private String password;
+        private String phoneNumber;
         private String profileImageUrl;
     }
 

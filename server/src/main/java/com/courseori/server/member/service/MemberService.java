@@ -21,11 +21,11 @@ public class MemberService {
         return saveMember;
     }
 
-    public Member updateMember(MemberDto.Patch member){
+    public Member updateMember(Member member){
         Member findMember = findVerifiedMember(member.getMemberId());
 
         findMember.setUsername(member.getUsername());
-        findMember.setPassword(member.getPassword());
+        findMember.setPassword(member.getPhoneNumber());
         findMember.setPhoneNumber(member.getProfileImageUrl());
         findMember.setProfileImageUrl(member.getProfileImageUrl());
 
