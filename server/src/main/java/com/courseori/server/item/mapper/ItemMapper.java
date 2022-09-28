@@ -3,9 +3,11 @@ package com.courseori.server.item.mapper;
 import com.courseori.server.foodcategory.entity.FoodCategory;
 import com.courseori.server.item.dto.ItemDto;
 import com.courseori.server.item.entity.Item;
+import com.courseori.server.participants.Participants;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
@@ -32,7 +34,34 @@ public interface ItemMapper {
 
     }
 
-    Item itemPatchToItem(ItemDto.Patch requestBody);
+
+    default Item itemPatchToItem(ItemDto.Patch requestBody) {
+        if ( requestBody == null ) {
+            return null;
+        }
+
+        Item item = new Item();
+
+        item.setItemId( requestBody.getItemId() );
+        item.setTitle( requestBody.getTitle() );
+
+        FoodCategory foodCategory = new FoodCategory();
+        foodCategory.setCategory(requestBody.getCategory());
+        item.setCategory(foodCategory);
+
+        item.setDeadline( requestBody.getDeadline() );
+        item.setPickupLocation( requestBody.getPickupLocation() );
+        item.setRestaurantName( requestBody.getRestaurantName() );
+        item.setRestaurantUrl( requestBody.getRestaurantUrl() );
+        List<Participants> list = requestBody.getParticipantsList();
+        if ( list != null ) {
+            item.setParticipantsList( new ArrayList<Participants>( list ) );
+        }
+        item.setBody( requestBody.getBody() );
+        item.setImageUrl( requestBody.getImageUrl() );
+
+        return item;
+    }
 
     ItemDto.Response itemToItemResponse(Item item);
 
