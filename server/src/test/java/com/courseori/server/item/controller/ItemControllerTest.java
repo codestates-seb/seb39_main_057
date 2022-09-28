@@ -106,11 +106,11 @@ public class ItemControllerTest {
                                                 fieldWithPath("title").type(JsonFieldType.STRING).description("타이틀"),
                                                 fieldWithPath("category.foodCategoryId").type(JsonFieldType.NUMBER).description("내용"),
                                                 fieldWithPath("category.category").type(JsonFieldType.STRING).description("내용"),
-                                                fieldWithPath("category.createdAt").type(JsonFieldType.STRING).description("내용"),
-                                                fieldWithPath("category.modifiedAt").type(JsonFieldType.STRING).description("내용"),
-                                                fieldWithPath("createdAt").type(JsonFieldType.STRING).description("생성 일자"),
-                                                fieldWithPath("modifiedAt").type(JsonFieldType.STRING).description("수정 일자"),
-                                                fieldWithPath("deadline").type(JsonFieldType.STRING).description("마감 시간"),
+                                                fieldWithPath("category.createdAt").type(JsonFieldType.NUMBER).description("내용"),
+                                                fieldWithPath("category.modifiedAt").type(JsonFieldType.NUMBER).description("내용"),
+                                                fieldWithPath("createdAt").type(JsonFieldType.NUMBER).description("생성 일자"),
+                                                fieldWithPath("modifiedAt").type(JsonFieldType.NUMBER).description("수정 일자"),
+                                                fieldWithPath("deadline").type(JsonFieldType.NUMBER).description("마감 시간"),
                                                 fieldWithPath("pickupLocation.locationId").type(JsonFieldType.NUMBER).description("픽업 장소"),
                                                 fieldWithPath("pickupLocation.nameOfPlace").type(JsonFieldType.STRING).description("픽업 장소"),
                                                 fieldWithPath("pickupLocation.korAddress").type(JsonFieldType.STRING).description("픽업 장소"),
@@ -118,8 +118,8 @@ public class ItemControllerTest {
                                                 fieldWithPath("pickupLocation.type").type(JsonFieldType.NUMBER).description("픽업 장소"),
                                                 fieldWithPath("pickupLocation.latitude").type(JsonFieldType.NUMBER).description("픽업 장소"),
                                                 fieldWithPath("pickupLocation.longitude").type(JsonFieldType.NUMBER).description("픽업 장소"),
-                                                fieldWithPath("pickupLocation.createAt").type(JsonFieldType.STRING).description("픽업 장소"),
-                                                fieldWithPath("pickupLocation.modifiedAt").type(JsonFieldType.STRING).description("픽업 장소"),
+                                                fieldWithPath("pickupLocation.createAt").type(JsonFieldType.NUMBER).description("픽업 장소"),
+                                                fieldWithPath("pickupLocation.modifiedAt").type(JsonFieldType.NUMBER).description("픽업 장소"),
                                                 fieldWithPath("restaurantName").type(JsonFieldType.STRING).description("식당 이름"),
                                                 fieldWithPath("restaurantUrl").type(JsonFieldType.STRING).description("식당 URL"),
                                                 fieldWithPath("participantsList").type(JsonFieldType.ARRAY).description("참여자 리스트"),
@@ -127,8 +127,8 @@ public class ItemControllerTest {
                                                 fieldWithPath("imageUrl.imageUrlId").type(JsonFieldType.NUMBER).description("이미지 URL"),
                                                 fieldWithPath("imageUrl.url").type(JsonFieldType.STRING).description("이미지 URL"),
                                                 fieldWithPath("imageUrl.type").type(JsonFieldType.NUMBER).description("이미지 URL"),
-                                                fieldWithPath("imageUrl.createdAt").type(JsonFieldType.STRING).description("이미지 URL"),
-                                                fieldWithPath("imageUrl.modifiedAt").type(JsonFieldType.STRING).description("이미지 URL")
+                                                fieldWithPath("imageUrl.createdAt").type(JsonFieldType.NUMBER).description("이미지 URL"),
+                                                fieldWithPath("imageUrl.modifiedAt").type(JsonFieldType.NUMBER).description("이미지 URL")
 
                                         )
                                 )

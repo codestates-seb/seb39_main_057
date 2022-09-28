@@ -30,8 +30,8 @@ public class Participants {
     @JsonBackReference
     private Item item;
 
-    private Date createdAt = new Date();
-    private Date modifiedAt = new Date();
+    private Long createdAt = new Date().getTime();
+    private Long modifiedAt = new Date().getTime();
 
     public Participants(int type, Member member, Item item) {
         this.type = type;
