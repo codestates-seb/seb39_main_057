@@ -57,7 +57,7 @@ public class ItemDto {
         private String restaurantName;
         private String restaurantUrl;
 
-        private List<Member> participantsList;
+        private List<Participants> participantsList;
 
         private String body;
         private ImageUrl imageUrl;
