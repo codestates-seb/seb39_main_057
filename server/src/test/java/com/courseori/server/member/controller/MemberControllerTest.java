@@ -53,7 +53,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class MemberControllerTest {
 
 
-
     @Autowired
     private MockMvc mockMvc;
 
@@ -137,8 +136,8 @@ class MemberControllerTest {
                                         fieldWithPath("email").type(JsonFieldType.STRING).description("이메일"),
                                         fieldWithPath("phoneNumber").type(JsonFieldType.STRING).description("휴대폰 번호"),
                                         fieldWithPath("profileImageUrl").type(JsonFieldType.STRING).description("프로필 사진"),
-                                        fieldWithPath("joinedAt").type(JsonFieldType.STRING).description("가입 시간"),
-                                        fieldWithPath("modifiedAt").type(JsonFieldType.STRING).description("수정 시간"),
+                                        fieldWithPath("joinedAt").type(JsonFieldType.NUMBER).description("가입 시간"),
+                                        fieldWithPath("modifiedAt").type(JsonFieldType.NUMBER).description("수정 시간"),
                                         fieldWithPath("role").type(JsonFieldType.STRING).description("role")
                                 )
                         )
@@ -206,8 +205,8 @@ class MemberControllerTest {
                                         fieldWithPath("email").type(JsonFieldType.STRING).description("이메일"),
                                         fieldWithPath("phoneNumber").type(JsonFieldType.STRING).description("휴대폰 번호"),
                                         fieldWithPath("profileImageUrl").type(JsonFieldType.STRING).description("프로필 사진"),
-                                        fieldWithPath("joinedAt").type(JsonFieldType.STRING).description("가입 시간"),
-                                        fieldWithPath("modifiedAt").type(JsonFieldType.STRING).description("수정 시간"),
+                                        fieldWithPath("joinedAt").type(JsonFieldType.NUMBER).description("가입 시간"),
+                                        fieldWithPath("modifiedAt").type(JsonFieldType.NUMBER).description("수정 시간"),
                                         fieldWithPath("role").type(JsonFieldType.STRING).description("role")
                                 )
                         )
@@ -248,8 +247,8 @@ class MemberControllerTest {
                                                 fieldWithPath("email").type(JsonFieldType.STRING).description("이메일"),
                                                 fieldWithPath("phoneNumber").type(JsonFieldType.STRING).description("휴대폰 번호"),
                                                 fieldWithPath("profileImageUrl").type(JsonFieldType.STRING).description("프로필 사진"),
-                                                fieldWithPath("joinedAt").type(JsonFieldType.STRING).description("가입 시간"),
-                                                fieldWithPath("modifiedAt").type(JsonFieldType.STRING).description("수정 시간"),
+                                                fieldWithPath("joinedAt").type(JsonFieldType.NUMBER).description("가입 시간"),
+                                                fieldWithPath("modifiedAt").type(JsonFieldType.NUMBER).description("수정 시간"),
                                                 fieldWithPath("role").type(JsonFieldType.STRING).description("role")
                                         )
                                 )

@@ -4,14 +4,9 @@ package com.courseori.server.member.controller;
 import com.courseori.server.member.dto.MemberDto;
 import com.courseori.server.member.entity.Member;
 import com.courseori.server.member.mapper.MemberMapper;
-
-
-import lombok.extern.slf4j.Slf4j;
-
 import com.courseori.server.member.role.ROLE;
 import com.courseori.server.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -25,7 +20,6 @@ import javax.validation.constraints.Positive;
 //@RestController
 @Controller
 @RequestMapping("/v1/members")
-@Slf4j
 @RequiredArgsConstructor
 public class MemberController {
 

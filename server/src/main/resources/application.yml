@@ -9,11 +9,6 @@ spring:
     hibernate:
       ddl-auto: create
     show-sql: true
-logging:
-  level:
-    org:
-      springframework:
-        security: DEBUG
     properties:
       hibernate:
         format_sql: true  # (3) SQL pretty print
@@ -37,4 +32,3 @@ logging:
             token-uri: https://kauth.kakao.com/oauth/token
             user-info-uri: https://kapi.kakao.com/v2/user/me
             user-name-attribute: id
-
