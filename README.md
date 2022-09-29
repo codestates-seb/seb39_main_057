@@ -58,7 +58,7 @@
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 이은주 :  https://github.com/ejmoni<br>
     ■ 기술블로그   <br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 서태원 :  <br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 이은주 :  <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 이은주 :  https://ejmoni.tistory.com/<br>
 
  ■ Back-End  : 신가경 [팀장], 강지효, 김건휘 <br> 
    ■ GITHUB :  <br> 
