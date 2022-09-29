@@ -71,13 +71,21 @@ class MemberControllerTest {
     @Autowired
     private Gson gson;
 
+
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
+
+
     @Test
     @DisplayName("회원가입 로직 테스트 ")
     void postMember() throws Exception{
 
         //given
+        String password = passwordEncoder.encode("1234");
+
         MemberDto.Post post = new MemberDto.Post("김코딩","test@naver.com",
-                "1234","010-1111-1111",
+                password,"010-1111-1111",
                 "www.test.com");
 
         String content = gson.toJson(post);
@@ -141,15 +149,18 @@ class MemberControllerTest {
     @Test
     @DisplayName("회원 정보수정 로직 테스트 ")
     void patchMember() throws Exception {
+
+        String password = passwordEncoder.encode("1234");
+        //given
         long memberId = 1L;
         MemberDto.Patch patch =
-                new MemberDto.Patch(memberId, "김바꿈", "010-1231-1111","www.change.com");
+                new MemberDto.Patch(memberId, "김바꿈","010-1111-1111",password,"www.change.com");
         String content = gson.toJson(patch);
 
 
         MemberDto.Response responseDto =
-                new MemberDto.Response(1L,"김바꿈","test@naver.com",
-                        "010-1231-1111","www.change.com",LocalDateTime.now(),LocalDateTime.now(),ROLE.ROLE_USER);
+                new MemberDto.Response(memberId,"김바꿈","test@naver.com",
+                        "010-1111-1111","www.change.com",LocalDateTime.now(),LocalDateTime.now(),ROLE.ROLE_USER);
 
         // willReturn()이 최소한 null은 아니어야 한다.
         given(mapper.memberPatchToMember(Mockito.any(MemberDto.Patch.class))).willReturn(new Member());
@@ -167,11 +178,12 @@ class MemberControllerTest {
                                 .content(content)
                 );
 
-
+        //then
         actions
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.username").value(patch.getUsername()))
                 .andExpect(jsonPath("$.phoneNumber").value(patch.getPhoneNumber()))
+//                .andExpect(jsonPath("$.password").value(patch.getPassword()))
                 .andExpect(jsonPath("$.profileImageUrl").value(patch.getProfileImageUrl()))
                 .andDo(document("patch-member",
                         preprocessRequest(prettyPrint()),
@@ -184,7 +196,8 @@ class MemberControllerTest {
                                         fieldWithPath("memberId").type(JsonFieldType.NUMBER).description("회원 식별자"),
                                         fieldWithPath("username").type(JsonFieldType.STRING).description("회원 이름"),
                                         fieldWithPath("phoneNumber").type(JsonFieldType.STRING).description("휴대폰"),
-                                        fieldWithPath("profileImageUrl").type(JsonFieldType.STRING).description("피로필 사진")
+                                        fieldWithPath("password").type(JsonFieldType.STRING).description("비밀번호"),
+                                        fieldWithPath("profileImageUrl").type(JsonFieldType.STRING).description("프로필 사진")
                                 )
                         ),
                         responseFields(

@@ -46,6 +46,7 @@ public class MemberDto {
         private long memberId;
         private String username;
         private String phoneNumber;
+        private String password;
         private String profileImageUrl;
     }
 
