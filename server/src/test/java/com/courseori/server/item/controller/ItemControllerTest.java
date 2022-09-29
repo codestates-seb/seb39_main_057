@@ -33,11 +33,13 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.doNothing;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.*;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 import static org.springframework.restdocs.request.RequestDocumentation.*;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -141,7 +143,6 @@ public class ItemControllerTest {
 
     }
 
-
     @Test
     public void getItemsTest() throws Exception {
 
@@ -217,7 +218,6 @@ public class ItemControllerTest {
                         ).andReturn();
     }
 
-
     @Test
     public void postItemTest() throws Exception{
         /*tempt*/
@@ -290,4 +290,30 @@ public class ItemControllerTest {
                         )
                 );
     }
+
+    @Test
+    public void deleteItemTest() throws Exception {
+
+        //given
+        long itemId = 1L;
+        doNothing().when(itemService).deleteItem(Mockito.anyLong());
+
+        //when
+        ResultActions actions = mockMvc.perform(
+                RestDocumentationRequestBuilders
+                        .delete("/items/{item-id}", itemId).with(csrf()));
+
+                actions.andExpect(status().isNoContent())
+                        .andDo(
+                                document(
+                                        "delete-item",
+                                        preprocessRequest(prettyPrint()),
+                                        preprocessResponse(prettyPrint()),
+                                        pathParameters(
+                                                Arrays.asList(parameterWithName("item-id").description("게시글 식별자"))
+                                        )
+                                )
+                        );
+    }
+
 }
