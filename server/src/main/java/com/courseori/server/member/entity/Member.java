@@ -3,24 +3,22 @@ package com.courseori.server.member.entity;
 
 import com.courseori.server.image.entity.ImageUrl;
 import com.courseori.server.location.entity.Location;
-import com.courseori.server.member.role.Roles;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.courseori.server.member.role.ROLE;
+
+import lombok.*;
+
+import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
 
 @Entity
-//@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 public class Member {
@@ -28,6 +26,7 @@ public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long memberId;
+
 
     @NotBlank(message = "이름을 입력해주세요.")
     @Size(min = 2, max = 8, message = "이름을 2자 ~ 8자 사이로 입력해주세요.")
@@ -39,10 +38,11 @@ public class Member {
     @Email(message = "올바른 이메일 형식을 입력해주세요.")
     private String email;
 
-    @Column
+    @Column(length = 200)
+    @JsonIgnore
     private String password;
 
-    @Column(unique = true)
+    @Column(length = 200, unique = true)
     @Pattern(regexp = "^\\d{3}-\\d{3,4}-\\d{4}$", message = "올바른 전화번호를 입력해주세요.")
     private String phoneNumber;
 
@@ -50,28 +50,56 @@ public class Member {
     @JoinColumn(name = "P_LOCATION_ID")
     private Location location;
 
-    @OneToOne
-    private ImageUrl profileImageUrl;
+//    @OneToOne
+//    private ImageUrl profileImageUrl;
+    private String profileImageUrl;
 
-    private Date joinedAt = new Date();
+    private Long joinedAt = new Date().getTime();
 
-    private Date modifiedAt = new Date();
+    private Long modifiedAt = new Date().getTime();
 
-    //차후 추가 예정
-    private String paymentMethod;
+   private String paymentMethod;
 
     //권한 부여에 대한 엔티티 입니다.
-    @Transient
-    private Roles roles = new Roles(1, "ROLE_USER");
+//<<<<<<< HEAD
+//    @Transient
+//    private Roles roles = new Roles(1, "ROLE_USER");
+//=======
+//>>>>>>> 48f8199e566320e4717ccfc45e9d553f77da973c
 
-    public List<String> getRoleList() {
-        if(this.roles.getRole().length()> 0) {
-            return Arrays.asList(this.roles.getRole());
-        }
-        return new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "ROLE_ID")
+    private ROLE role;
+
+    private String provider;
+    private String providerId;
+
+    //jwt
+    @Builder(builderClassName = "UserDetailRegister", builderMethodName = "userDetailRegister")
+    public Member(String username, String email, String password, String phoneNumber, String profileImageUrl,ROLE role) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+        this.profileImageUrl = profileImageUrl;
+        this.role = role;
     }
 
-    public Member(String username, String email, String password, String phoneNumber, Location location, ImageUrl profileImageUrl, String paymentMethod, Roles roles) {
+
+    //oauth2
+    @Builder(builderClassName = "OAuth2Register", builderMethodName = "oauth2Register")
+    public Member(String username, String email, String password, String phoneNumber, String profileImageUrl, ROLE role, String provider, String providerId) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+        this.profileImageUrl = profileImageUrl;
+        this.role = role;
+        this.provider = provider;
+        this.providerId = providerId;
+    }
+
+    public Member(String username, String email, String password, String phoneNumber, Location location, String profileImageUrl, String paymentMethod, ROLE roles) {
         this.username = username;
         this.email = email;
         this.password = password;
@@ -79,6 +107,14 @@ public class Member {
         this.location = location;
         this.profileImageUrl = profileImageUrl;
         this.paymentMethod = paymentMethod;
-        this.roles = roles;
+        this.role = roles;
+    }
+
+    //롤 set
+    public void setRole(ROLE role) {
+        this.role = role;
+        if (role.getMember() != this) {
+            role.setMember(this);
+        }
     }
 }

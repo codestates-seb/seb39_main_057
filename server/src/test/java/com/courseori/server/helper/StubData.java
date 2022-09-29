@@ -6,7 +6,7 @@ import com.courseori.server.item.dto.ItemDto;
 import com.courseori.server.item.entity.Item;
 import com.courseori.server.location.entity.Location;
 import com.courseori.server.member.entity.Member;
-import com.courseori.server.member.role.Roles;
+import com.courseori.server.member.role.ROLE;
 import com.courseori.server.participants.Participants;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -26,8 +26,10 @@ public class StubData {
     static Location pickupLocation = new Location("더큰내일센터", "제주도 연북로", "2층 우도 회의실", 1, (float)123.1234, (float)123.1234);
     static List<Participants> participantsList = new ArrayList<>();
     static ImageUrl imageUrl = new ImageUrl("http://test.com", 1);
-    static Roles roles = new Roles("ROLE_USER");
-    static Member member = new Member("User1", "test@email.com", "password", "010-1111-1111", pickupLocation, imageUrl, "Card", roles);
+//    static Roles roles = new Roles("ROLE_USER");
+    static ROLE roles = ROLE.ROLE_USER;
+
+    static Member member = new Member("User1", "test@email.com", "password", "010-1111-1111", pickupLocation, imageUrl.getUrl(),  "Card", roles );
 
     static FoodCategory foodCategory = new FoodCategory("Category1");
 

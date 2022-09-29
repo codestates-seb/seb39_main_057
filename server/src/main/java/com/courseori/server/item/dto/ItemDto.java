@@ -7,6 +7,7 @@ import com.courseori.server.member.entity.Member;
 import com.courseori.server.participants.Participants;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
@@ -14,10 +15,11 @@ import java.util.List;
 public class ItemDto {
 
     @AllArgsConstructor
+    @NoArgsConstructor
     @Getter
     public static class Post {
-        private long memberId;
 
+        private long memberId;
         private String title;
         private String category;
 

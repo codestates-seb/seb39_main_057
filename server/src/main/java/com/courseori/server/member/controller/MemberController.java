@@ -1,62 +1,62 @@
 package com.courseori.server.member.controller;
 
+
 import com.courseori.server.member.dto.MemberDto;
 import com.courseori.server.member.entity.Member;
-import com.courseori.server.member.repository.MemberRepository;
+import com.courseori.server.member.mapper.MemberMapper;
+
+
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import com.courseori.server.member.role.ROLE;
+import com.courseori.server.member.service.MemberService;
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 
-@RestController
+
+//@RestController
+@Controller
 @RequestMapping("/v1/members")
 @Slf4j
-//@RequiredArgsConstructor
+@RequiredArgsConstructor
 public class MemberController {
 
-    private final MemberRepository memberRepository;
+
+    private final MemberMapper mapper;
+    private final MemberService memberService;
     private final BCryptPasswordEncoder encoder;
 
-    @Autowired
-    public MemberController(MemberRepository memberRepository, BCryptPasswordEncoder encoder) {
-        this.memberRepository = memberRepository;
-        this.encoder = encoder;
-    }
 
     @PostMapping
-    public ResponseEntity postMember(@Valid @RequestBody Member member){
+    public ResponseEntity postMember(@Valid @RequestBody MemberDto.Post responseBody){
 
-        member.setPassword(encoder.encode(member.getPassword()));
+        Member member = mapper.memberPostToMember(responseBody);
+//        encoder.encode(member.getPassword());
+        member.setRole(ROLE.ROLE_USER);
 
-        memberRepository.save(member);
+        Member createMember = memberService.createMember(member);
 
-        return new ResponseEntity(member, HttpStatus.CREATED);
+
+        return new ResponseEntity(mapper.memberToMemberResponse(member), HttpStatus.CREATED);
     }
 
     @PatchMapping("/{member-id}")
     public ResponseEntity patchMember(
             @PathVariable("member-id") @Positive long memberId,
-            @Valid @RequestBody MemberDto.Patch requestBody){
+            @Valid @RequestBody MemberDto.Patch responseBody){
+        responseBody.setMemberId(memberId);
 
-        Member foundMember = memberRepository.findById(memberId).orElseThrow();
+        Member updateMember = memberService.updateMember(mapper.memberPatchToMember(responseBody));
 
-        foundMember.setUsername(requestBody.getUsername());
-        foundMember.setPassword(encoder.encode(requestBody.getPassword()));
-        foundMember.setPhoneNumber(requestBody.getPhoneNumber());
-        foundMember.setProfileImageUrl(requestBody.getProfileImageUrl());
-
-        memberRepository.save(foundMember);
-
-
-        System.out.println("Todo 패치 완료");
-
-
-        return new ResponseEntity(foundMember,HttpStatus.OK);
+        return new ResponseEntity(mapper.memberToMemberResponse(updateMember),HttpStatus.OK);
     }
 
     @GetMapping("/{member-id}")
@@ -64,11 +64,11 @@ public class MemberController {
             @PathVariable("member-id") @Positive long memberId){
 
                 //멤버 찾기용
-                Member findMember = memberRepository.findById(memberId).orElseThrow();
+                Member findMember = memberService.getMember(memberId);
 
         System.out.println("멤버 가져오기");
 
-                return new ResponseEntity(findMember,HttpStatus.OK);
+                return new ResponseEntity(mapper.memberToMemberResponse(findMember),HttpStatus.OK);
     }
 
 
@@ -76,12 +76,36 @@ public class MemberController {
     public ResponseEntity deleteMember(
             @PathVariable("member-id") @Positive long memberId){
 
-        memberRepository.deleteById(memberId);
+        memberService.deleteMember(memberId);
 
         System.out.println("멤버 삭제 : " + memberId + "번 멤버");
 
 
         return new ResponseEntity<>( "OK",HttpStatus.NO_CONTENT);
     }
+
+    @GetMapping("/login")
+    public String loginForm(){
+        return "login";
+    }
+
+   @GetMapping("/user")
+    @ResponseBody
+    public String user(){
+        return "user";
+    }
+
+    @GetMapping("/manager")
+    @ResponseBody
+    public String manager(){
+        return "manager";
+    }
+
+    @GetMapping("/admin")
+    @ResponseBody
+    public String admin(){
+        return "admin";
+    }
+
 
 }
