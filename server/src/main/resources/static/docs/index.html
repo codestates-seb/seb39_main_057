@@ -453,6 +453,15 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_회원삭제">1.4. 회원삭제</a></li>
 </ul>
 </li>
+<li><a href="#_itemcontroller">2. ItemController</a>
+<ul class="sectlevel2">
+<li><a href="#_아이템_생성">2.1. 아이템 생성</a></li>
+<li><a href="#_아이템_변경">2.2. 아이템 변경</a></li>
+<li><a href="#_단일_아이템_조회">2.3. 단일 아이템 조회</a></li>
+<li><a href="#_전체_아이템_조회">2.4. 전체 아이템 조회</a></li>
+<li><a href="#_아이템_삭제">2.5. 아이템 삭제</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -474,7 +483,7 @@ v1.0.0, 2022.04.08</p>
 <div class="listingblock">
 <div class="title">curl-request</div>
 <div class="content">
-<pre class="prettyprint highlight"><code data-lang="bash">$ curl 'http://localhost:8080/v1/members?_csrf=a2510859-0b13-450a-9106-9f94c9152194' -i -X POST \
+<pre class="prettyprint highlight"><code data-lang="bash">$ curl 'http://localhost:8080/v1/members?_csrf=efd28376-cf89-45bd-b0ed-f280b594a7f2' -i -X POST \
     -H 'Content-Type: application/json;charset=UTF-8' \
     -H 'Accept: application/json' \
     -d '{
@@ -489,10 +498,10 @@ v1.0.0, 2022.04.08</p>
 <div class="listingblock">
 <div class="title">http-request</div>
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code data-lang="http">POST /v1/members?_csrf=a2510859-0b13-450a-9106-9f94c9152194 HTTP/1.1
+<pre class="prettyprint highlight nowrap"><code data-lang="http">POST /v1/members?_csrf=efd28376-cf89-45bd-b0ed-f280b594a7f2 HTTP/1.1
 Content-Type: application/json;charset=UTF-8
 Accept: application/json
-Content-Length: 156
+Content-Length: 162
 Host: localhost:8080
 
 {
@@ -557,7 +566,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Content-Length: 237
+Content-Length: 246
 
 {
   "memberId" : 1,
@@ -565,8 +574,8 @@ Content-Length: 237
   "email" : "test@naver.com",
   "phoneNumber" : "010-1111-1111",
   "profileImageUrl" : "www.test.com",
-  "modifiedAt" : 1664433260686,
-  "joinedAt" : 1664433260686,
+  "modifiedAt" : 1664435497501,
+  "joinedAt" : 1664435497501,
   "role" : "ROLE_USER"
 }</code></pre>
 </div>
@@ -634,7 +643,7 @@ Content-Length: 237
 <div class="listingblock">
 <div class="title">curl-request</div>
 <div class="content">
-<pre class="prettyprint highlight"><code data-lang="bash">$ curl 'http://localhost:8080/v1/members/1?_csrf=22ad0ec8-9e2c-4bf6-9f05-d119d72d897e' -i -X PATCH \
+<pre class="prettyprint highlight"><code data-lang="bash">$ curl 'http://localhost:8080/v1/members/1?_csrf=e17c6673-b542-494a-bb68-d23b29397736' -i -X PATCH \
     -H 'Content-Type: application/json;charset=UTF-8' \
     -H 'Accept: application/json' \
     -d '{
@@ -649,10 +658,10 @@ Content-Length: 237
 <div class="listingblock">
 <div class="title">http-request</div>
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code data-lang="http">PATCH /v1/members/1?_csrf=22ad0ec8-9e2c-4bf6-9f05-d119d72d897e HTTP/1.1
+<pre class="prettyprint highlight nowrap"><code data-lang="http">PATCH /v1/members/1?_csrf=e17c6673-b542-494a-bb68-d23b29397736 HTTP/1.1
 Content-Type: application/json;charset=UTF-8
 Accept: application/json
-Content-Length: 146
+Content-Length: 152
 Host: localhost:8080
 
 {
@@ -717,7 +726,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Content-Length: 239
+Content-Length: 248
 
 {
   "memberId" : 1,
@@ -725,8 +734,8 @@ Content-Length: 239
   "email" : "test@naver.com",
   "phoneNumber" : "010-1111-1111",
   "profileImageUrl" : "www.change.com",
-  "modifiedAt" : 1664433260617,
-  "joinedAt" : 1664433260617,
+  "modifiedAt" : 1664435497353,
+  "joinedAt" : 1664435497353,
   "role" : "ROLE_USER"
 }</code></pre>
 </div>
@@ -794,14 +803,14 @@ Content-Length: 239
 <div class="listingblock">
 <div class="title">curl-request</div>
 <div class="content">
-<pre class="prettyprint highlight"><code data-lang="bash">$ curl 'http://localhost:8080/v1/members/1?_csrf=19bec376-63b2-40a5-a5c2-fe77cee0c192' -i -X GET \
+<pre class="prettyprint highlight"><code data-lang="bash">$ curl 'http://localhost:8080/v1/members/1?_csrf=5c89ff48-91aa-42cd-a3b8-aaaa2cc56c0a' -i -X GET \
     -H 'Accept: application/json'</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">http-request</div>
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code data-lang="http">GET /v1/members/1?_csrf=19bec376-63b2-40a5-a5c2-fe77cee0c192 HTTP/1.1
+<pre class="prettyprint highlight nowrap"><code data-lang="http">GET /v1/members/1?_csrf=5c89ff48-91aa-42cd-a3b8-aaaa2cc56c0a HTTP/1.1
 Accept: application/json
 Host: localhost:8080</code></pre>
 </div>
@@ -811,12 +820,12 @@ Host: localhost:8080</code></pre>
 <div class="content">
 <pre class="prettyprint highlight nowrap"><code>{
   "memberId" : 1,
-  "username" : "김코딩",
+  "username" : "源�肄붾뵫",
   "email" : "test@naver.com",
   "phoneNumber" : "010-1111-1111",
   "profileImageUrl" : "www.test.com",
-  "modifiedAt" : 1664433260660,
-  "joinedAt" : 1664433260660,
+  "modifiedAt" : 1664435497450,
+  "joinedAt" : 1664435497450,
   "role" : "ROLE_USER"
 }</code></pre>
 </div>
@@ -884,14 +893,14 @@ Host: localhost:8080</code></pre>
 <div class="listingblock">
 <div class="title">curl-request</div>
 <div class="content">
-<pre class="prettyprint highlight"><code data-lang="bash">$ curl 'http://localhost:8080/v1/members/1?_csrf=b507cec8-18e3-4bb9-8685-7fdf4d5b2def' -i -X DELETE \
+<pre class="prettyprint highlight"><code data-lang="bash">$ curl 'http://localhost:8080/v1/members/1?_csrf=4b46f5b1-b442-41c2-8d0c-1e20f0ce2e4c' -i -X DELETE \
     -H 'Accept: application/json'</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">http-request</div>
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code data-lang="http">DELETE /v1/members/1?_csrf=b507cec8-18e3-4bb9-8685-7fdf4d5b2def HTTP/1.1
+<pre class="prettyprint highlight nowrap"><code data-lang="http">DELETE /v1/members/1?_csrf=4b46f5b1-b442-41c2-8d0c-1e20f0ce2e4c HTTP/1.1
 Accept: application/json
 Host: localhost:8080</code></pre>
 </div>
@@ -902,6 +911,2197 @@ Host: localhost:8080</code></pre>
 <pre class="prettyprint highlight nowrap"><code>OK</code></pre>
 </div>
 </div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_itemcontroller">2. ItemController</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_아이템_생성">2.1. 아이템 생성</h3>
+<div class="listingblock">
+<div class="title">curl-request</div>
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="bash">$ curl 'http://localhost:8080/items?_csrf=6d8aa361-9805-4929-8fe8-a6e652c4876d' -i -X POST \
+    -H 'Content-Type: application/json;charset=UTF-8' \
+    -H 'Accept: application/json' \
+    -d '{
+  "memberId" : 1,
+  "title" : "Title1",
+  "category" : "Category1",
+  "deadline" : 1664435494522,
+  "pickupLocation" : {
+    "locationId" : 0,
+    "nameOfPlace" : "더큰내일센터",
+    "korAddress" : "제주도 연북로",
+    "addressDetail" : "2층 우도 회의실",
+    "type" : 1,
+    "latitude" : 123.1234,
+    "longitude" : 123.1234,
+    "createAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "restaurantName" : "Restaurant1",
+  "restaurantUrl" : "http://test-url.com/",
+  "body" : "Body1",
+  "imageUrl" : {
+    "imageUrlId" : 0,
+    "url" : "http://test.com",
+    "type" : 1,
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  }
+}'</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">http-request</div>
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code data-lang="http">POST /items?_csrf=6d8aa361-9805-4929-8fe8-a6e652c4876d HTTP/1.1
+Content-Type: application/json;charset=UTF-8
+Accept: application/json
+Content-Length: 700
+Host: localhost:8080
+
+{
+  "memberId" : 1,
+  "title" : "Title1",
+  "category" : "Category1",
+  "deadline" : 1664435494522,
+  "pickupLocation" : {
+    "locationId" : 0,
+    "nameOfPlace" : "더큰내일센터",
+    "korAddress" : "제주도 연북로",
+    "addressDetail" : "2층 우도 회의실",
+    "type" : 1,
+    "latitude" : 123.1234,
+    "longitude" : 123.1234,
+    "createAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "restaurantName" : "Restaurant1",
+  "restaurantUrl" : "http://test-url.com/",
+  "body" : "Body1",
+  "imageUrl" : {
+    "imageUrlId" : 0,
+    "url" : "http://test.com",
+    "type" : 1,
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">http-response</div>
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code data-lang="http">HTTP/1.1 201 Created
+Content-Type: application/json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Content-Length: 931
+
+{
+  "itemId" : 1,
+  "memberId" : 1,
+  "title" : "Title1",
+  "category" : {
+    "foodCategoryId" : 0,
+    "category" : "Category1",
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "createdAt" : 1664435494522,
+  "modifiedAt" : 1664435494522,
+  "deadline" : 1664435494522,
+  "pickupLocation" : {
+    "locationId" : 0,
+    "nameOfPlace" : "더큰내일센터",
+    "korAddress" : "제주도 연북로",
+    "addressDetail" : "2층 우도 회의실",
+    "type" : 1,
+    "latitude" : 123.1234,
+    "longitude" : 123.1234,
+    "createAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "restaurantName" : "Restaurant1",
+  "restaurantUrl" : "http://test-url.com",
+  "participantsList" : [ ],
+  "body" : "Body1",
+  "imageUrl" : {
+    "imageUrlId" : 0,
+    "url" : "http://test.com",
+    "type" : 1,
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">httpie-request</div>
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="bash">$ echo '{
+  "memberId" : 1,
+  "title" : "Title1",
+  "category" : "Category1",
+  "deadline" : 1664435494522,
+  "pickupLocation" : {
+    "locationId" : 0,
+    "nameOfPlace" : "더큰내일센터",
+    "korAddress" : "제주도 연북로",
+    "addressDetail" : "2층 우도 회의실",
+    "type" : 1,
+    "latitude" : 123.1234,
+    "longitude" : 123.1234,
+    "createAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "restaurantName" : "Restaurant1",
+  "restaurantUrl" : "http://test-url.com/",
+  "body" : "Body1",
+  "imageUrl" : {
+    "imageUrlId" : 0,
+    "url" : "http://test.com",
+    "type" : 1,
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  }
+}' | http POST 'http://localhost:8080/items?_csrf=6d8aa361-9805-4929-8fe8-a6e652c4876d' \
+    'Content-Type:application/json;charset=UTF-8' \
+    'Accept:application/json'</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">request-body</div>
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code>{
+  "memberId" : 1,
+  "title" : "Title1",
+  "category" : "Category1",
+  "deadline" : 1664435494522,
+  "pickupLocation" : {
+    "locationId" : 0,
+    "nameOfPlace" : "더큰내일센터",
+    "korAddress" : "제주도 연북로",
+    "addressDetail" : "2층 우도 회의실",
+    "type" : 1,
+    "latitude" : 123.1234,
+    "longitude" : 123.1234,
+    "createAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "restaurantName" : "Restaurant1",
+  "restaurantUrl" : "http://test-url.com/",
+  "body" : "Body1",
+  "imageUrl" : {
+    "imageUrlId" : 0,
+    "url" : "http://test.com",
+    "type" : 1,
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  }
+}</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 6. request-fields</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>memberId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">회원 식별자</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>title</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">타이틀</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>category</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">내용</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>deadline</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">마감 시간</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pickupLocation.locationId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">픽업 장소</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pickupLocation.nameOfPlace</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">픽업 장소</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pickupLocation.korAddress</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">픽업 장소</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pickupLocation.addressDetail</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">픽업 장소</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pickupLocation.type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">픽업 장소</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pickupLocation.latitude</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">픽업 장소</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pickupLocation.longitude</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">픽업 장소</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pickupLocation.createAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">픽업 장소</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pickupLocation.modifiedAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">픽업 장소</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>restaurantName</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">식당 이름</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>restaurantUrl</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">식당 URL</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>body</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">내용</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>imageUrl.imageUrlId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">이미지 URL</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>imageUrl.url</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">이미지 URL</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>imageUrl.type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">이미지 URL</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>imageUrl.createdAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">이미지 URL</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>imageUrl.modifiedAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">이미지 URL</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">response-body</div>
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code>{
+  "itemId" : 1,
+  "memberId" : 1,
+  "title" : "Title1",
+  "category" : {
+    "foodCategoryId" : 0,
+    "category" : "Category1",
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "createdAt" : 1664435494522,
+  "modifiedAt" : 1664435494522,
+  "deadline" : 1664435494522,
+  "pickupLocation" : {
+    "locationId" : 0,
+    "nameOfPlace" : "�뜑�겙�궡�씪�꽱�꽣",
+    "korAddress" : "�젣二쇰룄 �뿰遺곷줈",
+    "addressDetail" : "2痢� �슦�룄 �쉶�쓽�떎",
+    "type" : 1,
+    "latitude" : 123.1234,
+    "longitude" : 123.1234,
+    "createAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "restaurantName" : "Restaurant1",
+  "restaurantUrl" : "http://test-url.com",
+  "participantsList" : [ ],
+  "body" : "Body1",
+  "imageUrl" : {
+    "imageUrlId" : 0,
+    "url" : "http://test.com",
+    "type" : 1,
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_아이템_변경">2.2. 아이템 변경</h3>
+<div class="listingblock">
+<div class="title">curl-request</div>
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="bash">$ curl 'http://localhost:8080/items/1?_csrf=ab9ae19b-def8-4864-8b9d-48e72c11a9d9' -i -X PATCH \
+    -H 'Content-Type: application/json;charset=UTF-8' \
+    -H 'Accept: application/json' \
+    -d '{
+  "memberId" : 1,
+  "title" : "Title1",
+  "category" : "Category1",
+  "deadline" : 1664435494522,
+  "pickupLocation" : {
+    "locationId" : 0,
+    "nameOfPlace" : "더큰내일센터",
+    "korAddress" : "제주도 연북로",
+    "addressDetail" : "2층 우도 회의실",
+    "type" : 1,
+    "latitude" : 123.1234,
+    "longitude" : 123.1234,
+    "createAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "restaurantName" : "Restaurant1",
+  "restaurantUrl" : "http://test-url.com/",
+  "body" : "Body1",
+  "imageUrl" : {
+    "imageUrlId" : 0,
+    "url" : "http://test.com",
+    "type" : 1,
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  }
+}'</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">http-request</div>
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code data-lang="http">PATCH /items/1?_csrf=ab9ae19b-def8-4864-8b9d-48e72c11a9d9 HTTP/1.1
+Content-Type: application/json;charset=UTF-8
+Accept: application/json
+Content-Length: 700
+Host: localhost:8080
+
+{
+  "memberId" : 1,
+  "title" : "Title1",
+  "category" : "Category1",
+  "deadline" : 1664435494522,
+  "pickupLocation" : {
+    "locationId" : 0,
+    "nameOfPlace" : "더큰내일센터",
+    "korAddress" : "제주도 연북로",
+    "addressDetail" : "2층 우도 회의실",
+    "type" : 1,
+    "latitude" : 123.1234,
+    "longitude" : 123.1234,
+    "createAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "restaurantName" : "Restaurant1",
+  "restaurantUrl" : "http://test-url.com/",
+  "body" : "Body1",
+  "imageUrl" : {
+    "imageUrlId" : 0,
+    "url" : "http://test.com",
+    "type" : 1,
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">http-response</div>
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code data-lang="http">HTTP/1.1 200 OK
+Content-Type: application/json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Content-Length: 931
+
+{
+  "itemId" : 1,
+  "memberId" : 1,
+  "title" : "Title1",
+  "category" : {
+    "foodCategoryId" : 0,
+    "category" : "Category1",
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "createdAt" : 1664435494522,
+  "modifiedAt" : 1664435494522,
+  "deadline" : 1664435494522,
+  "pickupLocation" : {
+    "locationId" : 0,
+    "nameOfPlace" : "더큰내일센터",
+    "korAddress" : "제주도 연북로",
+    "addressDetail" : "2층 우도 회의실",
+    "type" : 1,
+    "latitude" : 123.1234,
+    "longitude" : 123.1234,
+    "createAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "restaurantName" : "Restaurant1",
+  "restaurantUrl" : "http://test-url.com",
+  "participantsList" : [ ],
+  "body" : "Body1",
+  "imageUrl" : {
+    "imageUrlId" : 0,
+    "url" : "http://test.com",
+    "type" : 1,
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">httpie-request</div>
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="bash">$ echo '{
+  "memberId" : 1,
+  "title" : "Title1",
+  "category" : "Category1",
+  "deadline" : 1664435494522,
+  "pickupLocation" : {
+    "locationId" : 0,
+    "nameOfPlace" : "더큰내일센터",
+    "korAddress" : "제주도 연북로",
+    "addressDetail" : "2층 우도 회의실",
+    "type" : 1,
+    "latitude" : 123.1234,
+    "longitude" : 123.1234,
+    "createAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "restaurantName" : "Restaurant1",
+  "restaurantUrl" : "http://test-url.com/",
+  "body" : "Body1",
+  "imageUrl" : {
+    "imageUrlId" : 0,
+    "url" : "http://test.com",
+    "type" : 1,
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  }
+}' | http PATCH 'http://localhost:8080/items/1?_csrf=ab9ae19b-def8-4864-8b9d-48e72c11a9d9' \
+    'Content-Type:application/json;charset=UTF-8' \
+    'Accept:application/json'</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 7. /items/{item-id}</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>item-id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">게시글 식별자</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">request-body</div>
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code>{
+  "memberId" : 1,
+  "title" : "Title1",
+  "category" : "Category1",
+  "deadline" : 1664435494522,
+  "pickupLocation" : {
+    "locationId" : 0,
+    "nameOfPlace" : "더큰내일센터",
+    "korAddress" : "제주도 연북로",
+    "addressDetail" : "2층 우도 회의실",
+    "type" : 1,
+    "latitude" : 123.1234,
+    "longitude" : 123.1234,
+    "createAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "restaurantName" : "Restaurant1",
+  "restaurantUrl" : "http://test-url.com/",
+  "body" : "Body1",
+  "imageUrl" : {
+    "imageUrlId" : 0,
+    "url" : "http://test.com",
+    "type" : 1,
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  }
+}</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 8. request-fields</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>memberId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">회원 식별자</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>title</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">타이틀</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>category</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">내용</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>deadline</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">마감 시간</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pickupLocation.locationId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">픽업 장소</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pickupLocation.nameOfPlace</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">픽업 장소</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pickupLocation.korAddress</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">픽업 장소</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pickupLocation.addressDetail</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">픽업 장소</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pickupLocation.type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">픽업 장소</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pickupLocation.latitude</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">픽업 장소</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pickupLocation.longitude</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">픽업 장소</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pickupLocation.createAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">픽업 장소</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pickupLocation.modifiedAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">픽업 장소</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>restaurantName</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">식당 이름</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>restaurantUrl</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">식당 URL</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>body</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">내용</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>imageUrl.imageUrlId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">이미지 URL</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>imageUrl.url</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">이미지 URL</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>imageUrl.type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">이미지 URL</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>imageUrl.createdAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">이미지 URL</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>imageUrl.modifiedAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">이미지 URL</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">response-body</div>
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code>{
+  "itemId" : 1,
+  "memberId" : 1,
+  "title" : "Title1",
+  "category" : {
+    "foodCategoryId" : 0,
+    "category" : "Category1",
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "createdAt" : 1664435494522,
+  "modifiedAt" : 1664435494522,
+  "deadline" : 1664435494522,
+  "pickupLocation" : {
+    "locationId" : 0,
+    "nameOfPlace" : "�뜑�겙�궡�씪�꽱�꽣",
+    "korAddress" : "�젣二쇰룄 �뿰遺곷줈",
+    "addressDetail" : "2痢� �슦�룄 �쉶�쓽�떎",
+    "type" : 1,
+    "latitude" : 123.1234,
+    "longitude" : 123.1234,
+    "createAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "restaurantName" : "Restaurant1",
+  "restaurantUrl" : "http://test-url.com",
+  "participantsList" : [ ],
+  "body" : "Body1",
+  "imageUrl" : {
+    "imageUrlId" : 0,
+    "url" : "http://test.com",
+    "type" : 1,
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  }
+}</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 9. response-fields</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>itemId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">게시글 식별자</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>memberId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">회원 식별자</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>title</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">타이틀</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>category.foodCategoryId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">내용</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>category.category</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">내용</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>category.createdAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">내용</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>category.modifiedAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">내용</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>createdAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">생성 일자</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>modifiedAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">수정 일자</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>deadline</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">마감 시간</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pickupLocation.locationId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">픽업 장소</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pickupLocation.nameOfPlace</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">픽업 장소</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pickupLocation.korAddress</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">픽업 장소</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pickupLocation.addressDetail</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">픽업 장소</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pickupLocation.type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">픽업 장소</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pickupLocation.latitude</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">픽업 장소</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pickupLocation.longitude</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">픽업 장소</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pickupLocation.createAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">픽업 장소</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pickupLocation.modifiedAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">픽업 장소</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>restaurantName</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">식당 이름</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>restaurantUrl</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">식당 URL</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>participantsList</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">참여자 리스트</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>body</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">내용</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>imageUrl.imageUrlId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">이미지 URL</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>imageUrl.url</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">이미지 URL</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>imageUrl.type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">이미지 URL</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>imageUrl.createdAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">이미지 URL</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>imageUrl.modifiedAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">이미지 URL</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_단일_아이템_조회">2.3. 단일 아이템 조회</h3>
+<div class="listingblock">
+<div class="title">curl-request</div>
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="bash">$ curl 'http://localhost:8080/items/1' -i -X GET \
+    -H 'Accept: application/json'</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">http-request</div>
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code data-lang="http">GET /items/1 HTTP/1.1
+Accept: application/json
+Host: localhost:8080</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">http-response</div>
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code data-lang="http">HTTP/1.1 200 OK
+Content-Type: application/json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Content-Length: 931
+
+{
+  "itemId" : 1,
+  "memberId" : 1,
+  "title" : "Title1",
+  "category" : {
+    "foodCategoryId" : 0,
+    "category" : "Category1",
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "createdAt" : 1664435494522,
+  "modifiedAt" : 1664435494522,
+  "deadline" : 1664435494522,
+  "pickupLocation" : {
+    "locationId" : 0,
+    "nameOfPlace" : "더큰내일센터",
+    "korAddress" : "제주도 연북로",
+    "addressDetail" : "2층 우도 회의실",
+    "type" : 1,
+    "latitude" : 123.1234,
+    "longitude" : 123.1234,
+    "createAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "restaurantName" : "Restaurant1",
+  "restaurantUrl" : "http://test-url.com",
+  "participantsList" : [ ],
+  "body" : "Body1",
+  "imageUrl" : {
+    "imageUrlId" : 0,
+    "url" : "http://test.com",
+    "type" : 1,
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">httpie-request</div>
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="bash">$ http GET 'http://localhost:8080/items/1' \
+    'Accept:application/json'</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 10. /items/{item-id}</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>item-id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">게시글 식별자</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">request-body</div>
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">response-body</div>
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code>{
+  "itemId" : 1,
+  "memberId" : 1,
+  "title" : "Title1",
+  "category" : {
+    "foodCategoryId" : 0,
+    "category" : "Category1",
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "createdAt" : 1664435494522,
+  "modifiedAt" : 1664435494522,
+  "deadline" : 1664435494522,
+  "pickupLocation" : {
+    "locationId" : 0,
+    "nameOfPlace" : "�뜑�겙�궡�씪�꽱�꽣",
+    "korAddress" : "�젣二쇰룄 �뿰遺곷줈",
+    "addressDetail" : "2痢� �슦�룄 �쉶�쓽�떎",
+    "type" : 1,
+    "latitude" : 123.1234,
+    "longitude" : 123.1234,
+    "createAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "restaurantName" : "Restaurant1",
+  "restaurantUrl" : "http://test-url.com",
+  "participantsList" : [ ],
+  "body" : "Body1",
+  "imageUrl" : {
+    "imageUrlId" : 0,
+    "url" : "http://test.com",
+    "type" : 1,
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  }
+}</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 11. response-fields</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>itemId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">게시글 식별자</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>memberId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">회원 식별자</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>title</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">타이틀</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>category.foodCategoryId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">내용</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>category.category</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">내용</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>category.createdAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">내용</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>category.modifiedAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">내용</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>createdAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">생성 일자</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>modifiedAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">수정 일자</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>deadline</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">마감 시간</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pickupLocation.locationId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">픽업 장소</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pickupLocation.nameOfPlace</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">픽업 장소</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pickupLocation.korAddress</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">픽업 장소</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pickupLocation.addressDetail</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">픽업 장소</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pickupLocation.type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">픽업 장소</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pickupLocation.latitude</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">픽업 장소</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pickupLocation.longitude</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">픽업 장소</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pickupLocation.createAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">픽업 장소</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pickupLocation.modifiedAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">픽업 장소</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>restaurantName</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">식당 이름</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>restaurantUrl</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">식당 URL</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>participantsList</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">참여자 리스트</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>body</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">내용</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>imageUrl.imageUrlId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">이미지 URL</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>imageUrl.url</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">이미지 URL</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>imageUrl.type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">이미지 URL</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>imageUrl.createdAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">이미지 URL</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>imageUrl.modifiedAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">이미지 URL</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_전체_아이템_조회">2.4. 전체 아이템 조회</h3>
+<div class="listingblock">
+<div class="title">curl-request</div>
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="bash">$ curl 'http://localhost:8080/items?page=1&amp;size=10' -i -X GET \
+    -H 'Accept: application/json'</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">http-request</div>
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code data-lang="http">GET /items?page=1&amp;size=10 HTTP/1.1
+Accept: application/json
+Host: localhost:8080</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">http-response</div>
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code data-lang="http">HTTP/1.1 200 OK
+Content-Type: application/json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Content-Length: 9336
+
+[ {
+  "itemId" : 1,
+  "memberId" : 1,
+  "title" : "Title1",
+  "category" : {
+    "foodCategoryId" : 0,
+    "category" : "Category1",
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "createdAt" : 1664435494522,
+  "modifiedAt" : 1664435494522,
+  "deadline" : 1664435494522,
+  "pickupLocation" : {
+    "locationId" : 0,
+    "nameOfPlace" : "더큰내일센터",
+    "korAddress" : "제주도 연북로",
+    "addressDetail" : "2층 우도 회의실",
+    "type" : 1,
+    "latitude" : 123.1234,
+    "longitude" : 123.1234,
+    "createAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "restaurantName" : "Restaurant1",
+  "restaurantUrl" : "http://test-url.com",
+  "participantsList" : [ ],
+  "body" : "Body1",
+  "imageUrl" : {
+    "imageUrlId" : 0,
+    "url" : "http://test.com",
+    "type" : 1,
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  }
+}, {
+  "itemId" : 2,
+  "memberId" : 2,
+  "title" : "Title2",
+  "category" : {
+    "foodCategoryId" : 0,
+    "category" : "Category1",
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "createdAt" : 1664435494522,
+  "modifiedAt" : 1664435494522,
+  "deadline" : 1664435494522,
+  "pickupLocation" : {
+    "locationId" : 0,
+    "nameOfPlace" : "더큰내일센터",
+    "korAddress" : "제주도 연북로",
+    "addressDetail" : "2층 우도 회의실",
+    "type" : 1,
+    "latitude" : 123.1234,
+    "longitude" : 123.1234,
+    "createAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "restaurantName" : "Restaurant2",
+  "restaurantUrl" : "http://test-url.com",
+  "participantsList" : [ ],
+  "body" : "Body2",
+  "imageUrl" : {
+    "imageUrlId" : 0,
+    "url" : "http://test.com",
+    "type" : 1,
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  }
+}, {
+  "itemId" : 3,
+  "memberId" : 3,
+  "title" : "Title3",
+  "category" : {
+    "foodCategoryId" : 0,
+    "category" : "Category1",
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "createdAt" : 1664435494522,
+  "modifiedAt" : 1664435494522,
+  "deadline" : 1664435494522,
+  "pickupLocation" : {
+    "locationId" : 0,
+    "nameOfPlace" : "더큰내일센터",
+    "korAddress" : "제주도 연북로",
+    "addressDetail" : "2층 우도 회의실",
+    "type" : 1,
+    "latitude" : 123.1234,
+    "longitude" : 123.1234,
+    "createAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "restaurantName" : "Restaurant1",
+  "restaurantUrl" : "http://test-url.com",
+  "participantsList" : [ ],
+  "body" : "Body3",
+  "imageUrl" : {
+    "imageUrlId" : 0,
+    "url" : "http://test.com",
+    "type" : 1,
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  }
+}, {
+  "itemId" : 4,
+  "memberId" : 4,
+  "title" : "Title4",
+  "category" : {
+    "foodCategoryId" : 0,
+    "category" : "Category1",
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "createdAt" : 1664435494522,
+  "modifiedAt" : 1664435494522,
+  "deadline" : 1664435494522,
+  "pickupLocation" : {
+    "locationId" : 0,
+    "nameOfPlace" : "더큰내일센터",
+    "korAddress" : "제주도 연북로",
+    "addressDetail" : "2층 우도 회의실",
+    "type" : 1,
+    "latitude" : 123.1234,
+    "longitude" : 123.1234,
+    "createAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "restaurantName" : "Restaurant1",
+  "restaurantUrl" : "http://test-url.com",
+  "participantsList" : [ ],
+  "body" : "Body4",
+  "imageUrl" : {
+    "imageUrlId" : 0,
+    "url" : "http://test.com",
+    "type" : 1,
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  }
+}, {
+  "itemId" : 5,
+  "memberId" : 5,
+  "title" : "Title5",
+  "category" : {
+    "foodCategoryId" : 0,
+    "category" : "Category1",
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "createdAt" : 1664435494522,
+  "modifiedAt" : 1664435494522,
+  "deadline" : 1664435494522,
+  "pickupLocation" : {
+    "locationId" : 0,
+    "nameOfPlace" : "더큰내일센터",
+    "korAddress" : "제주도 연북로",
+    "addressDetail" : "2층 우도 회의실",
+    "type" : 1,
+    "latitude" : 123.1234,
+    "longitude" : 123.1234,
+    "createAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "restaurantName" : "Restaurant1",
+  "restaurantUrl" : "http://test-url.com",
+  "participantsList" : [ ],
+  "body" : "Body5",
+  "imageUrl" : {
+    "imageUrlId" : 0,
+    "url" : "http://test.com",
+    "type" : 1,
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  }
+}, {
+  "itemId" : 6,
+  "memberId" : 6,
+  "title" : "Title6",
+  "category" : {
+    "foodCategoryId" : 0,
+    "category" : "Category1",
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "createdAt" : 1664435494522,
+  "modifiedAt" : 1664435494522,
+  "deadline" : 1664435494522,
+  "pickupLocation" : {
+    "locationId" : 0,
+    "nameOfPlace" : "더큰내일센터",
+    "korAddress" : "제주도 연북로",
+    "addressDetail" : "2층 우도 회의실",
+    "type" : 1,
+    "latitude" : 123.1234,
+    "longitude" : 123.1234,
+    "createAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "restaurantName" : "Restaurant1",
+  "restaurantUrl" : "http://test-url.com",
+  "participantsList" : [ ],
+  "body" : "Body6",
+  "imageUrl" : {
+    "imageUrlId" : 0,
+    "url" : "http://test.com",
+    "type" : 1,
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  }
+}, {
+  "itemId" : 7,
+  "memberId" : 7,
+  "title" : "Title7",
+  "category" : {
+    "foodCategoryId" : 0,
+    "category" : "Category1",
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "createdAt" : 1664435494522,
+  "modifiedAt" : 1664435494522,
+  "deadline" : 1664435494522,
+  "pickupLocation" : {
+    "locationId" : 0,
+    "nameOfPlace" : "더큰내일센터",
+    "korAddress" : "제주도 연북로",
+    "addressDetail" : "2층 우도 회의실",
+    "type" : 1,
+    "latitude" : 123.1234,
+    "longitude" : 123.1234,
+    "createAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "restaurantName" : "Restaurant1",
+  "restaurantUrl" : "http://test-url.com",
+  "participantsList" : [ ],
+  "body" : "Body7",
+  "imageUrl" : {
+    "imageUrlId" : 0,
+    "url" : "http://test.com",
+    "type" : 1,
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  }
+}, {
+  "itemId" : 8,
+  "memberId" : 8,
+  "title" : "Title8",
+  "category" : {
+    "foodCategoryId" : 0,
+    "category" : "Category1",
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "createdAt" : 1664435494522,
+  "modifiedAt" : 1664435494522,
+  "deadline" : 1664435494522,
+  "pickupLocation" : {
+    "locationId" : 0,
+    "nameOfPlace" : "더큰내일센터",
+    "korAddress" : "제주도 연북로",
+    "addressDetail" : "2층 우도 회의실",
+    "type" : 1,
+    "latitude" : 123.1234,
+    "longitude" : 123.1234,
+    "createAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "restaurantName" : "Restaurant1",
+  "restaurantUrl" : "http://test-url.com",
+  "participantsList" : [ ],
+  "body" : "Body8",
+  "imageUrl" : {
+    "imageUrlId" : 0,
+    "url" : "http://test.com",
+    "type" : 1,
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  }
+}, {
+  "itemId" : 9,
+  "memberId" : 9,
+  "title" : "Title9",
+  "category" : {
+    "foodCategoryId" : 0,
+    "category" : "Category1",
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "createdAt" : 1664435494522,
+  "modifiedAt" : 1664435494522,
+  "deadline" : 1664435494522,
+  "pickupLocation" : {
+    "locationId" : 0,
+    "nameOfPlace" : "더큰내일센터",
+    "korAddress" : "제주도 연북로",
+    "addressDetail" : "2층 우도 회의실",
+    "type" : 1,
+    "latitude" : 123.1234,
+    "longitude" : 123.1234,
+    "createAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "restaurantName" : "Restaurant1",
+  "restaurantUrl" : "http://test-url.com",
+  "participantsList" : [ ],
+  "body" : "Body9",
+  "imageUrl" : {
+    "imageUrlId" : 0,
+    "url" : "http://test.com",
+    "type" : 1,
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  }
+}, {
+  "itemId" : 10,
+  "memberId" : 10,
+  "title" : "Title10",
+  "category" : {
+    "foodCategoryId" : 0,
+    "category" : "Category1",
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "createdAt" : 1664435494522,
+  "modifiedAt" : 1664435494522,
+  "deadline" : 1664435494522,
+  "pickupLocation" : {
+    "locationId" : 0,
+    "nameOfPlace" : "더큰내일센터",
+    "korAddress" : "제주도 연북로",
+    "addressDetail" : "2층 우도 회의실",
+    "type" : 1,
+    "latitude" : 123.1234,
+    "longitude" : 123.1234,
+    "createAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "restaurantName" : "Restaurant1",
+  "restaurantUrl" : "http://test-url.com",
+  "participantsList" : [ ],
+  "body" : "Body10",
+  "imageUrl" : {
+    "imageUrlId" : 0,
+    "url" : "http://test.com",
+    "type" : 1,
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  }
+} ]</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">httpie-request</div>
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="bash">$ http GET 'http://localhost:8080/items?page=1&amp;size=10' \
+    'Accept:application/json'</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">request-body</div>
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code></code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 12. request-parameters</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>page</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Page 번호</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>size</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Page 사이즈</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">response-body</div>
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code>[ {
+  "itemId" : 1,
+  "memberId" : 1,
+  "title" : "Title1",
+  "category" : {
+    "foodCategoryId" : 0,
+    "category" : "Category1",
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "createdAt" : 1664435494522,
+  "modifiedAt" : 1664435494522,
+  "deadline" : 1664435494522,
+  "pickupLocation" : {
+    "locationId" : 0,
+    "nameOfPlace" : "�뜑�겙�궡�씪�꽱�꽣",
+    "korAddress" : "�젣二쇰룄 �뿰遺곷줈",
+    "addressDetail" : "2痢� �슦�룄 �쉶�쓽�떎",
+    "type" : 1,
+    "latitude" : 123.1234,
+    "longitude" : 123.1234,
+    "createAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "restaurantName" : "Restaurant1",
+  "restaurantUrl" : "http://test-url.com",
+  "participantsList" : [ ],
+  "body" : "Body1",
+  "imageUrl" : {
+    "imageUrlId" : 0,
+    "url" : "http://test.com",
+    "type" : 1,
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  }
+}, {
+  "itemId" : 2,
+  "memberId" : 2,
+  "title" : "Title2",
+  "category" : {
+    "foodCategoryId" : 0,
+    "category" : "Category1",
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "createdAt" : 1664435494522,
+  "modifiedAt" : 1664435494522,
+  "deadline" : 1664435494522,
+  "pickupLocation" : {
+    "locationId" : 0,
+    "nameOfPlace" : "�뜑�겙�궡�씪�꽱�꽣",
+    "korAddress" : "�젣二쇰룄 �뿰遺곷줈",
+    "addressDetail" : "2痢� �슦�룄 �쉶�쓽�떎",
+    "type" : 1,
+    "latitude" : 123.1234,
+    "longitude" : 123.1234,
+    "createAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "restaurantName" : "Restaurant2",
+  "restaurantUrl" : "http://test-url.com",
+  "participantsList" : [ ],
+  "body" : "Body2",
+  "imageUrl" : {
+    "imageUrlId" : 0,
+    "url" : "http://test.com",
+    "type" : 1,
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  }
+}, {
+  "itemId" : 3,
+  "memberId" : 3,
+  "title" : "Title3",
+  "category" : {
+    "foodCategoryId" : 0,
+    "category" : "Category1",
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "createdAt" : 1664435494522,
+  "modifiedAt" : 1664435494522,
+  "deadline" : 1664435494522,
+  "pickupLocation" : {
+    "locationId" : 0,
+    "nameOfPlace" : "�뜑�겙�궡�씪�꽱�꽣",
+    "korAddress" : "�젣二쇰룄 �뿰遺곷줈",
+    "addressDetail" : "2痢� �슦�룄 �쉶�쓽�떎",
+    "type" : 1,
+    "latitude" : 123.1234,
+    "longitude" : 123.1234,
+    "createAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "restaurantName" : "Restaurant1",
+  "restaurantUrl" : "http://test-url.com",
+  "participantsList" : [ ],
+  "body" : "Body3",
+  "imageUrl" : {
+    "imageUrlId" : 0,
+    "url" : "http://test.com",
+    "type" : 1,
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  }
+}, {
+  "itemId" : 4,
+  "memberId" : 4,
+  "title" : "Title4",
+  "category" : {
+    "foodCategoryId" : 0,
+    "category" : "Category1",
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "createdAt" : 1664435494522,
+  "modifiedAt" : 1664435494522,
+  "deadline" : 1664435494522,
+  "pickupLocation" : {
+    "locationId" : 0,
+    "nameOfPlace" : "�뜑�겙�궡�씪�꽱�꽣",
+    "korAddress" : "�젣二쇰룄 �뿰遺곷줈",
+    "addressDetail" : "2痢� �슦�룄 �쉶�쓽�떎",
+    "type" : 1,
+    "latitude" : 123.1234,
+    "longitude" : 123.1234,
+    "createAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "restaurantName" : "Restaurant1",
+  "restaurantUrl" : "http://test-url.com",
+  "participantsList" : [ ],
+  "body" : "Body4",
+  "imageUrl" : {
+    "imageUrlId" : 0,
+    "url" : "http://test.com",
+    "type" : 1,
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  }
+}, {
+  "itemId" : 5,
+  "memberId" : 5,
+  "title" : "Title5",
+  "category" : {
+    "foodCategoryId" : 0,
+    "category" : "Category1",
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "createdAt" : 1664435494522,
+  "modifiedAt" : 1664435494522,
+  "deadline" : 1664435494522,
+  "pickupLocation" : {
+    "locationId" : 0,
+    "nameOfPlace" : "�뜑�겙�궡�씪�꽱�꽣",
+    "korAddress" : "�젣二쇰룄 �뿰遺곷줈",
+    "addressDetail" : "2痢� �슦�룄 �쉶�쓽�떎",
+    "type" : 1,
+    "latitude" : 123.1234,
+    "longitude" : 123.1234,
+    "createAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "restaurantName" : "Restaurant1",
+  "restaurantUrl" : "http://test-url.com",
+  "participantsList" : [ ],
+  "body" : "Body5",
+  "imageUrl" : {
+    "imageUrlId" : 0,
+    "url" : "http://test.com",
+    "type" : 1,
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  }
+}, {
+  "itemId" : 6,
+  "memberId" : 6,
+  "title" : "Title6",
+  "category" : {
+    "foodCategoryId" : 0,
+    "category" : "Category1",
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "createdAt" : 1664435494522,
+  "modifiedAt" : 1664435494522,
+  "deadline" : 1664435494522,
+  "pickupLocation" : {
+    "locationId" : 0,
+    "nameOfPlace" : "�뜑�겙�궡�씪�꽱�꽣",
+    "korAddress" : "�젣二쇰룄 �뿰遺곷줈",
+    "addressDetail" : "2痢� �슦�룄 �쉶�쓽�떎",
+    "type" : 1,
+    "latitude" : 123.1234,
+    "longitude" : 123.1234,
+    "createAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "restaurantName" : "Restaurant1",
+  "restaurantUrl" : "http://test-url.com",
+  "participantsList" : [ ],
+  "body" : "Body6",
+  "imageUrl" : {
+    "imageUrlId" : 0,
+    "url" : "http://test.com",
+    "type" : 1,
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  }
+}, {
+  "itemId" : 7,
+  "memberId" : 7,
+  "title" : "Title7",
+  "category" : {
+    "foodCategoryId" : 0,
+    "category" : "Category1",
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "createdAt" : 1664435494522,
+  "modifiedAt" : 1664435494522,
+  "deadline" : 1664435494522,
+  "pickupLocation" : {
+    "locationId" : 0,
+    "nameOfPlace" : "�뜑�겙�궡�씪�꽱�꽣",
+    "korAddress" : "�젣二쇰룄 �뿰遺곷줈",
+    "addressDetail" : "2痢� �슦�룄 �쉶�쓽�떎",
+    "type" : 1,
+    "latitude" : 123.1234,
+    "longitude" : 123.1234,
+    "createAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "restaurantName" : "Restaurant1",
+  "restaurantUrl" : "http://test-url.com",
+  "participantsList" : [ ],
+  "body" : "Body7",
+  "imageUrl" : {
+    "imageUrlId" : 0,
+    "url" : "http://test.com",
+    "type" : 1,
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  }
+}, {
+  "itemId" : 8,
+  "memberId" : 8,
+  "title" : "Title8",
+  "category" : {
+    "foodCategoryId" : 0,
+    "category" : "Category1",
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "createdAt" : 1664435494522,
+  "modifiedAt" : 1664435494522,
+  "deadline" : 1664435494522,
+  "pickupLocation" : {
+    "locationId" : 0,
+    "nameOfPlace" : "�뜑�겙�궡�씪�꽱�꽣",
+    "korAddress" : "�젣二쇰룄 �뿰遺곷줈",
+    "addressDetail" : "2痢� �슦�룄 �쉶�쓽�떎",
+    "type" : 1,
+    "latitude" : 123.1234,
+    "longitude" : 123.1234,
+    "createAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "restaurantName" : "Restaurant1",
+  "restaurantUrl" : "http://test-url.com",
+  "participantsList" : [ ],
+  "body" : "Body8",
+  "imageUrl" : {
+    "imageUrlId" : 0,
+    "url" : "http://test.com",
+    "type" : 1,
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  }
+}, {
+  "itemId" : 9,
+  "memberId" : 9,
+  "title" : "Title9",
+  "category" : {
+    "foodCategoryId" : 0,
+    "category" : "Category1",
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "createdAt" : 1664435494522,
+  "modifiedAt" : 1664435494522,
+  "deadline" : 1664435494522,
+  "pickupLocation" : {
+    "locationId" : 0,
+    "nameOfPlace" : "�뜑�겙�궡�씪�꽱�꽣",
+    "korAddress" : "�젣二쇰룄 �뿰遺곷줈",
+    "addressDetail" : "2痢� �슦�룄 �쉶�쓽�떎",
+    "type" : 1,
+    "latitude" : 123.1234,
+    "longitude" : 123.1234,
+    "createAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "restaurantName" : "Restaurant1",
+  "restaurantUrl" : "http://test-url.com",
+  "participantsList" : [ ],
+  "body" : "Body9",
+  "imageUrl" : {
+    "imageUrlId" : 0,
+    "url" : "http://test.com",
+    "type" : 1,
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  }
+}, {
+  "itemId" : 10,
+  "memberId" : 10,
+  "title" : "Title10",
+  "category" : {
+    "foodCategoryId" : 0,
+    "category" : "Category1",
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "createdAt" : 1664435494522,
+  "modifiedAt" : 1664435494522,
+  "deadline" : 1664435494522,
+  "pickupLocation" : {
+    "locationId" : 0,
+    "nameOfPlace" : "�뜑�겙�궡�씪�꽱�꽣",
+    "korAddress" : "�젣二쇰룄 �뿰遺곷줈",
+    "addressDetail" : "2痢� �슦�룄 �쉶�쓽�떎",
+    "type" : 1,
+    "latitude" : 123.1234,
+    "longitude" : 123.1234,
+    "createAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  },
+  "restaurantName" : "Restaurant1",
+  "restaurantUrl" : "http://test-url.com",
+  "participantsList" : [ ],
+  "body" : "Body10",
+  "imageUrl" : {
+    "imageUrlId" : 0,
+    "url" : "http://test.com",
+    "type" : 1,
+    "createdAt" : 1664435494522,
+    "modifiedAt" : 1664435494522
+  }
+} ]</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 13. response-fields</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].itemId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">게시글 식별자</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].memberId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">회원 식별자</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].title</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">타이틀</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].category.foodCategoryId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">내용</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].category.category</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">내용</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].category.createdAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">내용</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].category.modifiedAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">내용</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].createdAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">생성 일자</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].modifiedAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">수정 일자</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].deadline</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">마감 시간</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].pickupLocation.locationId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">픽업 장소</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].pickupLocation.nameOfPlace</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">픽업 장소</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].pickupLocation.korAddress</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">픽업 장소</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].pickupLocation.addressDetail</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">픽업 장소</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].pickupLocation.type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">픽업 장소</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].pickupLocation.latitude</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">픽업 장소</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].pickupLocation.longitude</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">픽업 장소</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].pickupLocation.createAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">픽업 장소</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].pickupLocation.modifiedAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">픽업 장소</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].restaurantName</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">식당 이름</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].restaurantUrl</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">식당 URL</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].participantsList</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">참여자 리스트</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].body</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">내용</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].imageUrl.imageUrlId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">이미지 URL</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].imageUrl.url</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">이미지 URL</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].imageUrl.type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">이미지 URL</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].imageUrl.createdAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">이미지 URL</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].imageUrl.modifiedAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">이미지 URL</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_아이템_삭제">2.5. 아이템 삭제</h3>
+<div class="listingblock">
+<div class="title">curl-request</div>
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="bash">$ curl 'http://localhost:8080/items/1?_csrf=d97bf22a-7d4d-4799-939f-bf7817f5e70d' -i -X DELETE</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">http-request</div>
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code data-lang="http">DELETE /items/1?_csrf=d97bf22a-7d4d-4799-939f-bf7817f5e70d HTTP/1.1
+Host: localhost:8080</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">http-response</div>
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code data-lang="http">HTTP/1.1 204 No Content
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">httpie-request</div>
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="bash">$ http DELETE 'http://localhost:8080/items/1?_csrf=d97bf22a-7d4d-4799-939f-bf7817f5e70d'</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 14. /items/{item-id}</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>item-id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">게시글 식별자</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">request-body</div>
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">response-body</div>
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code></code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -909,7 +3109,7 @@ Host: localhost:8080</code></pre>
 <div id="footer">
 <div id="footer-text">
 Version 0.0.1-SNAPSHOT<br>
-Last updated 2022-09-29 14:06:54 +0900
+Last updated 2022-09-29 16:11:16 +0900
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
