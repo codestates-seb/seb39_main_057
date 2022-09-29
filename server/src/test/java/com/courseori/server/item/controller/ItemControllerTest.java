@@ -31,6 +31,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.doNothing;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.*;
@@ -218,6 +219,7 @@ public class ItemControllerTest {
     @Test
     public void postItemTest() throws Exception{
 
+
         //given
         ItemDto.Post post = StubData.getSinglePostBody();
 
@@ -232,6 +234,7 @@ public class ItemControllerTest {
         //when
         ResultActions actions =
                 mockMvc.perform(
+
                         RestDocumentationRequestBuilders.post("/items")
                                 .with(csrf())
                                 .accept(MediaType.APPLICATION_JSON)
@@ -281,6 +284,132 @@ public class ItemControllerTest {
                         )
                 );
     }
-    
+
+    @Test
+    public void patchItemTest() throws Exception{
+        //given
+        long itemId = 1L;
+        ItemDto.Post patch = StubData.getSinglePostBody();
+
+        String content = gson.toJson(patch);
+
+        ItemDto.Response response = StubData.getSingleResponseBody();
+
+        given(itemMapper.itemPatchToItem(Mockito.any(ItemDto.Patch.class))).willReturn(new Item());
+        given(itemService.updateItem(Mockito.any(Item.class))).willReturn(new Item());
+        given(itemMapper.itemToItemResponse(Mockito.any(Item.class))).willReturn(response);
+
+        //when
+        ResultActions actions = mockMvc.perform(
+                RestDocumentationRequestBuilders
+                        .patch("/items/{item-id}", itemId).with(csrf())
+                        .accept(MediaType.APPLICATION_JSON)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(content));
+
+        //then
+        actions
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.itemId").value(itemId))
+                .andExpect(jsonPath("$.memberId").value(response.getMemberId()))
+                .andExpect(jsonPath("$.title").value(response.getTitle()))
+//                .andExpect(jsonPath("$.category.category").value(response.getCategory().getCategory()))
+                .andExpect(jsonPath("$.pickupLocation.nameOfPlace").value(response.getPickupLocation().getNameOfPlace()))
+                .andExpect(jsonPath("$.restaurantName").value(response.getRestaurantName()))
+                .andExpect(jsonPath("$.restaurantUrl").value(response.getRestaurantUrl()))
+                .andExpect(jsonPath("$.participantsList").value(response.getParticipantsList()))
+                .andExpect(jsonPath("$.body").value(response.getBody()))
+                .andExpect(jsonPath("$.imageUrl.url").value(response.getImageUrl().getUrl()))
+                .andDo(
+                        document("patch-item",
+                                preprocessRequest(prettyPrint()),
+                                preprocessResponse(prettyPrint()),
+                                pathParameters(
+                                        Arrays.asList(parameterWithName("item-id").description("게시글 식별자"))
+                                ),
+                                requestFields(
+                                        List.of(
+                                                fieldWithPath("memberId").type(JsonFieldType.NUMBER).description("회원 식별자"),
+                                                fieldWithPath("title").type(JsonFieldType.STRING).description("타이틀"),
+                                                fieldWithPath("category").type(JsonFieldType.STRING).description("내용"),
+                                                fieldWithPath("deadline").type(JsonFieldType.NUMBER).description("마감 시간"),
+                                                fieldWithPath("pickupLocation.locationId").type(JsonFieldType.NUMBER).description("픽업 장소"),
+                                                fieldWithPath("pickupLocation.nameOfPlace").type(JsonFieldType.STRING).description("픽업 장소"),
+                                                fieldWithPath("pickupLocation.korAddress").type(JsonFieldType.STRING).description("픽업 장소"),
+                                                fieldWithPath("pickupLocation.addressDetail").type(JsonFieldType.STRING).description("픽업 장소"),
+                                                fieldWithPath("pickupLocation.type").type(JsonFieldType.NUMBER).description("픽업 장소"),
+                                                fieldWithPath("pickupLocation.latitude").type(JsonFieldType.NUMBER).description("픽업 장소"),
+                                                fieldWithPath("pickupLocation.longitude").type(JsonFieldType.NUMBER).description("픽업 장소"),
+                                                fieldWithPath("pickupLocation.createAt").type(JsonFieldType.NUMBER).description("픽업 장소"),
+                                                fieldWithPath("pickupLocation.modifiedAt").type(JsonFieldType.NUMBER).description("픽업 장소"),
+                                                fieldWithPath("restaurantName").type(JsonFieldType.STRING).description("식당 이름"),
+                                                fieldWithPath("restaurantUrl").type(JsonFieldType.STRING).description("식당 URL"),
+                                                fieldWithPath("body").type(JsonFieldType.STRING).description("내용"),
+                                                fieldWithPath("imageUrl.imageUrlId").type(JsonFieldType.NUMBER).description("이미지 URL"),
+                                                fieldWithPath("imageUrl.url").type(JsonFieldType.STRING).description("이미지 URL"),
+                                                fieldWithPath("imageUrl.type").type(JsonFieldType.NUMBER).description("이미지 URL"),
+                                                fieldWithPath("imageUrl.createdAt").type(JsonFieldType.NUMBER).description("이미지 URL"),
+                                                fieldWithPath("imageUrl.modifiedAt").type(JsonFieldType.NUMBER).description("이미지 URL")
+                                        )
+                                ),
+                                responseFields(
+                                        Arrays.asList(
+                                                fieldWithPath("itemId").type(JsonFieldType.NUMBER).description("게시글 식별자"),
+                                                fieldWithPath("memberId").type(JsonFieldType.NUMBER).description("회원 식별자"),
+                                                fieldWithPath("title").type(JsonFieldType.STRING).description("타이틀"),
+                                                fieldWithPath("category.foodCategoryId").type(JsonFieldType.NUMBER).description("내용"),
+                                                fieldWithPath("category.category").type(JsonFieldType.STRING).description("내용"),
+                                                fieldWithPath("category.createdAt").type(JsonFieldType.NUMBER).description("내용"),
+                                                fieldWithPath("category.modifiedAt").type(JsonFieldType.NUMBER).description("내용"),
+                                                fieldWithPath("createdAt").type(JsonFieldType.NUMBER).description("생성 일자"),
+                                                fieldWithPath("modifiedAt").type(JsonFieldType.NUMBER).description("수정 일자"),
+                                                fieldWithPath("deadline").type(JsonFieldType.NUMBER).description("마감 시간"),
+                                                fieldWithPath("pickupLocation.locationId").type(JsonFieldType.NUMBER).description("픽업 장소"),
+                                                fieldWithPath("pickupLocation.nameOfPlace").type(JsonFieldType.STRING).description("픽업 장소"),
+                                                fieldWithPath("pickupLocation.korAddress").type(JsonFieldType.STRING).description("픽업 장소"),
+                                                fieldWithPath("pickupLocation.addressDetail").type(JsonFieldType.STRING).description("픽업 장소"),
+                                                fieldWithPath("pickupLocation.type").type(JsonFieldType.NUMBER).description("픽업 장소"),
+                                                fieldWithPath("pickupLocation.latitude").type(JsonFieldType.NUMBER).description("픽업 장소"),
+                                                fieldWithPath("pickupLocation.longitude").type(JsonFieldType.NUMBER).description("픽업 장소"),
+                                                fieldWithPath("pickupLocation.createAt").type(JsonFieldType.NUMBER).description("픽업 장소"),
+                                                fieldWithPath("pickupLocation.modifiedAt").type(JsonFieldType.NUMBER).description("픽업 장소"),
+                                                fieldWithPath("restaurantName").type(JsonFieldType.STRING).description("식당 이름"),
+                                                fieldWithPath("restaurantUrl").type(JsonFieldType.STRING).description("식당 URL"),
+                                                fieldWithPath("participantsList").type(JsonFieldType.ARRAY).description("참여자 리스트"),
+                                                fieldWithPath("body").type(JsonFieldType.STRING).description("내용"),
+                                                fieldWithPath("imageUrl.imageUrlId").type(JsonFieldType.NUMBER).description("이미지 URL"),
+                                                fieldWithPath("imageUrl.url").type(JsonFieldType.STRING).description("이미지 URL"),
+                                                fieldWithPath("imageUrl.type").type(JsonFieldType.NUMBER).description("이미지 URL"),
+                                                fieldWithPath("imageUrl.createdAt").type(JsonFieldType.NUMBER).description("이미지 URL"),
+                                                fieldWithPath("imageUrl.modifiedAt").type(JsonFieldType.NUMBER).description("이미지 URL")
+                                        )
+                                )
+                        ));
+    }
+
+    @Test
+    public void deleteItemTest() throws Exception {
+
+        //given
+        long itemId = 1L;
+        doNothing().when(itemService).deleteItem(Mockito.anyLong());
+
+        //when
+        ResultActions actions = mockMvc.perform(
+                RestDocumentationRequestBuilders
+                        .delete("/items/{item-id}", itemId).with(csrf()));
+
+        actions.andExpect(status().isNoContent())
+                .andDo(
+                        document(
+                                "delete-item",
+                                preprocessRequest(prettyPrint()),
+                                preprocessResponse(prettyPrint()),
+                                pathParameters(
+                                        Arrays.asList(parameterWithName("item-id").description("게시글 식별자"))
+                                )
+                        )
+                );
+    }
 
 }

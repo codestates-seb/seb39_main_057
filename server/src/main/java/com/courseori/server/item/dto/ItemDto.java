@@ -21,8 +21,6 @@ public class ItemDto {
         private String title;
         private String category;
 
-//        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM/dd/yyyy")
-//        private Date deadline;
         private Long deadline;
         private Location pickupLocation;
 
@@ -45,12 +43,11 @@ public class ItemDto {
     @Setter
     public static class Patch {
         private long itemId;
-        private long memberId;
+//        private long memberId;
 
         private String title;
-        private FoodCategory category;
+        private String category;
 
-//        private Date deadline;
         private Long deadline;
         private Location pickupLocation;
 
@@ -73,11 +70,6 @@ public class ItemDto {
 
         private String title;
         private FoodCategory category;
-//        private Date createdAt;
-//        private Date modifiedAt;
-
-//        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd" , timezone = "GMT+8")
-//        private Date deadline;
 
         private Long createdAt;
         private Long modifiedAt;
