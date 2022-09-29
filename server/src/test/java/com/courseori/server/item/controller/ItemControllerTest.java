@@ -292,6 +292,17 @@ public class ItemControllerTest {
     }
 
     @Test
+    public void patchItemTest() throws Exception{
+
+    }
+
+
+
+
+
+
+    
+    @Test
     public void deleteItemTest() throws Exception {
 
         //given
