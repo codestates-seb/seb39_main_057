@@ -18,11 +18,9 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.mapping.JpaMetamodelMappingContext;
 import org.springframework.http.MediaType;
-import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders;
 import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.security.test.context.support.WithMockUser;
-import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
@@ -33,7 +31,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.doNothing;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.*;
@@ -220,11 +217,6 @@ public class ItemControllerTest {
 
     @Test
     public void postItemTest() throws Exception{
-        /*tempt*/
-        var TOKEN_ATTR_NAME = "org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository.CSRF_TOKEN";
-        var httpSessionCsrfTokenRepository = new HttpSessionCsrfTokenRepository();
-        var csrfToken = httpSessionCsrfTokenRepository.generateToken(new MockHttpServletRequest());
-        /* **** */
 
         //given
         ItemDto.Post post = StubData.getSinglePostBody();
@@ -241,8 +233,7 @@ public class ItemControllerTest {
         ResultActions actions =
                 mockMvc.perform(
                         RestDocumentationRequestBuilders.post("/items")
-                                .sessionAttr(TOKEN_ATTR_NAME, csrfToken)
-                                .param(csrfToken.getParameterName(), csrfToken.getToken())
+                                .with(csrf())
                                 .accept(MediaType.APPLICATION_JSON)
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(content)
@@ -290,41 +281,6 @@ public class ItemControllerTest {
                         )
                 );
     }
-
-    @Test
-    public void patchItemTest() throws Exception{
-
-    }
-
-
-
-
-
-
     
-    @Test
-    public void deleteItemTest() throws Exception {
-
-        //given
-        long itemId = 1L;
-        doNothing().when(itemService).deleteItem(Mockito.anyLong());
-
-        //when
-        ResultActions actions = mockMvc.perform(
-                RestDocumentationRequestBuilders
-                        .delete("/items/{item-id}", itemId).with(csrf()));
-
-                actions.andExpect(status().isNoContent())
-                        .andDo(
-                                document(
-                                        "delete-item",
-                                        preprocessRequest(prettyPrint()),
-                                        preprocessResponse(prettyPrint()),
-                                        pathParameters(
-                                                Arrays.asList(parameterWithName("item-id").description("게시글 식별자"))
-                                        )
-                                )
-                        );
-    }
 
 }
