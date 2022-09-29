@@ -9,7 +9,6 @@ import com.courseori.server.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,14 +25,12 @@ public class MemberController {
 
     private final MemberMapper mapper;
     private final MemberService memberService;
-    private final BCryptPasswordEncoder encoder;
 
 
     @PostMapping
     public ResponseEntity postMember(@Valid @RequestBody MemberDto.Post responseBody){
 
         Member member = mapper.memberPostToMember(responseBody);
-//        encoder.encode(member.getPassword());
         member.setRole(ROLE.ROLE_USER);
 
         Member createMember = memberService.createMember(member);

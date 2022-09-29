@@ -20,7 +20,6 @@ import org.springframework.data.jpa.mapping.JpaMetamodelMappingContext;
 import org.springframework.http.MediaType;
 import org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders;
 import org.springframework.restdocs.payload.JsonFieldType;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
@@ -66,8 +65,7 @@ class MemberControllerTest {
     private Gson gson;
 
 
-    @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
+
 
     Long modifiedAt = new Date().getTime();
     Long joinedAt = new Date().getTime();
@@ -78,9 +76,7 @@ class MemberControllerTest {
     void postMember() throws Exception{
 
         //given
-        String password = passwordEncoder.encode("1234");
-
-
+        String password = "1234";
 
         MemberDto.Post post = new MemberDto.Post("김코딩","test@naver.com",
                 password,"010-1111-1111",
@@ -148,7 +144,7 @@ class MemberControllerTest {
     @DisplayName("회원 정보수정 로직 테스트 ")
     void patchMember() throws Exception {
 
-        String password = passwordEncoder.encode("1234");
+        String password ="1234";
         //given
         long memberId = 1L;
         MemberDto.Patch patch =

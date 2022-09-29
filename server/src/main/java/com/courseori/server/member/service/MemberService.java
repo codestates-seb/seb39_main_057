@@ -1,9 +1,9 @@
 package com.courseori.server.member.service;
 
-import com.courseori.server.member.dto.MemberDto;
 import com.courseori.server.member.entity.Member;
 import com.courseori.server.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -13,9 +13,11 @@ import java.util.Optional;
 @Service
 public class MemberService {
 
+    private final BCryptPasswordEncoder encoder;
     private final MemberRepository memberRepository;
 
     public Member createMember(Member member){
+        member.setPassword(encoder.encode(member.getPassword()));
         Member saveMember = memberRepository.save(member);
 
         return saveMember;
@@ -25,7 +27,7 @@ public class MemberService {
         Member findMember = findVerifiedMember(member.getMemberId());
 
         findMember.setUsername(member.getUsername());
-        findMember.setPassword(member.getPhoneNumber());
+        findMember.setPassword(encoder.encode(member.getPassword()));
         findMember.setPhoneNumber(member.getProfileImageUrl());
         findMember.setProfileImageUrl(member.getProfileImageUrl());
 

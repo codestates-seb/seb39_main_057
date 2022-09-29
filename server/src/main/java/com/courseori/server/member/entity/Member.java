@@ -1,12 +1,9 @@
 package com.courseori.server.member.entity;
 
 
-import com.courseori.server.image.entity.ImageUrl;
 import com.courseori.server.location.entity.Location;
 import com.courseori.server.member.role.ROLE;
-
 import lombok.*;
-
 import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.*;
@@ -60,15 +57,6 @@ public class Member {
 
    private String paymentMethod;
 
-    //권한 부여에 대한 엔티티 입니다.
-//<<<<<<< HEAD
-//    @Transient
-//    private Roles roles = new Roles(1, "ROLE_USER");
-//=======
-//>>>>>>> 48f8199e566320e4717ccfc45e9d553f77da973c
-
-    @ManyToOne
-    @JoinColumn(name = "ROLE_ID")
     private ROLE role;
 
     private String provider;
