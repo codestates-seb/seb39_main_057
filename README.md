@@ -135,8 +135,8 @@
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/80661467/193027429-7cdf2523-40a1-4ab5-8bb1-c7e96755611a.png"  width="750" height="700"/>
-<img src="https://user-images.githubusercontent.com/80661467/193027436-f686d85c-0b2b-4839-9988-8b5a054977a5.png"  width="750" height="900"/>
-<img src="https://user-images.githubusercontent.com/80661467/193027452-b8597bea-9afb-4a7a-af5c-c3b440a2564b.png"  width="750" height="700"/>
+<img src="https://user-images.githubusercontent.com/80661467/193027436-f686d85c-0b2b-4839-9988-8b5a054977a5.png"  width="750" height="850"/>
+<img src="https://user-images.githubusercontent.com/80661467/193027452-b8597bea-9afb-4a7a-af5c-c3b440a2564b.png"  width="750" height="600"/>
 <img src="https://user-images.githubusercontent.com/80661467/193027464-57709277-0f53-4b96-908d-81558c904c65.png"  width="750" height="900"/>
 </p>
 
