@@ -62,7 +62,6 @@ public class MemberController {
                 return new ResponseEntity(mapper.memberToMemberResponse(findMember),HttpStatus.OK);
     }
 
-
     @DeleteMapping("/{member-id}")
     public ResponseEntity deleteMember(
             @PathVariable("member-id") @Positive long memberId){
