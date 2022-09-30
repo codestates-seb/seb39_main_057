@@ -39,8 +39,10 @@
 
 ## ■ 사용 기술
 
+
+
 <p align="center">
-<img src="https://user-images.githubusercontent.com/80661467/193200930-ffbc6188-ff39-4139-9eea-5ee935d40fe7.png"  width="500" height="500"/>
+<img src="https://user-images.githubusercontent.com/80661467/193213252-181746d9-e761-4181-a975-7824cbe54ec7.png"  width="500" height="500"/>
 </p>
 
 
