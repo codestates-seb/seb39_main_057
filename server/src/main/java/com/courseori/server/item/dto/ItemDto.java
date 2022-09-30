@@ -10,6 +10,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -25,9 +26,10 @@ public class ItemDto {
         private long memberId;
 
 
-        @NotBlank(message = "제목을 입력해주세요.")
-        @Size(min = 2, max = 20, message = "제목을 2자 ~ 20자 사이로 입력해주세요.")
         private String title;
+
+        @Min(2)
+        private int recruit;
 
         @NotBlank(message = "카테고리를 설정해주세요.")
         private String category;
@@ -63,9 +65,10 @@ public class ItemDto {
     public static class Patch {
         private long itemId;
 
-        @NotBlank(message = "제목을 입력해주세요.")
-        @Size(min = 2, max = 20, message = "제목을 2자 ~ 20자 사이로 입력해주세요.")
         private String title;
+
+        @Min(2)
+        private int recruit;
 
         @NotBlank(message = "카테고리를 설정해주세요.")
         private String category;
@@ -98,6 +101,9 @@ public class ItemDto {
         private long memberId;
 
         private String title;
+
+        private int recruit;
+
         private FoodCategory category;
 
         private Long createdAt;

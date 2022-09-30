@@ -34,6 +34,8 @@ public class ItemService {
         Item foundItem = findVerifiedItem(item.getItemId());
         Optional.ofNullable(item.getTitle())
                 .ifPresent(title -> foundItem.setTitle(title));
+        Optional.ofNullable(item.getRecruit())
+                .ifPresent(recruit -> foundItem.setRecruit(recruit));
         Optional.ofNullable(item.getCategory())
                 .ifPresent(category -> foundItem.setCategory(category));
         Optional.ofNullable(item.getBody())
