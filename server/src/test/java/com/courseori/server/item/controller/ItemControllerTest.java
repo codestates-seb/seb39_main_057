@@ -87,6 +87,7 @@ public class ItemControllerTest {
                 .andExpect(jsonPath("$.itemId").value(itemId))
                 .andExpect(jsonPath("$.memberId").value(response.getMemberId()))
                 .andExpect(jsonPath("$.title").value(response.getTitle()))
+                .andExpect(jsonPath("$.recruit").value(response.getRecruit()))
                 .andExpect(jsonPath("$.category.category").value(response.getCategory().getCategory()))
                 .andExpect(jsonPath("$.pickupLocation.nameOfPlace").value(response.getPickupLocation().getNameOfPlace()))
                 .andExpect(jsonPath("$.restaurantName").value(response.getRestaurantName()))
@@ -108,10 +109,14 @@ public class ItemControllerTest {
                                                 fieldWithPath("itemId").type(JsonFieldType.NUMBER).description("게시글 식별자"),
                                                 fieldWithPath("memberId").type(JsonFieldType.NUMBER).description("회원 식별자"),
                                                 fieldWithPath("title").type(JsonFieldType.STRING).description("타이틀"),
+
                                                 fieldWithPath("category.foodCategoryId").type(JsonFieldType.NUMBER).description("카테고리 식별자"),
                                                 fieldWithPath("category.category").type(JsonFieldType.STRING).description("카테고리"),
                                                 fieldWithPath("category.createdAt").type(JsonFieldType.NUMBER).description("카테고리 생성 일자"),
                                                 fieldWithPath("category.modifiedAt").type(JsonFieldType.NUMBER).description("카테고리 수정 일자"),
+
+                                                fieldWithPath("recruit").type(JsonFieldType.NUMBER).description("모집인원"),
+
                                                 fieldWithPath("createdAt").type(JsonFieldType.NUMBER).description("생성 일자"),
                                                 fieldWithPath("modifiedAt").type(JsonFieldType.NUMBER).description("수정 일자"),
                                                 fieldWithPath("deadline").type(JsonFieldType.NUMBER).description("마감 일자"),
@@ -185,12 +190,16 @@ public class ItemControllerTest {
                                                     fieldWithPath("[].itemId").type(JsonFieldType.NUMBER).description("게시글 식별자"),
                                                     fieldWithPath("[].memberId").type(JsonFieldType.NUMBER).description("회원 식별자"),
                                                         fieldWithPath("[].title").type(JsonFieldType.STRING).description("타이틀"),
+
                                                         fieldWithPath("[].category.foodCategoryId").type(JsonFieldType.NUMBER).description("카테고리 식별자"),
                                                         fieldWithPath("[].category.category").type(JsonFieldType.STRING).description("카테고리"),
                                                         fieldWithPath("[].category.createdAt").type(JsonFieldType.NUMBER).description("카테고리 생성 일자"),
                                                         fieldWithPath("[].category.modifiedAt").type(JsonFieldType.NUMBER).description("카테고리 수정 일자"),
                                                         fieldWithPath("[].createdAt").type(JsonFieldType.NUMBER).description("카테고리 생성 일자"),
                                                         fieldWithPath("[].modifiedAt").type(JsonFieldType.NUMBER).description("카테고리 수정 일자"),
+
+                                                        fieldWithPath("[].recruit").type(JsonFieldType.NUMBER).description("모집인원"),
+
                                                         fieldWithPath("[].deadline").type(JsonFieldType.NUMBER).description("마감 시간"),
                                                         fieldWithPath("[].pickupLocation.locationId").type(JsonFieldType.NUMBER).description("픽업 장소"),
                                                         fieldWithPath("[].pickupLocation.nameOfPlace").type(JsonFieldType.STRING).description("픽업 장소 이름"),
@@ -246,6 +255,7 @@ public class ItemControllerTest {
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.memberId").value(response.getMemberId()))
                 .andExpect(jsonPath("$.title").value(response.getTitle()))
+                .andExpect(jsonPath("$.recruit").value(response.getRecruit()))
 //                .andExpect(jsonPath("$.category").value(response.getCategory().getCategory()))
                 .andExpect(jsonPath("$.pickupLocation.nameOfPlace").value(response.getPickupLocation().getNameOfPlace()))
                 .andExpect(jsonPath("$.restaurantName").value(response.getRestaurantName()))
@@ -260,6 +270,7 @@ public class ItemControllerTest {
                                         List.of(
                                                 fieldWithPath("memberId").type(JsonFieldType.NUMBER).description("회원 식별자"),
                                                 fieldWithPath("title").type(JsonFieldType.STRING).description("타이틀"),
+                                                fieldWithPath("recruit").type(JsonFieldType.NUMBER).description("모집인원"),
                                                 fieldWithPath("category").type(JsonFieldType.STRING).description("내용"),
                                                 fieldWithPath("deadline").type(JsonFieldType.NUMBER).description("마감 시간"),
                                                 fieldWithPath("pickupLocation.locationId").type(JsonFieldType.NUMBER).description("픽업 장소"),
@@ -313,6 +324,7 @@ public class ItemControllerTest {
                 .andExpect(jsonPath("$.itemId").value(itemId))
                 .andExpect(jsonPath("$.memberId").value(response.getMemberId()))
                 .andExpect(jsonPath("$.title").value(response.getTitle()))
+                .andExpect(jsonPath("$.recruit").value(response.getRecruit()))
 //                .andExpect(jsonPath("$.category.category").value(response.getCategory().getCategory()))
                 .andExpect(jsonPath("$.pickupLocation.nameOfPlace").value(response.getPickupLocation().getNameOfPlace()))
                 .andExpect(jsonPath("$.restaurantName").value(response.getRestaurantName()))
@@ -331,6 +343,7 @@ public class ItemControllerTest {
                                         List.of(
                                                 fieldWithPath("memberId").type(JsonFieldType.NUMBER).description("회원 식별자"),
                                                 fieldWithPath("title").type(JsonFieldType.STRING).description("타이틀"),
+                                                fieldWithPath("recruit").type(JsonFieldType.NUMBER).description("모집인원"),
                                                 fieldWithPath("category").type(JsonFieldType.STRING).description("내용"),
                                                 fieldWithPath("deadline").type(JsonFieldType.NUMBER).description("마감 시간"),
                                                 fieldWithPath("pickupLocation.locationId").type(JsonFieldType.NUMBER).description("픽업 장소"),
@@ -357,6 +370,7 @@ public class ItemControllerTest {
                                                 fieldWithPath("itemId").type(JsonFieldType.NUMBER).description("게시글 식별자"),
                                                 fieldWithPath("memberId").type(JsonFieldType.NUMBER).description("회원 식별자"),
                                                 fieldWithPath("title").type(JsonFieldType.STRING).description("타이틀"),
+                                                fieldWithPath("recruit").type(JsonFieldType.NUMBER).description("모집인원"),
                                                 fieldWithPath("category.foodCategoryId").type(JsonFieldType.NUMBER).description("내용"),
                                                 fieldWithPath("category.category").type(JsonFieldType.STRING).description("내용"),
                                                 fieldWithPath("category.createdAt").type(JsonFieldType.NUMBER).description("내용"),

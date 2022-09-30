@@ -34,6 +34,8 @@ public class Item {
 
     private String title;
 
+    private int recruit;
+
     @OneToOne(cascade = CascadeType.PERSIST)
     private FoodCategory category;
 
@@ -59,9 +61,10 @@ public class Item {
     @OneToOne(cascade = CascadeType.PERSIST)
     private ImageUrl imageUrl;
 
-    public Item(Member member, String title, FoodCategory category, Long deadline, Location restaurantLocation, String restaurantName, String restaurantUrl, String body, ImageUrl imageUrl) {
+    public Item(Member member, String title, int recruit,FoodCategory category, Long deadline, Location restaurantLocation, String restaurantName, String restaurantUrl, String body, ImageUrl imageUrl) {
         this.member = member;
         this.title = title;
+        this.recruit = recruit;
         this.category = category;
         this.deadline = deadline;
         this.pickupLocation = restaurantLocation;
