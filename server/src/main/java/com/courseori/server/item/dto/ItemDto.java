@@ -10,6 +10,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 public class ItemDto {
@@ -20,16 +23,29 @@ public class ItemDto {
     public static class Post {
 
         private long memberId;
+
+
+        @NotBlank(message = "제목을 입력해주세요.")
+        @Size(min = 2, max = 20, message = "제목을 2자 ~ 20자 사이로 입력해주세요.")
         private String title;
+
+        @NotBlank(message = "카테고리를 설정해주세요.")
         private String category;
 
+        @NotNull(message = "모집 마감시간을 설정해주세요")
         private Long deadline;
+
+        @NotNull(message = "음식을 픽업할 장소를 설정해주세요")
         private Location pickupLocation;
 
+        @NotBlank(message = " 문할 식당을 입력해주세요.")
         private String restaurantName;
+
         private String restaurantUrl;
 
+        @NotBlank(message = "상세한 주문 내용을 입력해주세요")
         private String body;
+
         private ImageUrl imageUrl;
 
         public Member getMember() {
@@ -40,25 +56,36 @@ public class ItemDto {
 
     }
 
+
     @AllArgsConstructor
     @Getter
     @Setter
     public static class Patch {
         private long itemId;
-//        private long memberId;
 
+        @NotBlank(message = "제목을 입력해주세요.")
+        @Size(min = 2, max = 20, message = "제목을 2자 ~ 20자 사이로 입력해주세요.")
         private String title;
+
+        @NotBlank(message = "카테고리를 설정해주세요.")
         private String category;
 
+        @NotNull(message = "모집 마감시간을 설정해주세요")
         private Long deadline;
+
+        @NotNull(message = "음식을 픽업할 장소를 설정해주세요")
         private Location pickupLocation;
 
+        @NotBlank(message = " 문할 식당을 입력해주세요.")
         private String restaurantName;
+
         private String restaurantUrl;
 
         private List<Participants> participantsList;
 
+        @NotBlank(message = "상세한 주문 내용을 입력해주세요")
         private String body;
+
         private ImageUrl imageUrl;
     }
 
