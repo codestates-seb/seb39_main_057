@@ -12,6 +12,7 @@
 
 ## 1.소개
 
+
 ### ■ 슬기로운 배달생활, 호박 공구마!
 
 <p align="center">
@@ -34,34 +35,26 @@
     - 데이터베이스: mysql
     - 형상관리 툴: github
    
-    
+## 
+
+## ■ 사용 기술
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/80661467/193200930-ffbc6188-ff39-4139-9eea-5ee935d40fe7.png"  width="500" height="500"/>
+</p>
+
+
 
 ## ■ 개발 인원
- ■ Front-End : 서태원, 이은주 <br>
-    ■ GITHUB :  <br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 서태원 :  https://github.com/starbuckschair<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 이은주 :  https://github.com/ejmoni<br>
-    ■ 기술블로그   <br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 서태원 :  https://velog.io/@water1793<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 이은주 :  https://ejmoni.tistory.com/<br>
+     
+<div align="center">     
+     
+|<a href="https://github.com/happyduck-git">신가경</a>|<a href="https://github.com/ejmoni">이은주</a>|<a href="https://github.com/starbuckschair">서태원</a>|<a href="https://github.com/jihoy-kang">강지효</a>|<a href="https://github.com/KimJeju">김건휘</a>|
+|---|---|---|---|---|
+|photo|photo|photo|photo|<p align="center"><img src="https://user-images.githubusercontent.com/80661467/193200633-c0bfcc58-9094-4a71-a172-38cc522ba7ad.jpeg"  width="180" height="200"/></p>|
+|PM <br> Back-End Developer|Front-End Developer|Fonrt-End Developer|Back-End Developer|Back-End Developer|
 
- ■ Back-End  : 신가경 [팀장], 강지효, 김건휘 <br> 
-   ■ GITHUB :  <br> 
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 신가경 : https://github.com/happyduck-git<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 강지효 : https://github.com/jihoy-kang <br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 김건휘 : https://github.com/KimJeju <br>
-   ■ 기술블로그 : <br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 신가경 : https://ittingz.tistory.com/  <br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 강지효 : https://luxuryruki.tistory.com/  <br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 김건휘 : https://176cm-developer.tistory.com/  <br>
-
-
-
-
-
-
-
-
+</div>
 
 ##
 ##  ■ Flow Chart
