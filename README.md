@@ -53,10 +53,19 @@
      
 |<a href="https://github.com/happyduck-git">신가경</a>|<a href="https://github.com/ejmoni">이은주</a>|<a href="https://github.com/starbuckschair">서태원</a>|<a href="https://github.com/jihoy-kang">강지효</a>|<a href="https://github.com/KimJeju">김건휘</a>|
 |---|---|---|---|---|
-|photo|photo|photo|photo|<p align="center"><img src="https://user-images.githubusercontent.com/80661467/193200633-c0bfcc58-9094-4a71-a172-38cc522ba7ad.jpeg"  width="180" height="200"/></p>|
+|<img src="https://user-images.githubusercontent.com/80661467/193214087-19b44c97-1c44-4b07-8442-263451197e39.JPG"  width="200" height="200"/>|phot123o|<img src="https://user-images.githubusercontent.com/80661467/193215183-ab2f7121-c3e0-4eba-8758-225a51c2e7f1.jpg"  width="200" height="200"/>|photo|<img src="https://user-images.githubusercontent.com/80661467/193200633-c0bfcc58-9094-4a71-a172-38cc522ba7ad.jpeg"  width="180" height="200"/>|
 |PM <br> Back-End Developer|Front-End Developer|Fonrt-End Developer|Back-End Developer|Back-End Developer|
-
 </div>
+
+<!-- 가깅  -->
+
+
+<!-- 태원 -->
+
+
+
+
+
 
 ##
 ##  ■ Flow Chart
