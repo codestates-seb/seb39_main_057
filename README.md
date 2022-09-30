@@ -66,7 +66,7 @@
 </p>
 
 ##
-##  ■ Entity Diagram
+##  ■ ERD Diagram
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/80661467/191894263-4d6c35e0-b6f9-408f-b410-4a25b6a80773.png"  width="1200" height="550"/>
