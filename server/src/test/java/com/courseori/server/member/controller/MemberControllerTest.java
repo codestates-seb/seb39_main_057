@@ -122,7 +122,7 @@ class MemberControllerTest {
                                         fieldWithPath("email").type(JsonFieldType.STRING).description("이메일"),
                                         fieldWithPath("password").type(JsonFieldType.STRING).description("비밀번호"),
                                         fieldWithPath("phoneNumber").type(JsonFieldType.STRING).description("휴대폰"),
-                                        fieldWithPath("profileImageUrl").type(JsonFieldType.STRING).description("피로필 사진")
+                                        fieldWithPath("profileImageUrl").type(JsonFieldType.STRING).description("프로필 사진")
                                 )
                         ),
                         responseFields(
