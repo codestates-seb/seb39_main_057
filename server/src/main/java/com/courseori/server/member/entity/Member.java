@@ -5,6 +5,7 @@ import com.courseori.server.location.entity.Location;
 import com.courseori.server.member.role.ROLE;
 import lombok.*;
 import net.minidev.json.annotate.JsonIgnore;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -21,7 +22,14 @@ import java.util.Date;
 public class Member {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "sequence-generator")
+    @GenericGenerator(name = "sequence-generator",
+    strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
+    parameters = {
+            @org.hibernate.annotations.Parameter(name = "sequence_name", value = "member_sequence"),
+            @org.hibernate.annotations.Parameter(name = "initial_value", value = "3"),
+            @org.hibernate.annotations.Parameter(name = "increment_size", value = "1")
+    })
     private Long memberId;
 
 
