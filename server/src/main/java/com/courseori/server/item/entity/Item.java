@@ -32,12 +32,15 @@ public class Item {
     @JoinColumn(name = "memberId")
     private Member member;
 
+    @ManyToOne
+    @JoinColumn(name = "foodCategoryId")
+    private FoodCategory category;
+
     private String title;
 
     private int recruit;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
-    private FoodCategory category;
+
 
     private Long createdAt = new Date().getTime();
     private Long modifiedAt  = new Date().getTime();
