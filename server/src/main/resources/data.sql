@@ -1,0 +1,4 @@
+INSERT INTO MEMBER(member_id, email, joined_at, modified_at, password, payment_method, phone_number, profile_image_url, provider, provider_id, role, username, p_location_id)
+VALUES(1, 'test@email.com', 12341234, 12341234, 'pass1234', 'card', '010-1111-1111', 'profileImage', 'provider', 'providerId', 0, 'user', null);
+INSERT INTO MEMBER(member_id, email, joined_at, modified_at, password, payment_method, phone_number, profile_image_url, provider, provider_id, role, username, p_location_id)
+VALUES(2, 'test2@email.com', 12341234, 12341234, 'pass1234', 'cash', '010-2222-1111', 'profileImage2', 'provider2', 'providerId2', 0, 'user', null);
