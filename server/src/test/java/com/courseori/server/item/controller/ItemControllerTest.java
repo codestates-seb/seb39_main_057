@@ -4,13 +4,11 @@ import com.courseori.server.helper.StubData;
 import com.courseori.server.item.dto.ItemDto;
 import com.courseori.server.item.entity.Item;
 import com.courseori.server.item.mapper.ItemMapper;
-import com.courseori.server.item.repository.ItemRepositoryCustom;
 import com.courseori.server.item.service.ItemService;
 import com.courseori.server.member.repository.MemberRepository;
 import com.courseori.server.participants.service.ParticipantsService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +41,7 @@ import static org.springframework.security.test.web.servlet.request.SecurityMock
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+
 @WebMvcTest(ItemController.class)
 @MockBean(JpaMetamodelMappingContext.class)
 @AutoConfigureRestDocs
@@ -54,12 +53,6 @@ public class ItemControllerTest {
 
     @Autowired
     private Gson gson = new GsonBuilder().serializeNulls().create();
-
-    @MockBean
-    private JPAQueryFactory jpaQueryFactory;
-
-    @Autowired
-    private ItemRepositoryCustom itemRepositoryCustom;
 
     @MockBean
     private ItemService itemService;
