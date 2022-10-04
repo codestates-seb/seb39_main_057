@@ -21,6 +21,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/items")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ItemController {
 
     //item
