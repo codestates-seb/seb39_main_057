@@ -19,10 +19,7 @@ public interface ItemMapper {
         item.setMember(requestBody.getMember());
         item.setTitle(requestBody.getTitle());
         item.setRecruit(requestBody.getRecruit());
-
-        FoodCategory foodCategory = new FoodCategory();
-        foodCategory.setCategory(requestBody.getCategory());
-        item.setCategory(foodCategory);
+        item.setCategory(requestBody.getCategory());
 
         item.setDeadline(requestBody.getDeadline());
         item.setPickupLocation(requestBody.getPickupLocation());
@@ -46,9 +43,8 @@ public interface ItemMapper {
         item.setItemId( requestBody.getItemId() );
         item.setTitle( requestBody.getTitle() );
         item.setRecruit(requestBody.getRecruit());
-        FoodCategory foodCategory = new FoodCategory();
-        foodCategory.setCategory(requestBody.getCategory());
-        item.setCategory(foodCategory);
+
+        item.setCategory(requestBody.getCategory());
 
         item.setDeadline( requestBody.getDeadline() );
         item.setPickupLocation( requestBody.getPickupLocation() );
