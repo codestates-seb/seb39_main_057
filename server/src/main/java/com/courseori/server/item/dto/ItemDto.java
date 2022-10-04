@@ -32,8 +32,6 @@ public class ItemDto {
         @Min(2)
         private int recruit;
 
-
-
         @NotNull(message = "모집 마감시간을 설정해주세요")
         private Long deadline;
 
