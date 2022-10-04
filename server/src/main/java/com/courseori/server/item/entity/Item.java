@@ -40,8 +40,6 @@ public class Item {
 
     private int recruit;
 
-
-
     private Long createdAt = new Date().getTime();
     private Long modifiedAt  = new Date().getTime();
 
