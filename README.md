@@ -79,7 +79,7 @@
 ##  ■ ERD Diagram
 
 <p align="center">
-![image](https://user-images.githubusercontent.com/97576003/193962796-11538d5e-0f69-4030-a364-02aaebcc0542.png)
+<img src= "https://user-images.githubusercontent.com/97576003/193962796-11538d5e-0f69-4030-a364-02aaebcc0542.png" width="1200" height="550"/>
 </p>
 
 ##  ■ Class Diagram
