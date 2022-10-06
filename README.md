@@ -1,4 +1,4 @@
-# Project : 호박공구마 🍠
+# 슬기로운 배달생활,호박공구마 🍠
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/80661467/191905237-f386b015-be67-4712-aa65-7774119506a2.png"  width="600" height="350"/>
@@ -88,7 +88,6 @@
 <img src="https://user-images.githubusercontent.com/80661467/191903206-95c5c607-6ec8-419b-bd93-fd558f669098.png"  width="1200" height="550"/>
 </p>
 
-.
 
 
 
