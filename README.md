@@ -1,6 +1,6 @@
 <div align="center">
     
-## 🐶PuppyBuddy(퍼피버디)🐶
+## 🍠 슬기로운 배달생활, 호박공구마 🍠
 </div>
 
 <p align="center">
