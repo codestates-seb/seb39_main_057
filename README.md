@@ -1,4 +1,8 @@
-# 슬기로운 배달생활,호박공구마 🍠
+<div align="center">
+    
+# 슬기로운 배달생활, 호박공구마🍠
+
+</div>
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/80661467/191905237-f386b015-be67-4712-aa65-7774119506a2.png"  width="600" height="350"/>
