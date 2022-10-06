@@ -3,10 +3,10 @@ package com.courseori.server.location.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
 
@@ -17,7 +17,14 @@ import java.util.Date;
 public class Location {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "sequence-generator")
+    @GenericGenerator(name = "sequence-generator",
+            strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
+            parameters = {
+                    @org.hibernate.annotations.Parameter(name = "sequence_name", value = "location_sequence"),
+                    @org.hibernate.annotations.Parameter(name = "initial_value", value = "11"),
+                    @org.hibernate.annotations.Parameter(name = "increment_size", value = "1")
+            })
     private long locationId;
 
     private String nameOfPlace;

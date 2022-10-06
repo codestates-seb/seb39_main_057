@@ -21,7 +21,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/v1/members")
 @RequiredArgsConstructor
-@CrossOrigin(originPatterns = "*")
+@CrossOrigin("*")
 public class MemberController {
 
 
@@ -102,6 +102,11 @@ public class MemberController {
     @GetMapping("/login")
     public String loginForm(){
         return "login";
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity loginPost() {
+        return new ResponseEntity<>("OK", HttpStatus.OK);
     }
 
    @GetMapping("/user")

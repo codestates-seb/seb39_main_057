@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -16,7 +17,14 @@ import java.util.Date;
 @NoArgsConstructor
 public class Participants {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "sequence-generator")
+    @GenericGenerator(name = "sequence-generator",
+            strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
+            parameters = {
+                    @org.hibernate.annotations.Parameter(name = "sequence_name", value = "participants_sequence"),
+                    @org.hibernate.annotations.Parameter(name = "initial_value", value = "16"),
+                    @org.hibernate.annotations.Parameter(name = "increment_size", value = "1")
+            })
     private Long participantsId;
 
     private int type;

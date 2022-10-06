@@ -5,14 +5,17 @@ import com.courseori.server.item.dto.ItemDto;
 import com.courseori.server.item.entity.Item;
 import com.courseori.server.item.mapper.ItemMapper;
 import com.courseori.server.item.service.ItemService;
+import com.courseori.server.member.aouth.PrincipalDetails;
 import com.courseori.server.member.entity.Member;
 import com.courseori.server.member.repository.MemberRepository;
+import com.courseori.server.member.service.MemberService;
 import com.courseori.server.participants.Participants;
 import com.courseori.server.participants.service.ParticipantsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -21,7 +24,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/items")
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin("*")
 public class ItemController {
 
     //item
@@ -32,6 +35,8 @@ public class ItemController {
     //participants
     private ParticipantsService participantsService;
 
+    private MemberService memberService;
+
     @Autowired
     public ItemController(ItemService itemService, ItemMapper itemMapper, MemberRepository memberRepository, ParticipantsService participantsService) {
         this.itemService = itemService;
@@ -41,11 +46,20 @@ public class ItemController {
     }
 
     @PostMapping
-    public ResponseEntity postItem(@Valid  @RequestBody ItemDto.Post requestBody){
+    public ResponseEntity postItem(@AuthenticationPrincipal PrincipalDetails principalDetails,
+                                   @Valid  @RequestBody ItemDto.Post requestBody){
         Item item = itemMapper.itemPostToItem(requestBody);
+        long memberId = principalDetails.getMember().getMemberId();
+
+        System.out.println(memberId);
+
+        Member foundMember = memberService.findVerifiedMember(memberId);
+
+        item.setMember(foundMember);
 
         Item createdItem = itemService.createItem(item);
         ItemDto.Response response = itemMapper.itemToItemResponse(createdItem);
+
         return new ResponseEntity<>(response,HttpStatus.CREATED);
     }
 
@@ -87,14 +101,13 @@ public class ItemController {
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 
-
     /* patch item for adding data inside participant list */
     @PatchMapping("/participants/{item-id}")
     public ResponseEntity addParticipant(@PathVariable("item-id") @Positive long itemId,
                                          @RequestParam long memberId) { //@RequestParam 대신 @RequestBody 인지 확인
 
         //participants row 생성 (type=2로)
-        // Member foundMember =  -> memberService에서 findMember로 조회하여 가져오기
+        //Member foundMember = -> memberService에서 findMember로 조회하여 가져오기
         Member foundMember = memberRepository.findById(memberId).orElseThrow();
 
         //Item foundItem = -> itemService에서 findItem으로 조회하여 가져오기

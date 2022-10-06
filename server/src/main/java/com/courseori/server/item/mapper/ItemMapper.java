@@ -1,6 +1,5 @@
 package com.courseori.server.item.mapper;
 
-import com.courseori.server.foodcategory.entity.FoodCategory;
 import com.courseori.server.item.dto.ItemDto;
 import com.courseori.server.item.entity.Item;
 import com.courseori.server.participants.Participants;
@@ -32,7 +31,6 @@ public interface ItemMapper {
 
     }
 
-
     default Item itemPatchToItem(ItemDto.Patch requestBody) {
         if ( requestBody == null ) {
             return null;
@@ -61,7 +59,6 @@ public interface ItemMapper {
     }
 
     ItemDto.Response itemToItemResponse(Item item);
-
 
     List<ItemDto.Response> itemsToItemResponses(List<Item> itemList);
 
