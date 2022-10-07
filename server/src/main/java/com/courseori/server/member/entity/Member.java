@@ -66,29 +66,29 @@ public class Member {
     private String providerId;
 
     //jwt
-    @Builder(builderClassName = "UserDetailRegister", builderMethodName = "userDetailRegister")
-    public Member(String username, String email, String password, String phoneNumber, String profileImageUrl,ROLE role) {
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.phoneNumber = phoneNumber;
-        this.profileImageUrl = profileImageUrl;
-        this.role = role;
-    }
-
-
-    //oauth2
-    @Builder(builderClassName = "OAuth2Register", builderMethodName = "oauth2Register")
-    public Member(String username, String email, String password, String phoneNumber, String profileImageUrl, ROLE role, String provider, String providerId) {
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.phoneNumber = phoneNumber;
-        this.profileImageUrl = profileImageUrl;
-        this.role = role;
-        this.provider = provider;
-        this.providerId = providerId;
-    }
+//    @Builder(builderClassName = "UserDetailRegister", builderMethodName = "userDetailRegister")
+//    public Member(String username, String email, String password, String phoneNumber, String profileImageUrl,ROLE role) {
+//        this.username = username;
+//        this.email = email;
+//        this.password = password;
+//        this.phoneNumber = phoneNumber;
+//        this.profileImageUrl = profileImageUrl;
+//        this.role = role;
+//    }
+//
+//
+//    //oauth2
+//    @Builder(builderClassName = "OAuth2Register", builderMethodName = "oauth2Register")
+//    public Member(String username, String email, String password, String phoneNumber, String profileImageUrl, ROLE role, String provider, String providerId) {
+//        this.username = username;
+//        this.email = email;
+//        this.password = password;
+//        this.phoneNumber = phoneNumber;
+//        this.profileImageUrl = profileImageUrl;
+//        this.role = role;
+//        this.provider = provider;
+//        this.providerId = providerId;
+//    }
 
     public Member(String username, String email, String password, String phoneNumber, Location location, String profileImageUrl, String paymentMethod, ROLE roles) {
         this.username = username;

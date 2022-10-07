@@ -20,7 +20,7 @@ import org.springframework.data.jpa.mapping.JpaMetamodelMappingContext;
 import org.springframework.http.MediaType;
 import org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders;
 import org.springframework.restdocs.payload.JsonFieldType;
-import org.springframework.security.test.context.support.WithMockUser;
+//import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
@@ -37,7 +37,7 @@ import static org.springframework.restdocs.operation.preprocess.Preprocessors.*;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
 import static org.springframework.restdocs.request.RequestDocumentation.pathParameters;
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
+//import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -48,7 +48,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @MockBean(JpaMetamodelMappingContext.class)
 @AutoConfigureRestDocs
 @ExtendWith(SpringExtension.class)
-@WithMockUser
+//@WithMockUser
 class MemberControllerTest {
 
 
@@ -99,7 +99,7 @@ class MemberControllerTest {
         ResultActions actions =
                 mockMvc.perform(
                         post("/v1/members")
-                                .with(csrf())
+//                                .with(csrf())
                                 .accept(MediaType.APPLICATION_JSON)
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(content)
@@ -166,7 +166,7 @@ class MemberControllerTest {
         // when
         ResultActions actions =
                 mockMvc.perform(
-                        RestDocumentationRequestBuilders.patch("/v1/members/{member-id}", memberId).with(csrf())
+                        RestDocumentationRequestBuilders.patch("/v1/members/{member-id}", memberId)/*.with(csrf())*/
                                 .accept(MediaType.APPLICATION_JSON)
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(content)
@@ -223,7 +223,7 @@ class MemberControllerTest {
         given(mapper.memberToMemberResponse(Mockito.any(Member.class))).willReturn(responseDto);
 
         ResultActions actions = mockMvc.perform(
-                RestDocumentationRequestBuilders.get("/v1/members/{member-id}", memberId).with(csrf())
+                RestDocumentationRequestBuilders.get("/v1/members/{member-id}", memberId)/*.with(csrf())*/
                         .accept(MediaType.APPLICATION_JSON));
 
         actions
@@ -260,7 +260,7 @@ class MemberControllerTest {
 
         // when
         ResultActions actions = mockMvc.perform(
-                RestDocumentationRequestBuilders.delete("/v1/members/{member-id}", memberId).with(csrf())
+                RestDocumentationRequestBuilders.delete("/v1/members/{member-id}", memberId)/*.with(csrf())*/
                         .accept(MediaType.APPLICATION_JSON));
 
         actions.andExpect(status().isNoContent())

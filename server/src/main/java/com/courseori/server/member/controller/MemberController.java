@@ -109,7 +109,7 @@ public class MemberController {
         return new ResponseEntity<>("OK", HttpStatus.OK);
     }
 
-   @GetMapping("/user")
+    @GetMapping("/user")
     @ResponseBody
     public String user(){
         return "user";
