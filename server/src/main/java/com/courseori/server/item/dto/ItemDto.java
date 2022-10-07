@@ -24,14 +24,13 @@ public class ItemDto {
 
         private long memberId;
 
+        @Min(1)
+        private int foodCategoryId;
 
         private String title;
 
         @Min(2)
         private int recruit;
-
-        @NotBlank(message = "카테고리를 설정해주세요.")
-        private String category;
 
         @NotNull(message = "모집 마감시간을 설정해주세요")
         private Long deadline;
@@ -55,6 +54,12 @@ public class ItemDto {
             return member;
         }
 
+        public FoodCategory getCategory(){
+            FoodCategory category = new FoodCategory();
+            category.setFoodCategoryId(foodCategoryId);
+            return category;
+        }
+
     }
 
 
@@ -69,8 +74,8 @@ public class ItemDto {
         @Min(2)
         private int recruit;
 
-        @NotBlank(message = "카테고리를 설정해주세요.")
-        private String category;
+        @Min(1)
+        private int foodCategoryId;
 
         @NotNull(message = "모집 마감시간을 설정해주세요")
         private Long deadline;
@@ -89,6 +94,12 @@ public class ItemDto {
         private String body;
 
         private ImageUrl imageUrl;
+
+        public FoodCategory getCategory(){
+            FoodCategory category = new FoodCategory();
+            category.setFoodCategoryId(foodCategoryId);
+            return category;
+        }
     }
 
     @AllArgsConstructor
@@ -103,7 +114,7 @@ public class ItemDto {
 
         private int recruit;
 
-        private FoodCategory category;
+        private int foodCategoryId;
 
         private Long createdAt;
         private Long modifiedAt;
@@ -121,6 +132,10 @@ public class ItemDto {
 
         public void setMember(Member member) {
             this.memberId = member.getMemberId();
+        }
+
+        public void setCategory(FoodCategory category){
+            this.foodCategoryId = category.getFoodCategoryId();
         }
 
     }
