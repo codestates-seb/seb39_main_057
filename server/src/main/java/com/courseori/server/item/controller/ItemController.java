@@ -5,7 +5,6 @@ import com.courseori.server.item.dto.ItemDto;
 import com.courseori.server.item.entity.Item;
 import com.courseori.server.item.mapper.ItemMapper;
 import com.courseori.server.item.service.ItemService;
-import com.courseori.server.member.aouth.PrincipalDetails;
 import com.courseori.server.member.entity.Member;
 import com.courseori.server.member.repository.MemberRepository;
 import com.courseori.server.member.service.MemberService;
@@ -15,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -46,16 +44,8 @@ public class ItemController {
     }
 
     @PostMapping
-    public ResponseEntity postItem(@AuthenticationPrincipal PrincipalDetails principalDetails,
-                                   @Valid  @RequestBody ItemDto.Post requestBody){
+    public ResponseEntity postItem(@Valid  @RequestBody ItemDto.Post requestBody){
         Item item = itemMapper.itemPostToItem(requestBody);
-        long memberId = principalDetails.getMember().getMemberId();
-
-        System.out.println(memberId);
-
-        Member foundMember = memberService.findVerifiedMember(memberId);
-
-        item.setMember(foundMember);
 
         Item createdItem = itemService.createItem(item);
         ItemDto.Response response = itemMapper.itemToItemResponse(createdItem);
