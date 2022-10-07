@@ -2,6 +2,7 @@ package com.courseori.server.foodcategory.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,6 +13,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Entity
 @Getter
+@Setter
 public class FoodCategory {
 
     @Id
@@ -20,8 +22,7 @@ public class FoodCategory {
 
     String category;
 
-    Long createdAt = new Date().getTime();
-    Long modifiedAt = new Date().getTime();
+
 
     public String setCategory(String category) {
         this.category = category;

@@ -9,15 +9,14 @@ spring:
   datasource:
     url: jdbc:h2:mem:test
     platform: h2
-    initialization-mode: always
   jpa:
     hibernate:
       ddl-auto: create
-    defer-datasource-initialization: true
+    defer-datasource-initialization: true #data.sql 적용(?)하기 위한 구문
     show-sql: true
     properties:
       hibernate:
-        format_sql: true  # (3) SQL pretty print
+        format_sql: true
       connection:
         charSet: UTF-8
   security:

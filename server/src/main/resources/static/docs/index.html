@@ -483,7 +483,7 @@ v1.0.0, 2022.04.08</p>
 <div class="listingblock">
 <div class="title">curl-request</div>
 <div class="content">
-<pre class="prettyprint highlight"><code data-lang="bash">$ curl 'http://localhost:8080/v1/members?_csrf=e8422fbc-7c69-44e3-8068-e2bfb9fc8086' -i -X POST \
+<pre class="prettyprint highlight"><code data-lang="bash">$ curl 'http://localhost:8080/v1/members' -i -X POST \
     -H 'Content-Type: application/json;charset=UTF-8' \
     -H 'Accept: application/json' \
     -d '{
@@ -498,10 +498,10 @@ v1.0.0, 2022.04.08</p>
 <div class="listingblock">
 <div class="title">http-request</div>
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code data-lang="http">POST /v1/members?_csrf=e8422fbc-7c69-44e3-8068-e2bfb9fc8086 HTTP/1.1
+<pre class="prettyprint highlight nowrap"><code data-lang="http">POST /v1/members HTTP/1.1
 Content-Type: application/json;charset=UTF-8
 Accept: application/json
-Content-Length: 156
+Content-Length: 162
 Host: localhost:8080
 
 {
@@ -559,14 +559,11 @@ Host: localhost:8080
 <div class="title">http-response</div>
 <div class="content">
 <pre class="prettyprint highlight nowrap"><code data-lang="http">HTTP/1.1 201 Created
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
 Content-Type: application/json
-X-Content-Type-Options: nosniff
-X-XSS-Protection: 1; mode=block
-Cache-Control: no-cache, no-store, max-age=0, must-revalidate
-Pragma: no-cache
-Expires: 0
-X-Frame-Options: DENY
-Content-Length: 237
+Content-Length: 246
 
 {
   "memberId" : 1,
@@ -574,8 +571,8 @@ Content-Length: 237
   "email" : "test@naver.com",
   "phoneNumber" : "010-1111-1111",
   "profileImageUrl" : "www.test.com",
-  "modifiedAt" : 1664520048740,
-  "joinedAt" : 1664520048740,
+  "modifiedAt" : 1665129869677,
+  "joinedAt" : 1665129869677,
   "role" : "ROLE_USER"
 }</code></pre>
 </div>
@@ -643,7 +640,7 @@ Content-Length: 237
 <div class="listingblock">
 <div class="title">curl-request</div>
 <div class="content">
-<pre class="prettyprint highlight"><code data-lang="bash">$ curl 'http://localhost:8080/v1/members/1?_csrf=951d9593-e7d0-4658-bf30-ee9788929828' -i -X PATCH \
+<pre class="prettyprint highlight"><code data-lang="bash">$ curl 'http://localhost:8080/v1/members/1' -i -X PATCH \
     -H 'Content-Type: application/json;charset=UTF-8' \
     -H 'Accept: application/json' \
     -d '{
@@ -658,10 +655,10 @@ Content-Length: 237
 <div class="listingblock">
 <div class="title">http-request</div>
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code data-lang="http">PATCH /v1/members/1?_csrf=951d9593-e7d0-4658-bf30-ee9788929828 HTTP/1.1
+<pre class="prettyprint highlight nowrap"><code data-lang="http">PATCH /v1/members/1 HTTP/1.1
 Content-Type: application/json;charset=UTF-8
 Accept: application/json
-Content-Length: 146
+Content-Length: 152
 Host: localhost:8080
 
 {
@@ -719,14 +716,11 @@ Host: localhost:8080
 <div class="title">http-response</div>
 <div class="content">
 <pre class="prettyprint highlight nowrap"><code data-lang="http">HTTP/1.1 200 OK
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
 Content-Type: application/json
-X-Content-Type-Options: nosniff
-X-XSS-Protection: 1; mode=block
-Cache-Control: no-cache, no-store, max-age=0, must-revalidate
-Pragma: no-cache
-Expires: 0
-X-Frame-Options: DENY
-Content-Length: 239
+Content-Length: 248
 
 {
   "memberId" : 1,
@@ -734,8 +728,8 @@ Content-Length: 239
   "email" : "test@naver.com",
   "phoneNumber" : "010-1111-1111",
   "profileImageUrl" : "www.change.com",
-  "modifiedAt" : 1664520048690,
-  "joinedAt" : 1664520048690,
+  "modifiedAt" : 1665129869541,
+  "joinedAt" : 1665129869541,
   "role" : "ROLE_USER"
 }</code></pre>
 </div>
@@ -803,14 +797,14 @@ Content-Length: 239
 <div class="listingblock">
 <div class="title">curl-request</div>
 <div class="content">
-<pre class="prettyprint highlight"><code data-lang="bash">$ curl 'http://localhost:8080/v1/members/1?_csrf=bda7c21b-38a5-42e4-a79d-6c7e7decea30' -i -X GET \
+<pre class="prettyprint highlight"><code data-lang="bash">$ curl 'http://localhost:8080/v1/members/1' -i -X GET \
     -H 'Accept: application/json'</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">http-request</div>
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code data-lang="http">GET /v1/members/1?_csrf=bda7c21b-38a5-42e4-a79d-6c7e7decea30 HTTP/1.1
+<pre class="prettyprint highlight nowrap"><code data-lang="http">GET /v1/members/1 HTTP/1.1
 Accept: application/json
 Host: localhost:8080</code></pre>
 </div>
@@ -820,12 +814,12 @@ Host: localhost:8080</code></pre>
 <div class="content">
 <pre class="prettyprint highlight nowrap"><code>{
   "memberId" : 1,
-  "username" : "김코딩",
+  "username" : "源�肄붾뵫",
   "email" : "test@naver.com",
   "phoneNumber" : "010-1111-1111",
   "profileImageUrl" : "www.test.com",
-  "modifiedAt" : 1664520048721,
-  "joinedAt" : 1664520048721,
+  "modifiedAt" : 1665129869624,
+  "joinedAt" : 1665129869624,
   "role" : "ROLE_USER"
 }</code></pre>
 </div>
@@ -893,14 +887,14 @@ Host: localhost:8080</code></pre>
 <div class="listingblock">
 <div class="title">curl-request</div>
 <div class="content">
-<pre class="prettyprint highlight"><code data-lang="bash">$ curl 'http://localhost:8080/v1/members/1?_csrf=cb2d053a-ebbc-4ccd-a70e-9cdb4c2db93e' -i -X DELETE \
+<pre class="prettyprint highlight"><code data-lang="bash">$ curl 'http://localhost:8080/v1/members/1' -i -X DELETE \
     -H 'Accept: application/json'</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">http-request</div>
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code data-lang="http">DELETE /v1/members/1?_csrf=cb2d053a-ebbc-4ccd-a70e-9cdb4c2db93e HTTP/1.1
+<pre class="prettyprint highlight nowrap"><code data-lang="http">DELETE /v1/members/1 HTTP/1.1
 Accept: application/json
 Host: localhost:8080</code></pre>
 </div>
@@ -923,15 +917,15 @@ Host: localhost:8080</code></pre>
 <div class="listingblock">
 <div class="title">curl-request</div>
 <div class="content">
-<pre class="prettyprint highlight"><code data-lang="bash">$ curl 'http://localhost:8080/items?_csrf=b16f9d18-47a1-41c7-a5b8-a4e077b63ca7' -i -X POST \
+<pre class="prettyprint highlight"><code data-lang="bash">$ curl 'http://localhost:8080/items' -i -X POST \
     -H 'Content-Type: application/json;charset=UTF-8' \
     -H 'Accept: application/json' \
     -d '{
   "memberId" : 1,
+  "foodCategoryId" : 1,
   "title" : "Title1",
   "recruit" : 2,
-  "category" : "Category1",
-  "deadline" : 1664520047476,
+  "deadline" : 1665129866923,
   "pickupLocation" : {
     "locationId" : 0,
     "nameOfPlace" : "더큰내일센터",
@@ -940,8 +934,8 @@ Host: localhost:8080</code></pre>
     "type" : 1,
     "latitude" : 123.1234,
     "longitude" : 123.1234,
-    "createAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createAt" : 1665129866923,
+    "modifiedAt" : 1665129866923
   },
   "restaurantName" : "Restaurant1",
   "restaurantUrl" : "http://test-url.com/",
@@ -950,8 +944,8 @@ Host: localhost:8080</code></pre>
     "imageUrlId" : 0,
     "url" : "http://test.com",
     "type" : 1,
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createdAt" : 1665129866924,
+    "modifiedAt" : 1665129866924
   }
 }'</code></pre>
 </div>
@@ -959,18 +953,18 @@ Host: localhost:8080</code></pre>
 <div class="listingblock">
 <div class="title">http-request</div>
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code data-lang="http">POST /items?_csrf=b16f9d18-47a1-41c7-a5b8-a4e077b63ca7 HTTP/1.1
+<pre class="prettyprint highlight nowrap"><code data-lang="http">POST /items HTTP/1.1
 Content-Type: application/json;charset=UTF-8
 Accept: application/json
-Content-Length: 691
+Content-Length: 714
 Host: localhost:8080
 
 {
   "memberId" : 1,
+  "foodCategoryId" : 1,
   "title" : "Title1",
   "recruit" : 2,
-  "category" : "Category1",
-  "deadline" : 1664520047476,
+  "deadline" : 1665129866923,
   "pickupLocation" : {
     "locationId" : 0,
     "nameOfPlace" : "더큰내일센터",
@@ -979,8 +973,8 @@ Host: localhost:8080
     "type" : 1,
     "latitude" : 123.1234,
     "longitude" : 123.1234,
-    "createAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createAt" : 1665129866923,
+    "modifiedAt" : 1665129866923
   },
   "restaurantName" : "Restaurant1",
   "restaurantUrl" : "http://test-url.com/",
@@ -989,8 +983,8 @@ Host: localhost:8080
     "imageUrlId" : 0,
     "url" : "http://test.com",
     "type" : 1,
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createdAt" : 1665129866924,
+    "modifiedAt" : 1665129866924
   }
 }</code></pre>
 </div>
@@ -999,29 +993,21 @@ Host: localhost:8080
 <div class="title">http-response</div>
 <div class="content">
 <pre class="prettyprint highlight nowrap"><code data-lang="http">HTTP/1.1 201 Created
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
 Content-Type: application/json
-X-Content-Type-Options: nosniff
-X-XSS-Protection: 1; mode=block
-Cache-Control: no-cache, no-store, max-age=0, must-revalidate
-Pragma: no-cache
-Expires: 0
-X-Frame-Options: DENY
-Content-Length: 913
+Content-Length: 824
 
 {
   "itemId" : 1,
   "memberId" : 1,
   "title" : "Title1",
   "recruit" : 2,
-  "category" : {
-    "foodCategoryId" : 0,
-    "category" : "Category1",
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
-  },
-  "createdAt" : 1664520047476,
-  "modifiedAt" : 1664520047476,
-  "deadline" : 1664520047476,
+  "foodCategoryId" : 1,
+  "createdAt" : 1665129866923,
+  "modifiedAt" : 1665129866923,
+  "deadline" : 1665129866923,
   "pickupLocation" : {
     "locationId" : 0,
     "nameOfPlace" : "더큰내일센터",
@@ -1030,8 +1016,8 @@ Content-Length: 913
     "type" : 1,
     "latitude" : 123.1234,
     "longitude" : 123.1234,
-    "createAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createAt" : 1665129866923,
+    "modifiedAt" : 1665129866923
   },
   "restaurantName" : "Restaurant1",
   "restaurantUrl" : "http://test-url.com",
@@ -1041,8 +1027,8 @@ Content-Length: 913
     "imageUrlId" : 0,
     "url" : "http://test.com",
     "type" : 1,
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createdAt" : 1665129866924,
+    "modifiedAt" : 1665129866924
   }
 }</code></pre>
 </div>
@@ -1052,10 +1038,10 @@ Content-Length: 913
 <div class="content">
 <pre class="prettyprint highlight"><code data-lang="bash">$ echo '{
   "memberId" : 1,
+  "foodCategoryId" : 1,
   "title" : "Title1",
   "recruit" : 2,
-  "category" : "Category1",
-  "deadline" : 1664520047476,
+  "deadline" : 1665129866923,
   "pickupLocation" : {
     "locationId" : 0,
     "nameOfPlace" : "더큰내일센터",
@@ -1064,8 +1050,8 @@ Content-Length: 913
     "type" : 1,
     "latitude" : 123.1234,
     "longitude" : 123.1234,
-    "createAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createAt" : 1665129866923,
+    "modifiedAt" : 1665129866923
   },
   "restaurantName" : "Restaurant1",
   "restaurantUrl" : "http://test-url.com/",
@@ -1074,10 +1060,10 @@ Content-Length: 913
     "imageUrlId" : 0,
     "url" : "http://test.com",
     "type" : 1,
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createdAt" : 1665129866924,
+    "modifiedAt" : 1665129866924
   }
-}' | http POST 'http://localhost:8080/items?_csrf=b16f9d18-47a1-41c7-a5b8-a4e077b63ca7' \
+}' | http POST 'http://localhost:8080/items' \
     'Content-Type:application/json;charset=UTF-8' \
     'Accept:application/json'</code></pre>
 </div>
@@ -1087,10 +1073,10 @@ Content-Length: 913
 <div class="content">
 <pre class="prettyprint highlight nowrap"><code>{
   "memberId" : 1,
+  "foodCategoryId" : 1,
   "title" : "Title1",
   "recruit" : 2,
-  "category" : "Category1",
-  "deadline" : 1664520047476,
+  "deadline" : 1665129866923,
   "pickupLocation" : {
     "locationId" : 0,
     "nameOfPlace" : "더큰내일센터",
@@ -1099,8 +1085,8 @@ Content-Length: 913
     "type" : 1,
     "latitude" : 123.1234,
     "longitude" : 123.1234,
-    "createAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createAt" : 1665129866923,
+    "modifiedAt" : 1665129866923
   },
   "restaurantName" : "Restaurant1",
   "restaurantUrl" : "http://test-url.com/",
@@ -1109,8 +1095,8 @@ Content-Length: 913
     "imageUrlId" : 0,
     "url" : "http://test.com",
     "type" : 1,
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createdAt" : 1665129866924,
+    "modifiedAt" : 1665129866924
   }
 }</code></pre>
 </div>
@@ -1146,9 +1132,9 @@ Content-Length: 913
 <td class="tableblock halign-left valign-top"><p class="tableblock">모집인원</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>category</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">내용</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>foodCategoryId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">카테고리 식별자</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>deadline</code></p></td>
@@ -1250,25 +1236,20 @@ Content-Length: 913
   "memberId" : 1,
   "title" : "Title1",
   "recruit" : 2,
-  "category" : {
-    "foodCategoryId" : 0,
-    "category" : "Category1",
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
-  },
-  "createdAt" : 1664520047476,
-  "modifiedAt" : 1664520047476,
-  "deadline" : 1664520047476,
+  "foodCategoryId" : 1,
+  "createdAt" : 1665129866923,
+  "modifiedAt" : 1665129866923,
+  "deadline" : 1665129866923,
   "pickupLocation" : {
     "locationId" : 0,
-    "nameOfPlace" : "더큰내일센터",
-    "korAddress" : "제주도 연북로",
-    "addressDetail" : "2층 우도 회의실",
+    "nameOfPlace" : "�뜑�겙�궡�씪�꽱�꽣",
+    "korAddress" : "�젣二쇰룄 �뿰遺곷줈",
+    "addressDetail" : "2痢� �슦�룄 �쉶�쓽�떎",
     "type" : 1,
     "latitude" : 123.1234,
     "longitude" : 123.1234,
-    "createAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createAt" : 1665129866923,
+    "modifiedAt" : 1665129866923
   },
   "restaurantName" : "Restaurant1",
   "restaurantUrl" : "http://test-url.com",
@@ -1278,8 +1259,8 @@ Content-Length: 913
     "imageUrlId" : 0,
     "url" : "http://test.com",
     "type" : 1,
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createdAt" : 1665129866924,
+    "modifiedAt" : 1665129866924
   }
 }</code></pre>
 </div>
@@ -1290,15 +1271,15 @@ Content-Length: 913
 <div class="listingblock">
 <div class="title">curl-request</div>
 <div class="content">
-<pre class="prettyprint highlight"><code data-lang="bash">$ curl 'http://localhost:8080/items/1?_csrf=1c184674-62fe-4fef-8aba-c1750591fe7d' -i -X PATCH \
+<pre class="prettyprint highlight"><code data-lang="bash">$ curl 'http://localhost:8080/items/1' -i -X PATCH \
     -H 'Content-Type: application/json;charset=UTF-8' \
     -H 'Accept: application/json' \
     -d '{
   "memberId" : 1,
+  "foodCategoryId" : 1,
   "title" : "Title1",
   "recruit" : 2,
-  "category" : "Category1",
-  "deadline" : 1664520047476,
+  "deadline" : 1665129866923,
   "pickupLocation" : {
     "locationId" : 0,
     "nameOfPlace" : "더큰내일센터",
@@ -1307,8 +1288,8 @@ Content-Length: 913
     "type" : 1,
     "latitude" : 123.1234,
     "longitude" : 123.1234,
-    "createAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createAt" : 1665129866923,
+    "modifiedAt" : 1665129866923
   },
   "restaurantName" : "Restaurant1",
   "restaurantUrl" : "http://test-url.com/",
@@ -1317,8 +1298,8 @@ Content-Length: 913
     "imageUrlId" : 0,
     "url" : "http://test.com",
     "type" : 1,
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createdAt" : 1665129866924,
+    "modifiedAt" : 1665129866924
   }
 }'</code></pre>
 </div>
@@ -1326,18 +1307,18 @@ Content-Length: 913
 <div class="listingblock">
 <div class="title">http-request</div>
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code data-lang="http">PATCH /items/1?_csrf=1c184674-62fe-4fef-8aba-c1750591fe7d HTTP/1.1
+<pre class="prettyprint highlight nowrap"><code data-lang="http">PATCH /items/1 HTTP/1.1
 Content-Type: application/json;charset=UTF-8
 Accept: application/json
-Content-Length: 691
+Content-Length: 714
 Host: localhost:8080
 
 {
   "memberId" : 1,
+  "foodCategoryId" : 1,
   "title" : "Title1",
   "recruit" : 2,
-  "category" : "Category1",
-  "deadline" : 1664520047476,
+  "deadline" : 1665129866923,
   "pickupLocation" : {
     "locationId" : 0,
     "nameOfPlace" : "더큰내일센터",
@@ -1346,8 +1327,8 @@ Host: localhost:8080
     "type" : 1,
     "latitude" : 123.1234,
     "longitude" : 123.1234,
-    "createAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createAt" : 1665129866923,
+    "modifiedAt" : 1665129866923
   },
   "restaurantName" : "Restaurant1",
   "restaurantUrl" : "http://test-url.com/",
@@ -1356,8 +1337,8 @@ Host: localhost:8080
     "imageUrlId" : 0,
     "url" : "http://test.com",
     "type" : 1,
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createdAt" : 1665129866924,
+    "modifiedAt" : 1665129866924
   }
 }</code></pre>
 </div>
@@ -1366,29 +1347,21 @@ Host: localhost:8080
 <div class="title">http-response</div>
 <div class="content">
 <pre class="prettyprint highlight nowrap"><code data-lang="http">HTTP/1.1 200 OK
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
 Content-Type: application/json
-X-Content-Type-Options: nosniff
-X-XSS-Protection: 1; mode=block
-Cache-Control: no-cache, no-store, max-age=0, must-revalidate
-Pragma: no-cache
-Expires: 0
-X-Frame-Options: DENY
-Content-Length: 913
+Content-Length: 824
 
 {
   "itemId" : 1,
   "memberId" : 1,
   "title" : "Title1",
   "recruit" : 2,
-  "category" : {
-    "foodCategoryId" : 0,
-    "category" : "Category1",
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
-  },
-  "createdAt" : 1664520047476,
-  "modifiedAt" : 1664520047476,
-  "deadline" : 1664520047476,
+  "foodCategoryId" : 1,
+  "createdAt" : 1665129866923,
+  "modifiedAt" : 1665129866923,
+  "deadline" : 1665129866923,
   "pickupLocation" : {
     "locationId" : 0,
     "nameOfPlace" : "더큰내일센터",
@@ -1397,8 +1370,8 @@ Content-Length: 913
     "type" : 1,
     "latitude" : 123.1234,
     "longitude" : 123.1234,
-    "createAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createAt" : 1665129866923,
+    "modifiedAt" : 1665129866923
   },
   "restaurantName" : "Restaurant1",
   "restaurantUrl" : "http://test-url.com",
@@ -1408,8 +1381,8 @@ Content-Length: 913
     "imageUrlId" : 0,
     "url" : "http://test.com",
     "type" : 1,
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createdAt" : 1665129866924,
+    "modifiedAt" : 1665129866924
   }
 }</code></pre>
 </div>
@@ -1419,10 +1392,10 @@ Content-Length: 913
 <div class="content">
 <pre class="prettyprint highlight"><code data-lang="bash">$ echo '{
   "memberId" : 1,
+  "foodCategoryId" : 1,
   "title" : "Title1",
   "recruit" : 2,
-  "category" : "Category1",
-  "deadline" : 1664520047476,
+  "deadline" : 1665129866923,
   "pickupLocation" : {
     "locationId" : 0,
     "nameOfPlace" : "더큰내일센터",
@@ -1431,8 +1404,8 @@ Content-Length: 913
     "type" : 1,
     "latitude" : 123.1234,
     "longitude" : 123.1234,
-    "createAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createAt" : 1665129866923,
+    "modifiedAt" : 1665129866923
   },
   "restaurantName" : "Restaurant1",
   "restaurantUrl" : "http://test-url.com/",
@@ -1441,10 +1414,10 @@ Content-Length: 913
     "imageUrlId" : 0,
     "url" : "http://test.com",
     "type" : 1,
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createdAt" : 1665129866924,
+    "modifiedAt" : 1665129866924
   }
-}' | http PATCH 'http://localhost:8080/items/1?_csrf=1c184674-62fe-4fef-8aba-c1750591fe7d' \
+}' | http PATCH 'http://localhost:8080/items/1' \
     'Content-Type:application/json;charset=UTF-8' \
     'Accept:application/json'</code></pre>
 </div>
@@ -1473,10 +1446,10 @@ Content-Length: 913
 <div class="content">
 <pre class="prettyprint highlight nowrap"><code>{
   "memberId" : 1,
+  "foodCategoryId" : 1,
   "title" : "Title1",
   "recruit" : 2,
-  "category" : "Category1",
-  "deadline" : 1664520047476,
+  "deadline" : 1665129866923,
   "pickupLocation" : {
     "locationId" : 0,
     "nameOfPlace" : "더큰내일센터",
@@ -1485,8 +1458,8 @@ Content-Length: 913
     "type" : 1,
     "latitude" : 123.1234,
     "longitude" : 123.1234,
-    "createAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createAt" : 1665129866923,
+    "modifiedAt" : 1665129866923
   },
   "restaurantName" : "Restaurant1",
   "restaurantUrl" : "http://test-url.com/",
@@ -1495,8 +1468,8 @@ Content-Length: 913
     "imageUrlId" : 0,
     "url" : "http://test.com",
     "type" : 1,
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createdAt" : 1665129866924,
+    "modifiedAt" : 1665129866924
   }
 }</code></pre>
 </div>
@@ -1532,9 +1505,9 @@ Content-Length: 913
 <td class="tableblock halign-left valign-top"><p class="tableblock">모집인원</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>category</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">내용</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>foodCategoryId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">카테고리 식별자</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>deadline</code></p></td>
@@ -1636,25 +1609,20 @@ Content-Length: 913
   "memberId" : 1,
   "title" : "Title1",
   "recruit" : 2,
-  "category" : {
-    "foodCategoryId" : 0,
-    "category" : "Category1",
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
-  },
-  "createdAt" : 1664520047476,
-  "modifiedAt" : 1664520047476,
-  "deadline" : 1664520047476,
+  "foodCategoryId" : 1,
+  "createdAt" : 1665129866923,
+  "modifiedAt" : 1665129866923,
+  "deadline" : 1665129866923,
   "pickupLocation" : {
     "locationId" : 0,
-    "nameOfPlace" : "더큰내일센터",
-    "korAddress" : "제주도 연북로",
-    "addressDetail" : "2층 우도 회의실",
+    "nameOfPlace" : "�뜑�겙�궡�씪�꽱�꽣",
+    "korAddress" : "�젣二쇰룄 �뿰遺곷줈",
+    "addressDetail" : "2痢� �슦�룄 �쉶�쓽�떎",
     "type" : 1,
     "latitude" : 123.1234,
     "longitude" : 123.1234,
-    "createAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createAt" : 1665129866923,
+    "modifiedAt" : 1665129866923
   },
   "restaurantName" : "Restaurant1",
   "restaurantUrl" : "http://test-url.com",
@@ -1664,8 +1632,8 @@ Content-Length: 913
     "imageUrlId" : 0,
     "url" : "http://test.com",
     "type" : 1,
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createdAt" : 1665129866924,
+    "modifiedAt" : 1665129866924
   }
 }</code></pre>
 </div>
@@ -1701,29 +1669,14 @@ Content-Length: 913
 <td class="tableblock halign-left valign-top"><p class="tableblock">타이틀</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>foodCategoryId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">카테고리 식별자</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>recruit</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">모집인원</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>category.foodCategoryId</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">내용</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>category.category</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">내용</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>category.createdAt</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">내용</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>category.modifiedAt</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">내용</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>createdAt</code></p></td>
@@ -1738,7 +1691,7 @@ Content-Length: 913
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>deadline</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">마감 시간</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">마감 일자</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>pickupLocation.locationId</code></p></td>
@@ -1854,29 +1807,21 @@ Host: localhost:8080</code></pre>
 <div class="title">http-response</div>
 <div class="content">
 <pre class="prettyprint highlight nowrap"><code data-lang="http">HTTP/1.1 200 OK
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
 Content-Type: application/json
-X-Content-Type-Options: nosniff
-X-XSS-Protection: 1; mode=block
-Cache-Control: no-cache, no-store, max-age=0, must-revalidate
-Pragma: no-cache
-Expires: 0
-X-Frame-Options: DENY
-Content-Length: 913
+Content-Length: 824
 
 {
   "itemId" : 1,
   "memberId" : 1,
   "title" : "Title1",
   "recruit" : 2,
-  "category" : {
-    "foodCategoryId" : 0,
-    "category" : "Category1",
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
-  },
-  "createdAt" : 1664520047476,
-  "modifiedAt" : 1664520047476,
-  "deadline" : 1664520047476,
+  "foodCategoryId" : 1,
+  "createdAt" : 1665129866923,
+  "modifiedAt" : 1665129866923,
+  "deadline" : 1665129866923,
   "pickupLocation" : {
     "locationId" : 0,
     "nameOfPlace" : "더큰내일센터",
@@ -1885,8 +1830,8 @@ Content-Length: 913
     "type" : 1,
     "latitude" : 123.1234,
     "longitude" : 123.1234,
-    "createAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createAt" : 1665129866923,
+    "modifiedAt" : 1665129866923
   },
   "restaurantName" : "Restaurant1",
   "restaurantUrl" : "http://test-url.com",
@@ -1896,8 +1841,8 @@ Content-Length: 913
     "imageUrlId" : 0,
     "url" : "http://test.com",
     "type" : 1,
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createdAt" : 1665129866924,
+    "modifiedAt" : 1665129866924
   }
 }</code></pre>
 </div>
@@ -1942,25 +1887,20 @@ Content-Length: 913
   "memberId" : 1,
   "title" : "Title1",
   "recruit" : 2,
-  "category" : {
-    "foodCategoryId" : 0,
-    "category" : "Category1",
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
-  },
-  "createdAt" : 1664520047476,
-  "modifiedAt" : 1664520047476,
-  "deadline" : 1664520047476,
+  "foodCategoryId" : 1,
+  "createdAt" : 1665129866923,
+  "modifiedAt" : 1665129866923,
+  "deadline" : 1665129866923,
   "pickupLocation" : {
     "locationId" : 0,
-    "nameOfPlace" : "더큰내일센터",
-    "korAddress" : "제주도 연북로",
-    "addressDetail" : "2층 우도 회의실",
+    "nameOfPlace" : "�뜑�겙�궡�씪�꽱�꽣",
+    "korAddress" : "�젣二쇰룄 �뿰遺곷줈",
+    "addressDetail" : "2痢� �슦�룄 �쉶�쓽�떎",
     "type" : 1,
     "latitude" : 123.1234,
     "longitude" : 123.1234,
-    "createAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createAt" : 1665129866923,
+    "modifiedAt" : 1665129866923
   },
   "restaurantName" : "Restaurant1",
   "restaurantUrl" : "http://test-url.com",
@@ -1970,8 +1910,8 @@ Content-Length: 913
     "imageUrlId" : 0,
     "url" : "http://test.com",
     "type" : 1,
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createdAt" : 1665129866924,
+    "modifiedAt" : 1665129866924
   }
 }</code></pre>
 </div>
@@ -2007,24 +1947,9 @@ Content-Length: 913
 <td class="tableblock halign-left valign-top"><p class="tableblock">타이틀</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>category.foodCategoryId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>foodCategoryId</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">카테고리 식별자</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>category.category</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">카테고리</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>category.createdAt</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">카테고리 생성 일자</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>category.modifiedAt</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">카테고리 수정 일자</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>recruit</code></p></td>
@@ -2160,29 +2085,21 @@ Host: localhost:8080</code></pre>
 <div class="title">http-response</div>
 <div class="content">
 <pre class="prettyprint highlight nowrap"><code data-lang="http">HTTP/1.1 200 OK
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
 Content-Type: application/json
-X-Content-Type-Options: nosniff
-X-XSS-Protection: 1; mode=block
-Cache-Control: no-cache, no-store, max-age=0, must-revalidate
-Pragma: no-cache
-Expires: 0
-X-Frame-Options: DENY
-Content-Length: 9156
+Content-Length: 8266
 
 [ {
   "itemId" : 1,
   "memberId" : 1,
   "title" : "Title1",
   "recruit" : 2,
-  "category" : {
-    "foodCategoryId" : 0,
-    "category" : "Category1",
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
-  },
-  "createdAt" : 1664520047476,
-  "modifiedAt" : 1664520047476,
-  "deadline" : 1664520047476,
+  "foodCategoryId" : 1,
+  "createdAt" : 1665129866923,
+  "modifiedAt" : 1665129866923,
+  "deadline" : 1665129866923,
   "pickupLocation" : {
     "locationId" : 0,
     "nameOfPlace" : "더큰내일센터",
@@ -2191,8 +2108,8 @@ Content-Length: 9156
     "type" : 1,
     "latitude" : 123.1234,
     "longitude" : 123.1234,
-    "createAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createAt" : 1665129866923,
+    "modifiedAt" : 1665129866923
   },
   "restaurantName" : "Restaurant1",
   "restaurantUrl" : "http://test-url.com",
@@ -2202,23 +2119,18 @@ Content-Length: 9156
     "imageUrlId" : 0,
     "url" : "http://test.com",
     "type" : 1,
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createdAt" : 1665129866924,
+    "modifiedAt" : 1665129866924
   }
 }, {
   "itemId" : 2,
   "memberId" : 2,
   "title" : "Title2",
   "recruit" : 2,
-  "category" : {
-    "foodCategoryId" : 0,
-    "category" : "Category1",
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
-  },
-  "createdAt" : 1664520047476,
-  "modifiedAt" : 1664520047476,
-  "deadline" : 1664520047476,
+  "foodCategoryId" : 1,
+  "createdAt" : 1665129866923,
+  "modifiedAt" : 1665129866923,
+  "deadline" : 1665129866923,
   "pickupLocation" : {
     "locationId" : 0,
     "nameOfPlace" : "더큰내일센터",
@@ -2227,8 +2139,8 @@ Content-Length: 9156
     "type" : 1,
     "latitude" : 123.1234,
     "longitude" : 123.1234,
-    "createAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createAt" : 1665129866923,
+    "modifiedAt" : 1665129866923
   },
   "restaurantName" : "Restaurant2",
   "restaurantUrl" : "http://test-url.com",
@@ -2238,23 +2150,18 @@ Content-Length: 9156
     "imageUrlId" : 0,
     "url" : "http://test.com",
     "type" : 1,
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createdAt" : 1665129866924,
+    "modifiedAt" : 1665129866924
   }
 }, {
   "itemId" : 3,
   "memberId" : 3,
   "title" : "Title3",
   "recruit" : 2,
-  "category" : {
-    "foodCategoryId" : 0,
-    "category" : "Category1",
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
-  },
-  "createdAt" : 1664520047476,
-  "modifiedAt" : 1664520047476,
-  "deadline" : 1664520047476,
+  "foodCategoryId" : 1,
+  "createdAt" : 1665129866923,
+  "modifiedAt" : 1665129866923,
+  "deadline" : 1665129866923,
   "pickupLocation" : {
     "locationId" : 0,
     "nameOfPlace" : "더큰내일센터",
@@ -2263,8 +2170,8 @@ Content-Length: 9156
     "type" : 1,
     "latitude" : 123.1234,
     "longitude" : 123.1234,
-    "createAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createAt" : 1665129866923,
+    "modifiedAt" : 1665129866923
   },
   "restaurantName" : "Restaurant1",
   "restaurantUrl" : "http://test-url.com",
@@ -2274,23 +2181,18 @@ Content-Length: 9156
     "imageUrlId" : 0,
     "url" : "http://test.com",
     "type" : 1,
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createdAt" : 1665129866924,
+    "modifiedAt" : 1665129866924
   }
 }, {
   "itemId" : 4,
   "memberId" : 4,
   "title" : "Title4",
   "recruit" : 2,
-  "category" : {
-    "foodCategoryId" : 0,
-    "category" : "Category1",
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
-  },
-  "createdAt" : 1664520047476,
-  "modifiedAt" : 1664520047476,
-  "deadline" : 1664520047476,
+  "foodCategoryId" : 1,
+  "createdAt" : 1665129866923,
+  "modifiedAt" : 1665129866923,
+  "deadline" : 1665129866923,
   "pickupLocation" : {
     "locationId" : 0,
     "nameOfPlace" : "더큰내일센터",
@@ -2299,8 +2201,8 @@ Content-Length: 9156
     "type" : 1,
     "latitude" : 123.1234,
     "longitude" : 123.1234,
-    "createAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createAt" : 1665129866923,
+    "modifiedAt" : 1665129866923
   },
   "restaurantName" : "Restaurant1",
   "restaurantUrl" : "http://test-url.com",
@@ -2310,23 +2212,18 @@ Content-Length: 9156
     "imageUrlId" : 0,
     "url" : "http://test.com",
     "type" : 1,
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createdAt" : 1665129866924,
+    "modifiedAt" : 1665129866924
   }
 }, {
   "itemId" : 5,
   "memberId" : 5,
   "title" : "Title5",
   "recruit" : 2,
-  "category" : {
-    "foodCategoryId" : 0,
-    "category" : "Category1",
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
-  },
-  "createdAt" : 1664520047476,
-  "modifiedAt" : 1664520047476,
-  "deadline" : 1664520047476,
+  "foodCategoryId" : 1,
+  "createdAt" : 1665129866923,
+  "modifiedAt" : 1665129866923,
+  "deadline" : 1665129866923,
   "pickupLocation" : {
     "locationId" : 0,
     "nameOfPlace" : "더큰내일센터",
@@ -2335,8 +2232,8 @@ Content-Length: 9156
     "type" : 1,
     "latitude" : 123.1234,
     "longitude" : 123.1234,
-    "createAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createAt" : 1665129866923,
+    "modifiedAt" : 1665129866923
   },
   "restaurantName" : "Restaurant1",
   "restaurantUrl" : "http://test-url.com",
@@ -2346,23 +2243,18 @@ Content-Length: 9156
     "imageUrlId" : 0,
     "url" : "http://test.com",
     "type" : 1,
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createdAt" : 1665129866924,
+    "modifiedAt" : 1665129866924
   }
 }, {
   "itemId" : 6,
   "memberId" : 6,
   "title" : "Title6",
   "recruit" : 2,
-  "category" : {
-    "foodCategoryId" : 0,
-    "category" : "Category1",
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
-  },
-  "createdAt" : 1664520047476,
-  "modifiedAt" : 1664520047476,
-  "deadline" : 1664520047476,
+  "foodCategoryId" : 1,
+  "createdAt" : 1665129866923,
+  "modifiedAt" : 1665129866923,
+  "deadline" : 1665129866923,
   "pickupLocation" : {
     "locationId" : 0,
     "nameOfPlace" : "더큰내일센터",
@@ -2371,8 +2263,8 @@ Content-Length: 9156
     "type" : 1,
     "latitude" : 123.1234,
     "longitude" : 123.1234,
-    "createAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createAt" : 1665129866923,
+    "modifiedAt" : 1665129866923
   },
   "restaurantName" : "Restaurant1",
   "restaurantUrl" : "http://test-url.com",
@@ -2382,23 +2274,18 @@ Content-Length: 9156
     "imageUrlId" : 0,
     "url" : "http://test.com",
     "type" : 1,
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createdAt" : 1665129866924,
+    "modifiedAt" : 1665129866924
   }
 }, {
   "itemId" : 7,
   "memberId" : 7,
   "title" : "Title7",
   "recruit" : 2,
-  "category" : {
-    "foodCategoryId" : 0,
-    "category" : "Category1",
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
-  },
-  "createdAt" : 1664520047476,
-  "modifiedAt" : 1664520047476,
-  "deadline" : 1664520047476,
+  "foodCategoryId" : 1,
+  "createdAt" : 1665129866923,
+  "modifiedAt" : 1665129866923,
+  "deadline" : 1665129866923,
   "pickupLocation" : {
     "locationId" : 0,
     "nameOfPlace" : "더큰내일센터",
@@ -2407,8 +2294,8 @@ Content-Length: 9156
     "type" : 1,
     "latitude" : 123.1234,
     "longitude" : 123.1234,
-    "createAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createAt" : 1665129866923,
+    "modifiedAt" : 1665129866923
   },
   "restaurantName" : "Restaurant1",
   "restaurantUrl" : "http://test-url.com",
@@ -2418,23 +2305,18 @@ Content-Length: 9156
     "imageUrlId" : 0,
     "url" : "http://test.com",
     "type" : 1,
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createdAt" : 1665129866924,
+    "modifiedAt" : 1665129866924
   }
 }, {
   "itemId" : 8,
   "memberId" : 8,
   "title" : "Title8",
   "recruit" : 2,
-  "category" : {
-    "foodCategoryId" : 0,
-    "category" : "Category1",
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
-  },
-  "createdAt" : 1664520047476,
-  "modifiedAt" : 1664520047476,
-  "deadline" : 1664520047476,
+  "foodCategoryId" : 1,
+  "createdAt" : 1665129866923,
+  "modifiedAt" : 1665129866923,
+  "deadline" : 1665129866923,
   "pickupLocation" : {
     "locationId" : 0,
     "nameOfPlace" : "더큰내일센터",
@@ -2443,8 +2325,8 @@ Content-Length: 9156
     "type" : 1,
     "latitude" : 123.1234,
     "longitude" : 123.1234,
-    "createAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createAt" : 1665129866923,
+    "modifiedAt" : 1665129866923
   },
   "restaurantName" : "Restaurant1",
   "restaurantUrl" : "http://test-url.com",
@@ -2454,23 +2336,18 @@ Content-Length: 9156
     "imageUrlId" : 0,
     "url" : "http://test.com",
     "type" : 1,
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createdAt" : 1665129866924,
+    "modifiedAt" : 1665129866924
   }
 }, {
   "itemId" : 9,
   "memberId" : 9,
   "title" : "Title9",
   "recruit" : 2,
-  "category" : {
-    "foodCategoryId" : 0,
-    "category" : "Category1",
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
-  },
-  "createdAt" : 1664520047476,
-  "modifiedAt" : 1664520047476,
-  "deadline" : 1664520047476,
+  "foodCategoryId" : 1,
+  "createdAt" : 1665129866923,
+  "modifiedAt" : 1665129866923,
+  "deadline" : 1665129866923,
   "pickupLocation" : {
     "locationId" : 0,
     "nameOfPlace" : "더큰내일센터",
@@ -2479,8 +2356,8 @@ Content-Length: 9156
     "type" : 1,
     "latitude" : 123.1234,
     "longitude" : 123.1234,
-    "createAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createAt" : 1665129866923,
+    "modifiedAt" : 1665129866923
   },
   "restaurantName" : "Restaurant1",
   "restaurantUrl" : "http://test-url.com",
@@ -2490,23 +2367,18 @@ Content-Length: 9156
     "imageUrlId" : 0,
     "url" : "http://test.com",
     "type" : 1,
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createdAt" : 1665129866924,
+    "modifiedAt" : 1665129866924
   }
 }, {
   "itemId" : 10,
   "memberId" : 10,
   "title" : "Title10",
   "recruit" : 2,
-  "category" : {
-    "foodCategoryId" : 0,
-    "category" : "Category1",
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
-  },
-  "createdAt" : 1664520047476,
-  "modifiedAt" : 1664520047476,
-  "deadline" : 1664520047476,
+  "foodCategoryId" : 1,
+  "createdAt" : 1665129866923,
+  "modifiedAt" : 1665129866923,
+  "deadline" : 1665129866923,
   "pickupLocation" : {
     "locationId" : 0,
     "nameOfPlace" : "더큰내일센터",
@@ -2515,8 +2387,8 @@ Content-Length: 9156
     "type" : 1,
     "latitude" : 123.1234,
     "longitude" : 123.1234,
-    "createAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createAt" : 1665129866923,
+    "modifiedAt" : 1665129866923
   },
   "restaurantName" : "Restaurant1",
   "restaurantUrl" : "http://test-url.com",
@@ -2526,8 +2398,8 @@ Content-Length: 9156
     "imageUrlId" : 0,
     "url" : "http://test.com",
     "type" : 1,
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createdAt" : 1665129866924,
+    "modifiedAt" : 1665129866924
   }
 } ]</code></pre>
 </div>
@@ -2576,25 +2448,20 @@ Content-Length: 9156
   "memberId" : 1,
   "title" : "Title1",
   "recruit" : 2,
-  "category" : {
-    "foodCategoryId" : 0,
-    "category" : "Category1",
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
-  },
-  "createdAt" : 1664520047476,
-  "modifiedAt" : 1664520047476,
-  "deadline" : 1664520047476,
+  "foodCategoryId" : 1,
+  "createdAt" : 1665129866923,
+  "modifiedAt" : 1665129866923,
+  "deadline" : 1665129866923,
   "pickupLocation" : {
     "locationId" : 0,
-    "nameOfPlace" : "더큰내일센터",
-    "korAddress" : "제주도 연북로",
-    "addressDetail" : "2층 우도 회의실",
+    "nameOfPlace" : "�뜑�겙�궡�씪�꽱�꽣",
+    "korAddress" : "�젣二쇰룄 �뿰遺곷줈",
+    "addressDetail" : "2痢� �슦�룄 �쉶�쓽�떎",
     "type" : 1,
     "latitude" : 123.1234,
     "longitude" : 123.1234,
-    "createAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createAt" : 1665129866923,
+    "modifiedAt" : 1665129866923
   },
   "restaurantName" : "Restaurant1",
   "restaurantUrl" : "http://test-url.com",
@@ -2604,33 +2471,28 @@ Content-Length: 9156
     "imageUrlId" : 0,
     "url" : "http://test.com",
     "type" : 1,
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createdAt" : 1665129866924,
+    "modifiedAt" : 1665129866924
   }
 }, {
   "itemId" : 2,
   "memberId" : 2,
   "title" : "Title2",
   "recruit" : 2,
-  "category" : {
-    "foodCategoryId" : 0,
-    "category" : "Category1",
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
-  },
-  "createdAt" : 1664520047476,
-  "modifiedAt" : 1664520047476,
-  "deadline" : 1664520047476,
+  "foodCategoryId" : 1,
+  "createdAt" : 1665129866923,
+  "modifiedAt" : 1665129866923,
+  "deadline" : 1665129866923,
   "pickupLocation" : {
     "locationId" : 0,
-    "nameOfPlace" : "더큰내일센터",
-    "korAddress" : "제주도 연북로",
-    "addressDetail" : "2층 우도 회의실",
+    "nameOfPlace" : "�뜑�겙�궡�씪�꽱�꽣",
+    "korAddress" : "�젣二쇰룄 �뿰遺곷줈",
+    "addressDetail" : "2痢� �슦�룄 �쉶�쓽�떎",
     "type" : 1,
     "latitude" : 123.1234,
     "longitude" : 123.1234,
-    "createAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createAt" : 1665129866923,
+    "modifiedAt" : 1665129866923
   },
   "restaurantName" : "Restaurant2",
   "restaurantUrl" : "http://test-url.com",
@@ -2640,33 +2502,28 @@ Content-Length: 9156
     "imageUrlId" : 0,
     "url" : "http://test.com",
     "type" : 1,
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createdAt" : 1665129866924,
+    "modifiedAt" : 1665129866924
   }
 }, {
   "itemId" : 3,
   "memberId" : 3,
   "title" : "Title3",
   "recruit" : 2,
-  "category" : {
-    "foodCategoryId" : 0,
-    "category" : "Category1",
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
-  },
-  "createdAt" : 1664520047476,
-  "modifiedAt" : 1664520047476,
-  "deadline" : 1664520047476,
+  "foodCategoryId" : 1,
+  "createdAt" : 1665129866923,
+  "modifiedAt" : 1665129866923,
+  "deadline" : 1665129866923,
   "pickupLocation" : {
     "locationId" : 0,
-    "nameOfPlace" : "더큰내일센터",
-    "korAddress" : "제주도 연북로",
-    "addressDetail" : "2층 우도 회의실",
+    "nameOfPlace" : "�뜑�겙�궡�씪�꽱�꽣",
+    "korAddress" : "�젣二쇰룄 �뿰遺곷줈",
+    "addressDetail" : "2痢� �슦�룄 �쉶�쓽�떎",
     "type" : 1,
     "latitude" : 123.1234,
     "longitude" : 123.1234,
-    "createAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createAt" : 1665129866923,
+    "modifiedAt" : 1665129866923
   },
   "restaurantName" : "Restaurant1",
   "restaurantUrl" : "http://test-url.com",
@@ -2676,33 +2533,28 @@ Content-Length: 9156
     "imageUrlId" : 0,
     "url" : "http://test.com",
     "type" : 1,
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createdAt" : 1665129866924,
+    "modifiedAt" : 1665129866924
   }
 }, {
   "itemId" : 4,
   "memberId" : 4,
   "title" : "Title4",
   "recruit" : 2,
-  "category" : {
-    "foodCategoryId" : 0,
-    "category" : "Category1",
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
-  },
-  "createdAt" : 1664520047476,
-  "modifiedAt" : 1664520047476,
-  "deadline" : 1664520047476,
+  "foodCategoryId" : 1,
+  "createdAt" : 1665129866923,
+  "modifiedAt" : 1665129866923,
+  "deadline" : 1665129866923,
   "pickupLocation" : {
     "locationId" : 0,
-    "nameOfPlace" : "더큰내일센터",
-    "korAddress" : "제주도 연북로",
-    "addressDetail" : "2층 우도 회의실",
+    "nameOfPlace" : "�뜑�겙�궡�씪�꽱�꽣",
+    "korAddress" : "�젣二쇰룄 �뿰遺곷줈",
+    "addressDetail" : "2痢� �슦�룄 �쉶�쓽�떎",
     "type" : 1,
     "latitude" : 123.1234,
     "longitude" : 123.1234,
-    "createAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createAt" : 1665129866923,
+    "modifiedAt" : 1665129866923
   },
   "restaurantName" : "Restaurant1",
   "restaurantUrl" : "http://test-url.com",
@@ -2712,33 +2564,28 @@ Content-Length: 9156
     "imageUrlId" : 0,
     "url" : "http://test.com",
     "type" : 1,
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createdAt" : 1665129866924,
+    "modifiedAt" : 1665129866924
   }
 }, {
   "itemId" : 5,
   "memberId" : 5,
   "title" : "Title5",
   "recruit" : 2,
-  "category" : {
-    "foodCategoryId" : 0,
-    "category" : "Category1",
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
-  },
-  "createdAt" : 1664520047476,
-  "modifiedAt" : 1664520047476,
-  "deadline" : 1664520047476,
+  "foodCategoryId" : 1,
+  "createdAt" : 1665129866923,
+  "modifiedAt" : 1665129866923,
+  "deadline" : 1665129866923,
   "pickupLocation" : {
     "locationId" : 0,
-    "nameOfPlace" : "더큰내일센터",
-    "korAddress" : "제주도 연북로",
-    "addressDetail" : "2층 우도 회의실",
+    "nameOfPlace" : "�뜑�겙�궡�씪�꽱�꽣",
+    "korAddress" : "�젣二쇰룄 �뿰遺곷줈",
+    "addressDetail" : "2痢� �슦�룄 �쉶�쓽�떎",
     "type" : 1,
     "latitude" : 123.1234,
     "longitude" : 123.1234,
-    "createAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createAt" : 1665129866923,
+    "modifiedAt" : 1665129866923
   },
   "restaurantName" : "Restaurant1",
   "restaurantUrl" : "http://test-url.com",
@@ -2748,33 +2595,28 @@ Content-Length: 9156
     "imageUrlId" : 0,
     "url" : "http://test.com",
     "type" : 1,
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createdAt" : 1665129866924,
+    "modifiedAt" : 1665129866924
   }
 }, {
   "itemId" : 6,
   "memberId" : 6,
   "title" : "Title6",
   "recruit" : 2,
-  "category" : {
-    "foodCategoryId" : 0,
-    "category" : "Category1",
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
-  },
-  "createdAt" : 1664520047476,
-  "modifiedAt" : 1664520047476,
-  "deadline" : 1664520047476,
+  "foodCategoryId" : 1,
+  "createdAt" : 1665129866923,
+  "modifiedAt" : 1665129866923,
+  "deadline" : 1665129866923,
   "pickupLocation" : {
     "locationId" : 0,
-    "nameOfPlace" : "더큰내일센터",
-    "korAddress" : "제주도 연북로",
-    "addressDetail" : "2층 우도 회의실",
+    "nameOfPlace" : "�뜑�겙�궡�씪�꽱�꽣",
+    "korAddress" : "�젣二쇰룄 �뿰遺곷줈",
+    "addressDetail" : "2痢� �슦�룄 �쉶�쓽�떎",
     "type" : 1,
     "latitude" : 123.1234,
     "longitude" : 123.1234,
-    "createAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createAt" : 1665129866923,
+    "modifiedAt" : 1665129866923
   },
   "restaurantName" : "Restaurant1",
   "restaurantUrl" : "http://test-url.com",
@@ -2784,33 +2626,28 @@ Content-Length: 9156
     "imageUrlId" : 0,
     "url" : "http://test.com",
     "type" : 1,
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createdAt" : 1665129866924,
+    "modifiedAt" : 1665129866924
   }
 }, {
   "itemId" : 7,
   "memberId" : 7,
   "title" : "Title7",
   "recruit" : 2,
-  "category" : {
-    "foodCategoryId" : 0,
-    "category" : "Category1",
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
-  },
-  "createdAt" : 1664520047476,
-  "modifiedAt" : 1664520047476,
-  "deadline" : 1664520047476,
+  "foodCategoryId" : 1,
+  "createdAt" : 1665129866923,
+  "modifiedAt" : 1665129866923,
+  "deadline" : 1665129866923,
   "pickupLocation" : {
     "locationId" : 0,
-    "nameOfPlace" : "더큰내일센터",
-    "korAddress" : "제주도 연북로",
-    "addressDetail" : "2층 우도 회의실",
+    "nameOfPlace" : "�뜑�겙�궡�씪�꽱�꽣",
+    "korAddress" : "�젣二쇰룄 �뿰遺곷줈",
+    "addressDetail" : "2痢� �슦�룄 �쉶�쓽�떎",
     "type" : 1,
     "latitude" : 123.1234,
     "longitude" : 123.1234,
-    "createAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createAt" : 1665129866923,
+    "modifiedAt" : 1665129866923
   },
   "restaurantName" : "Restaurant1",
   "restaurantUrl" : "http://test-url.com",
@@ -2820,33 +2657,28 @@ Content-Length: 9156
     "imageUrlId" : 0,
     "url" : "http://test.com",
     "type" : 1,
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createdAt" : 1665129866924,
+    "modifiedAt" : 1665129866924
   }
 }, {
   "itemId" : 8,
   "memberId" : 8,
   "title" : "Title8",
   "recruit" : 2,
-  "category" : {
-    "foodCategoryId" : 0,
-    "category" : "Category1",
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
-  },
-  "createdAt" : 1664520047476,
-  "modifiedAt" : 1664520047476,
-  "deadline" : 1664520047476,
+  "foodCategoryId" : 1,
+  "createdAt" : 1665129866923,
+  "modifiedAt" : 1665129866923,
+  "deadline" : 1665129866923,
   "pickupLocation" : {
     "locationId" : 0,
-    "nameOfPlace" : "더큰내일센터",
-    "korAddress" : "제주도 연북로",
-    "addressDetail" : "2층 우도 회의실",
+    "nameOfPlace" : "�뜑�겙�궡�씪�꽱�꽣",
+    "korAddress" : "�젣二쇰룄 �뿰遺곷줈",
+    "addressDetail" : "2痢� �슦�룄 �쉶�쓽�떎",
     "type" : 1,
     "latitude" : 123.1234,
     "longitude" : 123.1234,
-    "createAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createAt" : 1665129866923,
+    "modifiedAt" : 1665129866923
   },
   "restaurantName" : "Restaurant1",
   "restaurantUrl" : "http://test-url.com",
@@ -2856,33 +2688,28 @@ Content-Length: 9156
     "imageUrlId" : 0,
     "url" : "http://test.com",
     "type" : 1,
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createdAt" : 1665129866924,
+    "modifiedAt" : 1665129866924
   }
 }, {
   "itemId" : 9,
   "memberId" : 9,
   "title" : "Title9",
   "recruit" : 2,
-  "category" : {
-    "foodCategoryId" : 0,
-    "category" : "Category1",
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
-  },
-  "createdAt" : 1664520047476,
-  "modifiedAt" : 1664520047476,
-  "deadline" : 1664520047476,
+  "foodCategoryId" : 1,
+  "createdAt" : 1665129866923,
+  "modifiedAt" : 1665129866923,
+  "deadline" : 1665129866923,
   "pickupLocation" : {
     "locationId" : 0,
-    "nameOfPlace" : "더큰내일센터",
-    "korAddress" : "제주도 연북로",
-    "addressDetail" : "2층 우도 회의실",
+    "nameOfPlace" : "�뜑�겙�궡�씪�꽱�꽣",
+    "korAddress" : "�젣二쇰룄 �뿰遺곷줈",
+    "addressDetail" : "2痢� �슦�룄 �쉶�쓽�떎",
     "type" : 1,
     "latitude" : 123.1234,
     "longitude" : 123.1234,
-    "createAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createAt" : 1665129866923,
+    "modifiedAt" : 1665129866923
   },
   "restaurantName" : "Restaurant1",
   "restaurantUrl" : "http://test-url.com",
@@ -2892,33 +2719,28 @@ Content-Length: 9156
     "imageUrlId" : 0,
     "url" : "http://test.com",
     "type" : 1,
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createdAt" : 1665129866924,
+    "modifiedAt" : 1665129866924
   }
 }, {
   "itemId" : 10,
   "memberId" : 10,
   "title" : "Title10",
   "recruit" : 2,
-  "category" : {
-    "foodCategoryId" : 0,
-    "category" : "Category1",
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
-  },
-  "createdAt" : 1664520047476,
-  "modifiedAt" : 1664520047476,
-  "deadline" : 1664520047476,
+  "foodCategoryId" : 1,
+  "createdAt" : 1665129866923,
+  "modifiedAt" : 1665129866923,
+  "deadline" : 1665129866923,
   "pickupLocation" : {
     "locationId" : 0,
-    "nameOfPlace" : "더큰내일센터",
-    "korAddress" : "제주도 연북로",
-    "addressDetail" : "2층 우도 회의실",
+    "nameOfPlace" : "�뜑�겙�궡�씪�꽱�꽣",
+    "korAddress" : "�젣二쇰룄 �뿰遺곷줈",
+    "addressDetail" : "2痢� �슦�룄 �쉶�쓽�떎",
     "type" : 1,
     "latitude" : 123.1234,
     "longitude" : 123.1234,
-    "createAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createAt" : 1665129866923,
+    "modifiedAt" : 1665129866923
   },
   "restaurantName" : "Restaurant1",
   "restaurantUrl" : "http://test-url.com",
@@ -2928,8 +2750,8 @@ Content-Length: 9156
     "imageUrlId" : 0,
     "url" : "http://test.com",
     "type" : 1,
-    "createdAt" : 1664520047476,
-    "modifiedAt" : 1664520047476
+    "createdAt" : 1665129866924,
+    "modifiedAt" : 1665129866924
   }
 } ]</code></pre>
 </div>
@@ -2965,34 +2787,19 @@ Content-Length: 9156
 <td class="tableblock halign-left valign-top"><p class="tableblock">타이틀</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].category.foodCategoryId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].foodCategoryId</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">카테고리 식별자</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].category.category</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">카테고리</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].category.createdAt</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">카테고리 생성 일자</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].category.modifiedAt</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">카테고리 수정 일자</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].createdAt</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">카테고리 생성 일자</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">생성 일자</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].modifiedAt</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">카테고리 수정 일자</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">수정 일자</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].recruit</code></p></td>
@@ -3102,13 +2909,13 @@ Content-Length: 9156
 <div class="listingblock">
 <div class="title">curl-request</div>
 <div class="content">
-<pre class="prettyprint highlight"><code data-lang="bash">$ curl 'http://localhost:8080/items/1?_csrf=2fd00766-1df8-4de0-8aa3-1a79c99affbb' -i -X DELETE</code></pre>
+<pre class="prettyprint highlight"><code data-lang="bash">$ curl 'http://localhost:8080/items/1' -i -X DELETE</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">http-request</div>
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code data-lang="http">DELETE /items/1?_csrf=2fd00766-1df8-4de0-8aa3-1a79c99affbb HTTP/1.1
+<pre class="prettyprint highlight nowrap"><code data-lang="http">DELETE /items/1 HTTP/1.1
 Host: localhost:8080</code></pre>
 </div>
 </div>
@@ -3116,18 +2923,15 @@ Host: localhost:8080</code></pre>
 <div class="title">http-response</div>
 <div class="content">
 <pre class="prettyprint highlight nowrap"><code data-lang="http">HTTP/1.1 204 No Content
-X-Content-Type-Options: nosniff
-X-XSS-Protection: 1; mode=block
-Cache-Control: no-cache, no-store, max-age=0, must-revalidate
-Pragma: no-cache
-Expires: 0
-X-Frame-Options: DENY</code></pre>
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">httpie-request</div>
 <div class="content">
-<pre class="prettyprint highlight"><code data-lang="bash">$ http DELETE 'http://localhost:8080/items/1?_csrf=2fd00766-1df8-4de0-8aa3-1a79c99affbb'</code></pre>
+<pre class="prettyprint highlight"><code data-lang="bash">$ http DELETE 'http://localhost:8080/items/1'</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -3168,7 +2972,7 @@ X-Frame-Options: DENY</code></pre>
 <div id="footer">
 <div id="footer-text">
 Version 0.0.1-SNAPSHOT<br>
-Last updated 2022-09-30 15:40:15 +0900
+Last updated 2022-10-07 10:29:20 +0900
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">

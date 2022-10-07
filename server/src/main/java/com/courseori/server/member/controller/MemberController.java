@@ -7,6 +7,7 @@ import com.courseori.server.member.mapper.MemberMapper;
 import com.courseori.server.member.role.ROLE;
 import com.courseori.server.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -14,12 +15,13 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
+import java.util.List;
 
 
-//@RestController
 @Controller
 @RequestMapping("/v1/members")
 @RequiredArgsConstructor
+@CrossOrigin("*")
 public class MemberController {
 
 
@@ -62,6 +64,29 @@ public class MemberController {
                 return new ResponseEntity(mapper.memberToMemberResponse(findMember),HttpStatus.OK);
     }
 
+    @GetMapping()
+    public ResponseEntity getMembers(@Positive @RequestParam int page,
+                                     @Positive @RequestParam int size) {
+
+        Page<Member> membersPage = memberService.findMembers(page, size);
+        List<Member> members = membersPage.getContent();
+
+        List<MemberDto.Response> responses = mapper.membersToMemberResponses(members);
+
+        return new ResponseEntity(responses,HttpStatus.OK);
+    }
+
+//    @GetMapping()
+//    public ResponseEntity getMembers() {
+//
+//        List<Member> members = memberService.findMembers();
+//
+//        List<MemberDto.Response> responses = mapper.membersToMemberResponses(members);
+//
+//        return new ResponseEntity(responses,HttpStatus.OK);
+//    }
+
+
     @DeleteMapping("/{member-id}")
     public ResponseEntity deleteMember(
             @PathVariable("member-id") @Positive long memberId){
@@ -79,7 +104,12 @@ public class MemberController {
         return "login";
     }
 
-   @GetMapping("/user")
+    @PostMapping("/login")
+    public ResponseEntity loginPost() {
+        return new ResponseEntity<>("OK", HttpStatus.OK);
+    }
+
+    @GetMapping("/user")
     @ResponseBody
     public String user(){
         return "user";

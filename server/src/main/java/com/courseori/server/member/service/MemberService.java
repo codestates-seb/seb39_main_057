@@ -3,9 +3,13 @@ package com.courseori.server.member.service;
 import com.courseori.server.member.entity.Member;
 import com.courseori.server.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -13,11 +17,11 @@ import java.util.Optional;
 @Service
 public class MemberService {
 
-    private final BCryptPasswordEncoder encoder;
+//    private final BCryptPasswordEncoder encoder;
     private final MemberRepository memberRepository;
 
     public Member createMember(Member member){
-        member.setPassword(encoder.encode(member.getPassword()));
+//        member.setPassword(encoder.encode(member.getPassword()));
         Member saveMember = memberRepository.save(member);
 
         return saveMember;
@@ -27,7 +31,7 @@ public class MemberService {
         Member findMember = findVerifiedMember(member.getMemberId());
 
         findMember.setUsername(member.getUsername());
-        findMember.setPassword(encoder.encode(member.getPassword()));
+//        findMember.setPassword(encoder.encode(member.getPassword()));
         findMember.setPhoneNumber(member.getProfileImageUrl());
         findMember.setProfileImageUrl(member.getProfileImageUrl());
 
@@ -37,6 +41,14 @@ public class MemberService {
     public Member getMember(long memberId){
         return findVerifiedMember(memberId);
 
+    }
+
+    public Page<Member> findMembers(int page, int size) {
+        return memberRepository.findAll(PageRequest.of(page, size, Sort.by("memberId").descending()));
+    }
+
+    public List<Member> findMembers() {
+        return memberRepository.findAll();
     }
 
     public void deleteMember(long memberId){
