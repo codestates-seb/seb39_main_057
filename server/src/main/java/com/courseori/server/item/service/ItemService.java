@@ -5,8 +5,10 @@ import com.courseori.server.item.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.NoSuchElementException;
@@ -69,6 +71,14 @@ public class ItemService {
     public Page<Item> findItems(int page, int size) {
         return itemRepository.findAll(PageRequest.of(page, size, Sort.by("itemId").descending()));
     }
+
+    @Transactional(readOnly = true)
+    public Page<Item> search(String category, int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<Item> foundItemList = itemRepository.findBySortQuerydslPagination(category, pageable);
+        return foundItemList;
+    }
+
 
     public Item findVerifiedItem(long itemId) {
         Optional<Item> optionalItem =

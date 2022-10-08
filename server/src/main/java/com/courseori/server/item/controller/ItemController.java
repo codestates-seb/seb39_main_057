@@ -83,29 +83,23 @@ public class ItemController {
         return new ResponseEntity<>(responses, HttpStatus.OK);
     }
 
+    /* 카테고리에 따른 검색결과 가져오기 */
+    @GetMapping("/category")
+    public ResponseEntity getCategorizedItems(@RequestParam String category,
+                                              @Positive @RequestParam int page,
+                                              @Positive @RequestParam int size) {
+
+        Page<Item> itemPage = itemService.search(category, page, size);
+        List<Item> itemsList = itemPage.getContent();
+        List<ItemDto.Response> responses = itemMapper.itemsToItemResponses(itemsList);
+
+        return new ResponseEntity<>(responses, HttpStatus.OK);
+    }
+
     @DeleteMapping("/{item-id}")
     public ResponseEntity deleteItem(@PathVariable("item-id") @Positive long itemId) {
         itemService.deleteItem(itemId);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
-    }
-
-    /* patch item for adding data inside participant list */
-    @PatchMapping("/participants/{item-id}")
-    public ResponseEntity addParticipant(@PathVariable("item-id") @Positive long itemId,
-                                         @RequestParam long memberId) { //@RequestParam 대신 @RequestBody 인지 확인
-
-        //participants row 생성 (type=2로)
-        //Member foundMember = -> memberService에서 findMember로 조회하여 가져오기
-        Member foundMember = memberRepository.findById(memberId).orElseThrow();
-
-        //Item foundItem = -> itemService에서 findItem으로 조회하여 가져오기
-        Item foundItem = itemService.findItem(itemId);
-
-        Participants participants1 = new Participants(2, foundMember, foundItem);
-        participantsService.createParticipants(participants1);
-
-
-        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     /* post participants and map item and member */

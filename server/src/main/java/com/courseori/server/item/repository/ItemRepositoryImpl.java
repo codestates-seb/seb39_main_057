@@ -2,10 +2,12 @@ package com.courseori.server.item.repository;
 
 import com.courseori.server.item.entity.Item;
 import com.courseori.server.item.entity.QItem;
+import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.support.PageableExecutionUtils;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -30,6 +32,45 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
 
     @Override
     public Page<Item> findBySortQuerydslPagination(String category, Pageable pageable) {
-        return null;
+
+        //category service를 통해서 해당 category가 있는지 확인하는 로직 추가하기
+
+        List<Item> items;
+        JPAQuery<Item> query;
+
+
+        items = jpaQueryFactory.selectFrom(qItem)
+                .where(qItem.category.category.eq(category))
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+
+        query = jpaQueryFactory.selectFrom(qItem)
+                .orderBy(qItem.itemId.desc());
+
+
+        return PageableExecutionUtils.getPage(items, pageable, query::fetchCount);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
