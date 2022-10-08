@@ -1,6 +1,5 @@
 package com.courseori.server.item.controller;
 
-
 import com.courseori.server.item.dto.ItemDto;
 import com.courseori.server.item.entity.Item;
 import com.courseori.server.item.mapper.ItemMapper;
@@ -52,7 +51,6 @@ public class ItemController {
 
         return new ResponseEntity<>(response,HttpStatus.CREATED);
     }
-
 
     @PatchMapping("/{item-id}")
     public ResponseEntity patchItem(@PathVariable("item-id") @Positive long itemId,
