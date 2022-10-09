@@ -1,58 +1,114 @@
 package com.courseori.server.member.service;
 
-import com.courseori.server.member.entity.Member;
-import com.courseori.server.member.repository.MemberRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Service;
 
+import com.courseori.server.member.auth.utils.CustomAuthorityUtils;
+import com.courseori.server.member.entity.Member;
+import com.courseori.server.member.exception.BusinessLogicException;
+import com.courseori.server.member.exception.ExceptionCode;
+import com.courseori.server.member.helper.event.MemberRegistrationApplicationEvent;
+import com.courseori.server.member.repository.MemberRepository;
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 import java.util.Optional;
 
-
-@RequiredArgsConstructor
+/**
+ *  - 메서드 구현
+ *  - DI 적용
+ *  - Spring Data JPA 적용
+ *  - 트랜잭션 적용
+ */
+@Transactional
 @Service
 public class MemberService {
-
-    private final BCryptPasswordEncoder encoder;
     private final MemberRepository memberRepository;
+    private final ApplicationEventPublisher publisher;
 
-    public Member createMember(Member member){
-        member.setPassword(encoder.encode(member.getPassword()));
-        Member saveMember = memberRepository.save(member);
+    // 추가
+    private final PasswordEncoder passwordEncoder;
+    private final CustomAuthorityUtils authorityUtils;
 
-        return saveMember;
+    public MemberService(MemberRepository memberRepository,
+                         ApplicationEventPublisher publisher,
+                         PasswordEncoder passwordEncoder,
+                         CustomAuthorityUtils authorityUtils) {
+        this.memberRepository = memberRepository;
+        this.publisher = publisher;
+        this.passwordEncoder = passwordEncoder;
+        this.authorityUtils = authorityUtils;
     }
 
-    public Member updateMember(Member member){
+    public Member createMember(Member member) {
+        verifyExistsEmail(member.getEmail());
+
+        // 추가: Password 암호화
+        String encryptedPassword = passwordEncoder.encode(member.getPassword());
+        member.setPassword(encryptedPassword);
+
+        // 추가: DB에 User Role 저장
+        List<String> roles = authorityUtils.createRoles(member.getEmail());
+        member.setRoles(roles);
+
+        Member savedMember = memberRepository.save(member);
+
+
+        publisher.publishEvent(new MemberRegistrationApplicationEvent(savedMember));
+        return savedMember;
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.SERIALIZABLE)
+    public Member updateMember(Member member) {
         Member findMember = findVerifiedMember(member.getMemberId());
 
-        findMember.setUsername(member.getUsername());
-        findMember.setPassword(encoder.encode(member.getPassword()));
-        findMember.setPhoneNumber(member.getProfileImageUrl());
-        findMember.setProfileImageUrl(member.getProfileImageUrl());
+        Optional.ofNullable(member.getName())
+                .ifPresent(name -> findMember.setName(name));
+        Optional.ofNullable(member.getPhone())
+                .ifPresent(phone -> findMember.setPhone(phone));
+        Optional.ofNullable(member.getPassword())
+                .ifPresent(password -> findMember.setPassword(password));
 
-        return findMember;
+
+
+        return memberRepository.save(findMember);
     }
 
-    public Member getMember(long memberId){
+    @Transactional(readOnly = true)
+    public Member findMember(long memberId) {
         return findVerifiedMember(memberId);
-
     }
 
-    public void deleteMember(long memberId){
+    public Page<Member> findMembers(int page, int size) {
+        return memberRepository.findAll(PageRequest.of(page, size,
+                Sort.by("memberId").descending()));
+    }
+
+    public void deleteMember(long memberId) {
         Member findMember = findVerifiedMember(memberId);
 
         memberRepository.delete(findMember);
-
     }
 
-    public Member findVerifiedMember(long memberId){
+    @Transactional(readOnly = true)
+    public Member findVerifiedMember(long memberId) {
         Optional<Member> optionalMember =
                 memberRepository.findById(memberId);
         Member findMember =
-                optionalMember.orElseThrow(() -> new RuntimeException());
+                optionalMember.orElseThrow(() ->
+                        new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND));
         return findMember;
-
     }
 
+    private void verifyExistsEmail(String email) {
+        Optional<Member> member = memberRepository.findByEmail(email);
+        if (member.isPresent())
+            throw new BusinessLogicException(ExceptionCode.MEMBER_EXISTS);
+    }
 }
