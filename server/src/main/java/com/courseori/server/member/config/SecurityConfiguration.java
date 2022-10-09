@@ -66,15 +66,11 @@ public class SecurityConfiguration {
                     .antMatchers(HttpMethod.GET, "/*/members").hasRole("ADMIN")
                     .antMatchers(HttpMethod.GET, "/*/members/**").hasAnyRole("USER", "ADMIN")
                     .antMatchers(HttpMethod.DELETE, "/*/members/**").hasRole("USER")
-                    .antMatchers(HttpMethod.POST, "/*/coffees").hasRole("ADMIN")
-                    .antMatchers(HttpMethod.PATCH, "/*/coffees/**").hasRole("ADMIN")
-                    .antMatchers(HttpMethod.GET, "/*/coffees/**").hasAnyRole("USER", "ADMIN")
-                    .antMatchers(HttpMethod.GET, "/*/coffees").permitAll()
-                    .antMatchers(HttpMethod.DELETE, "/*/coffees").hasRole("ADMIN")
-                    .antMatchers(HttpMethod.POST, "/*/orders").hasRole("USER")
-                    .antMatchers(HttpMethod.PATCH, "/*/orders").hasAnyRole("USER", "ADMIN")
-                    .antMatchers(HttpMethod.GET, "/*/orders/**").hasAnyRole("USER", "ADMIN")
-                    .antMatchers(HttpMethod.DELETE, "/*/orders").hasRole("USER")
+                    .antMatchers(HttpMethod.POST, "/*/item").hasRole("ADMIN")
+                    .antMatchers(HttpMethod.PATCH, "/*/item/**").hasRole("ADMIN")
+                    .antMatchers(HttpMethod.GET, "/*/item/**").hasAnyRole("USER", "ADMIN")
+                    .antMatchers(HttpMethod.GET, "/*/item").permitAll()
+                    .antMatchers(HttpMethod.DELETE, "/*/item").hasRole("ADMIN")
                     .anyRequest().permitAll()
             );
         return http.build();
@@ -102,7 +98,7 @@ public class SecurityConfiguration {
             AuthenticationManager authenticationManager = builder.getSharedObject(AuthenticationManager.class);
 
             JwtAuthenticationFilter jwtAuthenticationFilter = new JwtAuthenticationFilter(authenticationManager, jwtTokenizer);
-            jwtAuthenticationFilter.setFilterProcessesUrl("/v11/auth/login");
+            jwtAuthenticationFilter.setFilterProcessesUrl("/v2/auth/login");
             jwtAuthenticationFilter.setAuthenticationSuccessHandler(new MemberAuthenticationSuccessHandler());
             jwtAuthenticationFilter.setAuthenticationFailureHandler(new MemberAuthenticationFailureHandler());
 
