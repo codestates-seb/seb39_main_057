@@ -32,6 +32,7 @@ public class StubData {
     static Member member = new Member("User1", "test@email.com", "password", "010-1111-1111", pickupLocation, imageUrl.getUrl(),  "Card", roles );
 
     static FoodCategory foodCategory = new FoodCategory("chicken");
+    static FoodCategory foodCategoryCategorized = new FoodCategory("Pizza");
 
     /* Single post and response */
     //Post에서 Item으로 메서드명 변경 필요
@@ -88,6 +89,43 @@ public class StubData {
 
     }
 
+    /* Multiple responses */
+    public static Page<Item> getMultiCategorizedItems() {
+
+        Item item1 = new Item(member, "Title1",2, foodCategoryCategorized, deadline, pickupLocation,  "포베이", "http://test-url.com", "Body1", imageUrl);
+        Item item2 = new Item(member, "Title1",2, foodCategoryCategorized, deadline, pickupLocation,  "잇프레이러브", "http://test-url.com", "Body1", imageUrl);
+        Item item3 = new Item(member, "Title1",2, foodCategoryCategorized, deadline, pickupLocation,  "돌담집", "http://test-url.com", "Body1", imageUrl);
+        Item item4 = new Item(member, "Title1",2, foodCategoryCategorized, deadline, pickupLocation,  "아리", "http://test-url.com", "Body1", imageUrl);
+        Item item5 = new Item(member, "Title1",2, foodCategoryCategorized, deadline, pickupLocation,  "아노야", "http://test-url.com", "Body1", imageUrl);
+        Item item6 = new Item(member, "Title1",2, foodCategoryCategorized, deadline, pickupLocation,  "은희네해장국", "http://test-url.com", "Body1", imageUrl);
+        Item item7 = new Item(member, "Title1",2, foodCategoryCategorized, deadline, pickupLocation,  "두리둠비", "http://test-url.com", "Body1", imageUrl);
+        Item item8 = new Item(member, "Title1",2, foodCategoryCategorized, deadline, pickupLocation,  "수두리보말칼국수", "http://test-url.com", "Body1", imageUrl);
+        Item item9 = new Item(member, "Title1",2, foodCategoryCategorized, deadline, pickupLocation,  "육떡식당", "http://test-url.com", "Body1", imageUrl);
+        Item item10 = new Item(member, "Title1",2, foodCategoryCategorized, deadline, pickupLocation,  "오후새우시", "http://test-url.com", "Body1", imageUrl);
+
+        return new PageImpl<>(List.of(item1, item2, item3, item4, item5, item6, item7, item8, item9, item10),
+                PageRequest.of(0, 10, Sort.by("itemId").descending()), 2);
+    }
+
+
+    public static List<ItemDto.Response> getMultiCategorizedResponseBody() {
+
+        ItemDto.Response response1 = new ItemDto.Response(1L, 1L, "Title1",2, 9, createdAt, modifiedAt, deadline, pickupLocation, "포베이", "http://test-url.com", participantsList,"Body1", imageUrl);
+        ItemDto.Response response2 = new ItemDto.Response(2L, 2L, "Title2",2, 9, createdAt, modifiedAt, deadline, pickupLocation, "잇프레이러브","http://test-url.com", participantsList,"Body2", imageUrl);
+        ItemDto.Response response3 = new ItemDto.Response(3L, 3L, "Title3", 2,9, createdAt, modifiedAt, deadline, pickupLocation, "돌담집", "http://test-url.com", participantsList,"Body3", imageUrl);
+        ItemDto.Response response4 = new ItemDto.Response(4L, 4L, "Title4", 2,9, createdAt, modifiedAt, deadline, pickupLocation, "아리", "http://test-url.com", participantsList,"Body4", imageUrl);
+        ItemDto.Response response5 = new ItemDto.Response(5L, 5L, "Title5", 2,9, createdAt, modifiedAt, deadline, pickupLocation, "아노야", "http://test-url.com", participantsList,"Body5", imageUrl);
+        ItemDto.Response response6 = new ItemDto.Response(6L, 6L, "Title6", 2,9, createdAt, modifiedAt, deadline, pickupLocation, "은희네해장국","http://test-url.com", participantsList,"Body6", imageUrl);
+        ItemDto.Response response7 = new ItemDto.Response(7L, 7L, "Title7",2, 9, createdAt, modifiedAt, deadline, pickupLocation, "두리둠비", "http://test-url.com", participantsList,"Body7", imageUrl);
+        ItemDto.Response response8 = new ItemDto.Response(8L, 8L, "Title8", 2,9, createdAt, modifiedAt, deadline, pickupLocation, "수두리보말칼","http://test-url.com", participantsList,"Body8", imageUrl);
+        ItemDto.Response response9 = new ItemDto.Response(9L, 9L, "Title9",2, 9, createdAt, modifiedAt, deadline, pickupLocation, "육떡식당", "http://test-url.com", participantsList,"Body9", imageUrl);
+        ItemDto.Response response10 = new ItemDto.Response(10L, 10L, "Title10", 2,9, createdAt, modifiedAt, deadline, pickupLocation, "오후새우시", "http://test-url.com", participantsList,"Body10", imageUrl);
+
+        List<ItemDto.Response> responseList = List.of(response1, response2, response3, response4, response5, response6, response7, response8, response9, response10);
+
+        return responseList;
+
+    }
 
     /* post related */
     public static ItemDto.Post getSinglePostBody(){

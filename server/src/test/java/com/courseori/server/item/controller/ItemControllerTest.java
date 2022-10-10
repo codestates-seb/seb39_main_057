@@ -225,6 +225,87 @@ public class ItemControllerTest {
     }
 
     @Test
+    public void getCategorizedItemsTest() throws Exception {
+        //given
+            //parameters
+        String page = "1";
+        String size = "10";
+        String category = "Japanese";
+
+        MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<>();
+        queryParams.add("page", page);
+        queryParams.add("size", size);
+        queryParams.add("category", category);
+
+        Page<Item> itemPage = StubData.getMultiCategorizedItems();
+        List<ItemDto.Response> responseList = StubData.getMultiCategorizedResponseBody();
+
+        given(itemService.search(Mockito.anyString(), Mockito.anyInt(), Mockito.anyInt())).willReturn(itemPage);
+        given(itemMapper.itemsToItemResponses(Mockito.anyList())).willReturn(responseList);
+
+        //when
+        ResultActions actions = mockMvc.perform(
+                get("/items/category")
+                        .params(queryParams)
+                        .accept(MediaType.APPLICATION_JSON)
+        );
+
+        //then
+        MvcResult result =
+                actions.andExpect(status().isOk())
+                        .andDo(
+                                document(
+                                        "get-categorized-items",
+                                        preprocessRequest(prettyPrint()),
+                                        preprocessResponse(prettyPrint()),
+                                        requestParameters(
+                                                List.of(
+                                                        parameterWithName("category").description("음식 카테고리"),
+                                                        parameterWithName("page").description("Page 번호"),
+                                                        parameterWithName("size").description("Page 사이즈")
+                                    )
+                                        ),
+                                        responseFields(
+                                                List.of(
+                                                        fieldWithPath("[].itemId").type(JsonFieldType.NUMBER).description("게시글 식별자"),
+                                                        fieldWithPath("[].memberId").type(JsonFieldType.NUMBER).description("회원 식별자"),
+                                                        fieldWithPath("[].title").type(JsonFieldType.STRING).description("타이틀"),
+
+                                                        fieldWithPath("[].foodCategoryId").type(JsonFieldType.NUMBER).description("카테고리 식별자"),
+
+
+                                                        fieldWithPath("[].createdAt").type(JsonFieldType.NUMBER).description("생성 일자"),
+                                                        fieldWithPath("[].modifiedAt").type(JsonFieldType.NUMBER).description("수정 일자"),
+
+                                                        fieldWithPath("[].recruit").type(JsonFieldType.NUMBER).description("모집인원"),
+
+                                                        fieldWithPath("[].deadline").type(JsonFieldType.NUMBER).description("마감 시간"),
+                                                        fieldWithPath("[].pickupLocation.locationId").type(JsonFieldType.NUMBER).description("픽업 장소"),
+                                                        fieldWithPath("[].pickupLocation.nameOfPlace").type(JsonFieldType.STRING).description("픽업 장소 이름"),
+                                                        fieldWithPath("[].pickupLocation.korAddress").type(JsonFieldType.STRING).description("픽업 장소 기본 주소"),
+                                                        fieldWithPath("[].pickupLocation.addressDetail").type(JsonFieldType.STRING).description("픽업 장소 상세 주소"),
+                                                        fieldWithPath("[].pickupLocation.type").type(JsonFieldType.NUMBER).description("픽업 장소 타입"),
+                                                        fieldWithPath("[].pickupLocation.latitude").type(JsonFieldType.NUMBER).description("픽업 장소 위도"),
+                                                        fieldWithPath("[].pickupLocation.longitude").type(JsonFieldType.NUMBER).description("픽업 장소 경도"),
+                                                        fieldWithPath("[].pickupLocation.createAt").type(JsonFieldType.NUMBER).description("픽업 장소 생성 일자"),
+                                                        fieldWithPath("[].pickupLocation.modifiedAt").type(JsonFieldType.NUMBER).description("픽업 장소 수정 일자"),
+                                                        fieldWithPath("[].restaurantName").type(JsonFieldType.STRING).description("식당 이름"),
+                                                        fieldWithPath("[].restaurantUrl").type(JsonFieldType.STRING).description("식당 URL"),
+                                                        fieldWithPath("[].participantsList").type(JsonFieldType.ARRAY).description("참여자 리스트"),
+                                                        fieldWithPath("[].body").type(JsonFieldType.STRING).description("내용"),
+                                                        fieldWithPath("[].imageUrl.imageUrlId").type(JsonFieldType.NUMBER).description("이미지 URL 식별자"),
+                                                        fieldWithPath("[].imageUrl.url").type(JsonFieldType.STRING).description("이미지 URL"),
+                                                        fieldWithPath("[].imageUrl.type").type(JsonFieldType.NUMBER).description("이미지 URL 타입"),
+                                                        fieldWithPath("[].imageUrl.createdAt").type(JsonFieldType.NUMBER).description("이미지 URL 생성 일자"),
+                                                        fieldWithPath("[].imageUrl.modifiedAt").type(JsonFieldType.NUMBER).description("이미지 URL 수정 일자")
+                                                )
+
+                                        )
+                                        )
+                                ).andReturn();
+
+    }
+    @Test
     public void postItemTest() throws Exception{
 
 
