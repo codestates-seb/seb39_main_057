@@ -44,16 +44,16 @@ VALUES(1, 'Jejusi', 1664436396803, 'JDNC Center', 33.481510, 126.508923, 1664436
 
 /* Items */
 INSERT INTO ITEM(item_id, body, created_at, deadline, modified_at, recruit, restaurant_name, restaurant_url, title, food_category_id, image_url_image_url_id, member_id, p_location_id)
-VALUES(1, 'Lets share the delivery fee', 1664436396803, 1664436396803, 1664436396803, 10, 'SevenEleven', 'http://test-url.com', 'Title1', 1, null, 1, 1),
-(2, 'Lets share the delivery fee', 1664436396803, 1664436396803, 1664436396803, 10, 'Mcdonald', 'http://test-url.com', 'Title2', 2, null, 2, 2),
-(3, 'Lets share the delivery fee', 1664436396803, 1664436396803, 1664436396803, 10, 'BurgerKing', 'http://test-url.com', 'Title3', 1, null, 3, 3),
-(4, 'Lets share the delivery fee', 1664436396803, 1664436396803, 1664436396803, 10, 'Muger', 'http://test-url.com', 'Title4', 3, null, 1, 4),
-(5, 'Lets share the delivery fee', 1664436396803, 1664436396803, 1664436396803, 10, 'Raon', 'http://test-url.com', 'Title5', 4, null, 9, 1),
-(6, 'Lets share the delivery fee', 1664436396803, 1664436396803, 1664436396803, 3, 'BHC', 'http://test-url.com', 'Title6', 1, null, 5, 5),
-(7, 'Lets share the delivery fee', 1664436396803, 1664436396803, 1664436396803, 10, 'BBQ', 'http://test-url.com', 'Title7', 1, null, 6, 1),
-(8, 'Lets share the delivery fee', 1664436396803, 1664436396803, 1664436396803, 10, 'Domino', 'http://test-url.com', 'Title8', 2, null, 1, 9),
-(9, 'Lets share the delivery fee', 1664436396803, 1664436396803, 1664436396803, 10, 'PigPig', 'http://test-url.com', 'Title9', 1, null, 8, 10),
-(10, 'Lets share the delivery fee', 1664436396803, 1664436396803, 1664436396803, 10, 'NeNe', 'http://test-url.com', 'Title10', 3, null, 11, 1);
+VALUES(1, 'Lets share the delivery fee', 1664436396803, 1664436396803, 1664436396803, 5, 'SevenEleven', 'http://test-url.com', 'Title1', 1, null, 1, 1),
+(2, 'Lets share the delivery fee', 1664436396803, 1664436396803, 1664436396803, 5, 'Mcdonald', 'http://test-url.com', 'Title2', 2, null, 2, 2),
+(3, 'Lets share the delivery fee', 1664436396803, 1664436396803, 1664436396803, 5, 'BurgerKing', 'http://test-url.com', 'Title3', 1, null, 3, 3),
+(4, 'Lets share the delivery fee', 1664436396803, 1664436396803, 1664436396803, 5, 'Muger', 'http://test-url.com', 'Title4', 3, null, 1, 4),
+(5, 'Lets share the delivery fee', 1664436396803, 1664436396803, 1664436396803, 5, 'Raon', 'http://test-url.com', 'Title5', 4, null, 9, 6),
+(6, 'Lets share the delivery fee', 1664436396803, 1664436396803, 1664436396803, 5, 'BHC', 'http://test-url.com', 'Title6', 1, null, 5, 5),
+(7, 'Lets share the delivery fee', 1664436396803, 1664436396803, 1664436396803, 5, 'BBQ', 'http://test-url.com', 'Title7', 1, null, 6, 7),
+(8, 'Lets share the delivery fee', 1664436396803, 1664436396803, 1664436396803, 5, 'Domino', 'http://test-url.com', 'Title8', 2, null, 1, 9),
+(9, 'Lets share the delivery fee', 1664436396803, 1664436396803, 1664436396803, 5, 'PigPig', 'http://test-url.com', 'Title9', 1, null, 8, 10),
+(10, 'Lets share the delivery fee', 1664436396803, 1664436396803, 1664436396803, 5, 'NeNe', 'http://test-url.com', 'Title10', 3, null, 11, 8);
 
 /* Participants */
 INSERT INTO PARTICIPANTS(participants_id, created_at, modified_at, type, item_id, member_id)
