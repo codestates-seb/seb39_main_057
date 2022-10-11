@@ -1,0 +1,717 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "memberId": 1,
+      "title": "Title1",
+      "recruit": 3,
+      "foodCategoryId": 1,
+      "createdAt": 1664436396803,
+      "modifiedAt": 1664436396803,
+      "deadline": 1665248278005,
+      "pickupLocation": {
+        "locationId": 0,
+        "nameOfPlace": "더큰내일센터",
+        "korAddress": "제주도 연북로",
+        "addressDetail": "2층 우도 회의실",
+        "type": 1,
+        "latitude": 33.5563,
+        "longitude": 126.806,
+        "createAt": 1664436396803,
+        "modifiedAt": 1664436396803
+      },
+      "restaurantName": "세븐일레븐",
+      "restaurantUrl": "http://test-url.com",
+      "participantsList": [
+        {
+          "participantsId": 1,
+          "type": 2,
+          "member": {
+            "memberId": 2,
+            "username": "서태원",
+            "email": "test2@email.com",
+            "password": "pass1234",
+            "phoneNumber": "010-2222-1111",
+            "location": null,
+            "profileImageUrl": "https://t1.daumcdn.net/thumb/R720x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/Rdr/image/4KLr3IqIbJlrxgio86OtpDhxR-Q.JPG",
+            "joinedAt": 12341234,
+            "modifiedAt": 12341234,
+            "paymentMethod": "cash",
+            "role": "ROLE_USER",
+            "provider": "provider2",
+            "providerId": "providerId2"
+          },
+          "createdAt": 1664858338741,
+          "modifiedAt": 1664858338741
+        }
+      ],
+      "body": "배송비나눔해요, 결제는 계좌이체 희망합니다.",
+      "imageUrl": {
+        "imageUrlId": 0,
+        "url": "http://test.com",
+        "type": 1,
+        "createdAt": 1664436396803,
+        "modifiedAt": 1664436396803
+      }
+    },
+    {
+      "id": 2,
+      "memberId": 2,
+      "title": "Title2",
+      "recruit": 3,
+      "foodCategoryId": 1,
+      "createdAt": 1664436396803,
+      "modifiedAt": 1664436396803,
+      "deadline": 1664436396803,
+      "pickupLocation": {
+        "locationId": 0,
+        "nameOfPlace": "더큰내일센터",
+        "korAddress": "제주도 연북로",
+        "addressDetail": "2층 우도 회의실",
+        "type": 1,
+        "latitude": 33.5563,
+        "longitude": 126.80601,
+        "createAt": 1664436396803,
+        "modifiedAt": 1664436396803
+      },
+      "restaurantName": "다동뼈감자탕",
+      "restaurantUrl": "http://test-url.com",
+      "participantsList": [
+        {
+          "participantsId": 1,
+          "type": 2,
+          "member": {
+            "memberId": 3,
+            "username": "신가경",
+            "email": "test2@email.com",
+            "password": "pass1234",
+            "phoneNumber": "010-2222-1111",
+            "location": null,
+            "profileImageUrl": "https://t1.daumcdn.net/thumb/R720x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/Rdr/image/4KLr3IqIbJlrxgio86OtpDhxR-Q.JPG",
+            "joinedAt": 12341234,
+            "modifiedAt": 12341234,
+            "paymentMethod": "cash",
+            "role": "ROLE_USER",
+            "provider": "provider2",
+            "providerId": "providerId2"
+          },
+          "createdAt": 1664858338741,
+          "modifiedAt": 1664858338741
+        },
+        {
+          "participantsId": 1,
+          "type": 2,
+          "member": {
+            "memberId": 3,
+            "username": "신가경",
+            "email": "test2@email.com",
+            "password": "pass1234",
+            "phoneNumber": "010-2222-1111",
+            "location": null,
+            "profileImageUrl": "https://t1.daumcdn.net/thumb/R720x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/Rdr/image/4KLr3IqIbJlrxgio86OtpDhxR-Q.JPG",
+            "joinedAt": 12341234,
+            "modifiedAt": 12341234,
+            "paymentMethod": "cash",
+            "role": "ROLE_USER",
+            "provider": "provider2",
+            "providerId": "providerId2"
+          },
+          "createdAt": 1664858338741,
+          "modifiedAt": 1664858338741
+        }
+      ],
+      "body": "배송비나눔해요, 결제는 계좌이체 희망합니다.",
+      "imageUrl": {
+        "imageUrlId": 0,
+        "url": "http://test.com",
+        "type": 1,
+        "createdAt": 1664436396803,
+        "modifiedAt": 1664436396803
+      }
+    },
+    {
+      "id": 3,
+      "memberId": 3,
+      "title": "Title1",
+      "recruit": 3,
+      "foodCategoryId": 1,
+      "createdAt": 1664436396803,
+      "modifiedAt": 1664436396803,
+      "deadline": 1664436396803,
+      "pickupLocation": {
+        "locationId": 0,
+        "nameOfPlace": "매종글래드",
+        "korAddress": "제주도 연북로",
+        "addressDetail": "404호",
+        "type": 1,
+        "latitude": 33.5563,
+        "longitude": 126.80602,
+        "createAt": 1664436396803,
+        "modifiedAt": 1664436396803
+      },
+      "restaurantName": "비에이치",
+      "restaurantUrl": "http://test-url.com",
+      "participantsList": [
+        {
+          "participantsId": 2,
+          "type": 2,
+          "member": {
+            "memberId": 2,
+            "username": "서태원",
+            "email": "test2@email.com",
+            "password": "pass1234",
+            "phoneNumber": "010-2222-1111",
+            "location": null,
+            "profileImageUrl": "https://t1.daumcdn.net/thumb/R720x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/Rdr/image/4KLr3IqIbJlrxgio86OtpDhxR-Q.JPG",
+            "joinedAt": 12341234,
+            "modifiedAt": 12341234,
+            "paymentMethod": "cash",
+            "role": "ROLE_USER",
+            "provider": "provider2",
+            "providerId": "providerId2"
+          },
+          "createdAt": 1664858338741,
+          "modifiedAt": 1664858338741
+        }
+      ],
+      "body": "배송비나눔해요, 결제는 계좌이체 희망합니다.",
+      "imageUrl": {
+        "imageUrlId": 0,
+        "url": "http://test.com",
+        "type": 1,
+        "createdAt": 1664436396803,
+        "modifiedAt": 1664436396803
+      }
+    },
+    {
+      "id": 4,
+      "memberId": 4,
+      "title": "Title4",
+      "recruit": 3,
+      "foodCategoryId": 3,
+      "createdAt": 1664436396803,
+      "modifiedAt": 1664436396803,
+      "deadline": 1664436396803,
+      "pickupLocation": {
+        "locationId": 0,
+        "nameOfPlace": "노형아이파크아파트",
+        "korAddress": "제주도 연북로",
+        "addressDetail": "101동 101호",
+        "type": 1,
+        "latitude": 33.55633,
+        "longitude": 126.80593,
+        "createAt": 1664436396803,
+        "modifiedAt": 1664436396803
+      },
+      "restaurantName": "역기떡볶이",
+      "restaurantUrl": "http://test-url.com",
+      "participantsList": [
+        {
+          "participantsId": 2,
+          "type": 2,
+          "member": {
+            "memberId": 2,
+            "username": "서태원",
+            "email": "test2@email.com",
+            "password": "pass1234",
+            "phoneNumber": "010-2222-1111",
+            "location": null,
+            "profileImageUrl": "https://t1.daumcdn.net/thumb/R720x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/Rdr/image/4KLr3IqIbJlrxgio86OtpDhxR-Q.JPG",
+            "joinedAt": 12341234,
+            "modifiedAt": 12341234,
+            "paymentMethod": "cash",
+            "role": "ROLE_USER",
+            "provider": "provider2",
+            "providerId": "providerId2"
+          },
+          "createdAt": 1664858338741,
+          "modifiedAt": 1664858338741
+        }
+      ],
+      "body": "배송비나눔해요, 결제는 계좌이체 희망합니다.",
+      "imageUrl": {
+        "imageUrlId": 0,
+        "url": "http://test.com",
+        "type": 1,
+        "createdAt": 1664436396803,
+        "modifiedAt": 1664436396803
+      }
+    },
+    {
+      "id": 5,
+      "memberId": 5,
+      "title": "Title5",
+      "recruit": 4,
+      "foodCategoryId": 4,
+      "category": {
+        "foodCategoryId": 3,
+        "category": "치킨",
+        "createdAt": 1664436396803,
+        "modifiedAt": 1664436396803
+      },
+      "createdAt": 1664436396803,
+      "modifiedAt": 1664436396803,
+      "deadline": 1664436396803,
+      "pickupLocation": {
+        "locationId": 0,
+        "nameOfPlace": "제주부영아파트1차",
+        "korAddress": "제주도 연북로",
+        "addressDetail": "101동 701호",
+        "type": 1,
+        "latitude": 33.5563,
+        "longitude": 126.80594,
+        "createAt": 1664436396803,
+        "modifiedAt": 1664436396803
+      },
+      "restaurantName": "메종글래드삼다정",
+      "restaurantUrl": "http://test-url.com",
+      "participantsList": [
+        {
+          "participantsId": 1,
+          "type": 2,
+          "member": {
+            "memberId": 2,
+            "username": "서태원",
+            "email": "test2@email.com",
+            "password": "pass1234",
+            "phoneNumber": "010-2222-1111",
+            "location": null,
+            "profileImageUrl": "https://t1.daumcdn.net/thumb/R720x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/Rdr/image/4KLr3IqIbJlrxgio86OtpDhxR-Q.JPG",
+            "joinedAt": 12341234,
+            "modifiedAt": 12341234,
+            "paymentMethod": "cash",
+            "role": "ROLE_USER",
+            "provider": "provider2",
+            "providerId": "providerId2"
+          },
+          "createdAt": 1664858338741,
+          "modifiedAt": 1664858338741
+        }
+      ],
+      "body": "배송비나눔해요, 결제는 계좌이체 희망합니다.",
+      "imageUrl": {
+        "imageUrlId": 0,
+        "url": "http://test.com",
+        "type": 1,
+        "createdAt": 1664436396803,
+        "modifiedAt": 1664436396803
+      }
+    },
+    {
+      "id": 6,
+      "memberId": 6,
+      "title": "Title6",
+      "recruit": 5,
+      "foodCategoryId": 6,
+      "category": {
+        "foodCategoryId": 3,
+        "category": "한식",
+        "createdAt": 1664436396803,
+        "modifiedAt": 1664436396803
+      },
+      "createdAt": 1664436396803,
+      "modifiedAt": 1664436396803,
+      "deadline": 1664436396803,
+      "pickupLocation": {
+        "locationId": 0,
+        "nameOfPlace": "으뜸마을주공아파트",
+        "korAddress": "제주도 연북로",
+        "addressDetail": "101동 707호",
+        "type": 1,
+        "latitude": 33.5563,
+        "longitude": 126.80595,
+        "createAt": 1664436396803,
+        "modifiedAt": 1664436396803
+      },
+      "restaurantName": "제주삼다수",
+      "restaurantUrl": "http://test-url.com",
+      "participantsList": [
+        {
+          "participantsId": 1,
+          "type": 2,
+          "member": {
+            "memberId": 2,
+            "username": "서태원",
+            "email": "test2@email.com",
+            "password": "pass1234",
+            "phoneNumber": "010-2222-1111",
+            "location": null,
+            "profileImageUrl": "https://t1.daumcdn.net/thumb/R720x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/Rdr/image/4KLr3IqIbJlrxgio86OtpDhxR-Q.JPG",
+            "joinedAt": 12341234,
+            "modifiedAt": 12341234,
+            "paymentMethod": "cash",
+            "role": "ROLE_USER",
+            "provider": "provider2",
+            "providerId": "providerId2"
+          },
+          "createdAt": 1664858338741,
+          "modifiedAt": 1664858338741
+        }
+      ],
+      "body": "배송비나눔해요, 결제는 계좌이체 희망합니다.",
+      "imageUrl": {
+        "imageUrlId": 0,
+        "url": "http://test.com",
+        "type": 1,
+        "createdAt": 1664436396803,
+        "modifiedAt": 1664436396803
+      }
+    },
+    {
+      "id": 7,
+      "memberId": 7,
+      "title": "Title7",
+      "recruit": 3,
+      "foodCategoryId": 4,
+      "createdAt": 1664436396803,
+      "modifiedAt": 1664436396803,
+      "deadline": 1664436396803,
+      "pickupLocation": {
+        "locationId": 0,
+        "nameOfPlace": "제주부영2차아파트",
+        "korAddress": "제주도 연북로",
+        "addressDetail": "101동 902호",
+        "type": 1,
+        "latitude": 33.5563,
+        "longitude": 126.80596,
+        "createAt": 1664436396803,
+        "modifiedAt": 1664436396803
+      },
+      "restaurantName": "일품돈까스",
+      "restaurantUrl": "http://test-url.com",
+      "participantsList": [
+        {
+          "participantsId": 1,
+          "type": 2,
+          "member": {
+            "memberId": 2,
+            "username": "서태원",
+            "email": "test2@email.com",
+            "password": "pass1234",
+            "phoneNumber": "010-2222-1111",
+            "location": null,
+            "profileImageUrl": "https://t1.daumcdn.net/thumb/R720x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/Rdr/image/4KLr3IqIbJlrxgio86OtpDhxR-Q.JPG",
+            "joinedAt": 12341234,
+            "modifiedAt": 12341234,
+            "paymentMethod": "cash",
+            "role": "ROLE_USER",
+            "provider": "provider2",
+            "providerId": "providerId2"
+          },
+          "createdAt": 1664858338741,
+          "modifiedAt": 1664858338741
+        }
+      ],
+      "body": "배송비나눔해요, 결제는 계좌이체 희망합니다.",
+      "imageUrl": {
+        "imageUrlId": 0,
+        "url": "http://test.com",
+        "type": 1,
+        "createdAt": 1664436396803,
+        "modifiedAt": 1664436396803
+      }
+    },
+    {
+      "id": 8,
+      "memberId": 8,
+      "title": "Title8",
+      "recruit": 4,
+      "foodCategoryId": 2,
+      "category": {
+        "foodCategoryId": 4,
+        "category": "야식",
+        "createdAt": 1664436396803,
+        "modifiedAt": 1664436396803
+      },
+      "createdAt": 1664436396803,
+      "modifiedAt": 1664436396803,
+      "deadline": 1664436396803,
+      "pickupLocation": {
+        "locationId": 0,
+        "nameOfPlace": "한화꿈에그린아파트",
+        "korAddress": "제주도 연북로",
+        "addressDetail": "101동 505호",
+        "type": 1,
+        "latitude": 33.5563,
+        "longitude": 126.80597,
+        "createAt": 1664436396803,
+        "modifiedAt": 1664436396803
+      },
+      "restaurantName": "네네치킨",
+      "restaurantUrl": "http://test-url.com",
+      "participantsList": [
+        {
+          "participantsId": 1,
+          "type": 2,
+          "member": {
+            "memberId": 2,
+            "username": "서태원",
+            "email": "test2@email.com",
+            "password": "pass1234",
+            "phoneNumber": "010-2222-1111",
+            "location": null,
+            "profileImageUrl": "https://t1.daumcdn.net/thumb/R720x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/Rdr/image/4KLr3IqIbJlrxgio86OtpDhxR-Q.JPG",
+            "joinedAt": 12341234,
+            "modifiedAt": 12341234,
+            "paymentMethod": "cash",
+            "role": "ROLE_USER",
+            "provider": "provider2",
+            "providerId": "providerId2"
+          },
+          "createdAt": 1664858338741,
+          "modifiedAt": 1664858338741
+        }
+      ],
+      "body": "배송비나눔해요, 결제는 계좌이체 희망합니다.",
+      "imageUrl": {
+        "imageUrlId": 0,
+        "url": "http://test.com",
+        "type": 1,
+        "createdAt": 1664436396803,
+        "modifiedAt": 1664436396803
+      }
+    },
+    {
+      "id": 9,
+      "memberId": 9,
+      "title": "Title9",
+      "recruit": 3,
+      "foodCategoryId": 4,
+      "category": {
+        "foodCategoryId": 5,
+        "category": "야식",
+        "createdAt": 1664436396803,
+        "modifiedAt": 1664436396803
+      },
+      "createdAt": 1664436396803,
+      "modifiedAt": 1664436396803,
+      "deadline": 1664436396803,
+      "pickupLocation": {
+        "locationId": 0,
+        "nameOfPlace": "해오름아파트",
+        "korAddress": "제주도 연북로",
+        "addressDetail": "102동 702호",
+        "type": 1,
+        "latitude": 33.5563,
+        "longitude": 126.80598,
+        "createAt": 1664436396803,
+        "modifiedAt": 1664436396803
+      },
+      "restaurantName": "대왕족발",
+      "restaurantUrl": "http://test-url.com",
+      "participantsList": [
+        {
+          "participantsId": 1,
+          "type": 2,
+          "member": {
+            "memberId": 2,
+            "username": "서태원",
+            "email": "test2@email.com",
+            "password": "pass1234",
+            "phoneNumber": "010-2222-1111",
+            "location": null,
+            "profileImageUrl": "https://t1.daumcdn.net/thumb/R720x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/Rdr/image/4KLr3IqIbJlrxgio86OtpDhxR-Q.JPG",
+            "joinedAt": 12341234,
+            "modifiedAt": 12341234,
+            "paymentMethod": "cash",
+            "role": "ROLE_USER",
+            "provider": "provider2",
+            "providerId": "providerId2"
+          },
+          "createdAt": 1664858338741,
+          "modifiedAt": 1664858338741
+        }
+      ],
+      "body": "배송비나눔해요, 결제는 계좌이체 희망합니다.",
+      "imageUrl": {
+        "imageUrlId": 0,
+        "url": "http://test.com",
+        "type": 1,
+        "createdAt": 1664436396803,
+        "modifiedAt": 1664436396803
+      }
+    },
+    {
+      "id": 10,
+      "memberId": 10,
+      "title": "Title10",
+      "recruit": 3,
+      "foodCategoryId": 5,
+      "category": {
+        "foodCategoryId": 5,
+        "category": "분식",
+        "createdAt": 1664436396803,
+        "modifiedAt": 1664436396803
+      },
+      "createdAt": 1664436396803,
+      "modifiedAt": 1664436396803,
+      "deadline": 1664436396803,
+      "pickupLocation": {
+        "locationId": 0,
+        "nameOfPlace": "정원파인즈2차",
+        "korAddress": "제주도 연북로",
+        "addressDetail": "102도 302호",
+        "type": 1,
+        "latitude": 33.5563,
+        "longitude": 126.80599,
+        "createAt": 1664436396803,
+        "modifiedAt": 1664436396803
+      },
+      "restaurantName": "왕큰이피자",
+      "restaurantUrl": "http://test-url.com",
+      "participantsList": [
+        {
+          "participantsId": 1,
+          "type": 2,
+          "member": {
+            "memberId": 2,
+            "username": "서태원",
+            "email": "test2@email.com",
+            "password": "pass1234",
+            "phoneNumber": "010-2222-1111",
+            "location": null,
+            "profileImageUrl": "https://t1.daumcdn.net/thumb/R720x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/Rdr/image/4KLr3IqIbJlrxgio86OtpDhxR-Q.JPG",
+            "joinedAt": 12341234,
+            "modifiedAt": 12341234,
+            "paymentMethod": "cash",
+            "role": "ROLE_USER",
+            "provider": "provider2",
+            "providerId": "providerId2"
+          },
+          "createdAt": 1664858338741,
+          "modifiedAt": 1664858338741
+        }
+      ],
+      "body": "배송비나눔해요, 결제는 계좌이체 희망합니다.",
+      "imageUrl": {
+        "imageUrlId": 0,
+        "url": "http://test.com",
+        "type": 1,
+        "createdAt": 1664436396803,
+        "modifiedAt": 1664436396803
+      }
+    }
+  ],
+  "members": [
+    {
+      "memberId": 1,
+      "username": "이은주",
+      "email": "test@naver.com",
+      "phoneNumber": "010-1111-1111",
+      "profileImageUrl": "www.test.com",
+      "modifiedAt": 1664436397982,
+      "joinedAt": 1664436397982,
+      "role": "ROLE_USER"
+    },
+    {
+      "memberId": 2,
+      "username": "서태원",
+      "email": "test@naver.com",
+      "phoneNumber": "010-1111-1111",
+      "profileImageUrl": "www.test.com",
+      "modifiedAt": 1664436397982,
+      "joinedAt": 1664436397982,
+      "role": "ROLE_USER"
+    },
+    {
+      "memberId": 3,
+      "username": "신가경",
+      "email": "test@naver.com",
+      "phoneNumber": "010-1111-1111",
+      "profileImageUrl": "www.test.com",
+      "modifiedAt": 1664436397982,
+      "joinedAt": 1664436397982,
+      "role": "ROLE_USER"
+    },
+    {
+      "memberId": 4,
+      "username": "김건휘",
+      "email": "test@naver.com",
+      "phoneNumber": "010-1111-1111",
+      "profileImageUrl": "www.test.com",
+      "modifiedAt": 1664436397982,
+      "joinedAt": 1664436397982,
+      "role": "ROLE_USER"
+    },
+    {
+      "memberId": 5,
+      "username": "박지효",
+      "email": "test@naver.com",
+      "phoneNumber": "010-1111-1111",
+      "profileImageUrl": "www.test.com",
+      "modifiedAt": 1664436397982,
+      "joinedAt": 1664436397982,
+      "role": "ROLE_USER"
+    },
+    {
+      "memberId": 6,
+      "username": "황윤준",
+      "email": "test@naver.com",
+      "phoneNumber": "010-1111-1111",
+      "profileImageUrl": "www.test.com",
+      "modifiedAt": 1664436397982,
+      "joinedAt": 1664436397982,
+      "role": "ROLE_USER"
+    },
+    {
+      "memberId": 7,
+      "username": "강시혁",
+      "email": "test@naver.com",
+      "phoneNumber": "010-1111-1111",
+      "profileImageUrl": "www.test.com",
+      "modifiedAt": 1664436397982,
+      "joinedAt": 1664436397982,
+      "role": "ROLE_USER"
+    },
+    {
+      "memberId": 8,
+      "username": "홍민정",
+      "email": "test@naver.com",
+      "phoneNumber": "010-1111-1111",
+      "profileImageUrl": "www.test.com",
+      "modifiedAt": 1664436397982,
+      "joinedAt": 1664436397982,
+      "role": "ROLE_USER"
+    },
+    {
+      "memberId": 9,
+      "username": "이현석",
+      "email": "test@naver.com",
+      "phoneNumber": "010-1111-1111",
+      "profileImageUrl": "www.test.com",
+      "modifiedAt": 1664436397982,
+      "joinedAt": 1664436397982,
+      "role": "ROLE_USER"
+    },
+    {
+      "memberId": 10,
+      "username": "정다운",
+      "email": "test@naver.com",
+      "phoneNumber": "010-1111-1111",
+      "profileImageUrl": "www.test.com",
+      "modifiedAt": 1664436397982,
+      "joinedAt": 1664436397982,
+      "role": "ROLE_USER"
+    },
+    {
+      "memberId": 11,
+      "username": "홍성권",
+      "email": "test@naver.com",
+      "phoneNumber": "010-1111-1111",
+      "profileImageUrl": "www.test.com",
+      "modifiedAt": 1664436397982,
+      "joinedAt": 1664436397982,
+      "role": "ROLE_USER"
+    },
+    {
+      "memberId": 12,
+      "username": "오나래",
+      "email": "test@naver.com",
+      "phoneNumber": "010-1111-1111",
+      "profileImageUrl": "www.test.com",
+      "modifiedAt": 1664436397982,
+      "joinedAt": 1664436397982,
+      "role": "ROLE_USER"
+    }
+  ]
+}
