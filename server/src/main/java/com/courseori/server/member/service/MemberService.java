@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,11 +17,11 @@ import java.util.Optional;
 @Service
 public class MemberService {
 
-    private final BCryptPasswordEncoder encoder;
+//    private final BCryptPasswordEncoder encoder;
     private final MemberRepository memberRepository;
 
     public Member createMember(Member member){
-        member.setPassword(encoder.encode(member.getPassword()));
+//        member.setPassword(encoder.encode(member.getPassword()));
         Member saveMember = memberRepository.save(member);
 
         return saveMember;
@@ -31,7 +31,7 @@ public class MemberService {
         Member findMember = findVerifiedMember(member.getMemberId());
 
         findMember.setUsername(member.getUsername());
-        findMember.setPassword(encoder.encode(member.getPassword()));
+//        findMember.setPassword(encoder.encode(member.getPassword()));
         findMember.setPhoneNumber(member.getProfileImageUrl());
         findMember.setProfileImageUrl(member.getProfileImageUrl());
 

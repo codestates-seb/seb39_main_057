@@ -20,7 +20,7 @@ import org.springframework.data.jpa.mapping.JpaMetamodelMappingContext;
 import org.springframework.http.MediaType;
 import org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders;
 import org.springframework.restdocs.payload.JsonFieldType;
-import org.springframework.security.test.context.support.WithMockUser;
+//import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
@@ -37,7 +37,7 @@ import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuild
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.*;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 import static org.springframework.restdocs.request.RequestDocumentation.*;
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
+//import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -45,7 +45,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(ItemController.class)
 @MockBean(JpaMetamodelMappingContext.class)
 @AutoConfigureRestDocs
-@WithMockUser
+//@WithMockUser
 public class ItemControllerTest {
 
     @Autowired
@@ -325,7 +325,7 @@ public class ItemControllerTest {
                 mockMvc.perform(
 
                         RestDocumentationRequestBuilders.post("/items")
-                                .with(csrf())
+//                                .with(csrf())
                                 .accept(MediaType.APPLICATION_JSON)
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(content)
@@ -395,7 +395,7 @@ public class ItemControllerTest {
         //when
         ResultActions actions = mockMvc.perform(
                 RestDocumentationRequestBuilders
-                        .patch("/items/{item-id}", itemId).with(csrf())
+                        .patch("/items/{item-id}", itemId)//.with(csrf())
                         .accept(MediaType.APPLICATION_JSON)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(content));
@@ -498,7 +498,7 @@ public class ItemControllerTest {
         //when
         ResultActions actions = mockMvc.perform(
                 RestDocumentationRequestBuilders
-                        .delete("/items/{item-id}", itemId).with(csrf()));
+                        .delete("/items/{item-id}", itemId)/*.with(csrf())*/);
 
         actions.andExpect(status().isNoContent())
                 .andDo(
